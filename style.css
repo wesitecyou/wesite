@@ -19,7 +19,7 @@ body {
 
 .container2 {
     width: 100%;
-    padding-left: 10px;
+    padding: 10px 10px 0 10px;
     display: flex;
 }
 
@@ -29,14 +29,14 @@ body {
     cursor: pointer;
     border-radius: 5px;
     background-color: #f1f1f1;
-    margin: 3px 3px 3px 0;
-    width: 5%;
+    margin-right: 3px;
+    width: auto;
 }
 
 .search-engine.active {
     background-color: #4569ff;
     color: white;
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
     border-radius: 5px 5px 0 0;
     font-weight: 520;
 }

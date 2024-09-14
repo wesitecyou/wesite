@@ -1,0 +1,123 @@
+body {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.container3 {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-align: left;
+    vertical-align: middle;
+    width: 60%;
+}
+
+.container1 {
+    display: flex;
+    width: 100%;
+    /* 容器宽度设置为100% */
+}
+
+.container2 {
+    width: 100%;
+    padding-left: 10px;
+    display: flex;
+}
+
+.search-engine {
+    display: inline-block;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    margin: 3px 3px 3px 0;
+    width: 5%;
+}
+
+.search-engine.active {
+    background-color: #4569ff;
+    color: white;
+    margin-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    font-weight: 520;
+}
+
+#searchBox {
+    width: 80%;
+    padding: 13px 10px;
+    border: 2px solid #4569ff;
+    border-radius: 10px 0 0 10px;
+    vertical-align: middle;
+    outline: none;
+}
+
+#searchButton {
+    width: 20%;
+    padding: 5px 15px;
+    border: 2px solid #4569ff;
+    border-radius: 0 10px 10px 0;
+    background-color: #4e6ef2;
+    color: white;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 520;
+}
+
+/* 网址链接 */
+.linksContainer {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    width: 60%;
+    height: 50vh;
+    margin: auto;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    width: 10%;
+    height: 50vh;
+}
+
+.content {
+    flex-grow: 1;
+    margin-left: 20px;
+    padding: 20px;
+    width: 50%;
+    height: 50vh;
+    background-color: #f4f4f4;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.category-button {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.category-button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.category-list {
+    display: none;
+}
+
+.category-list.active {
+    display: block;
+}

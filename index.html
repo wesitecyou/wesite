@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开始</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>选择-输入-搜索</h1>
+    <div class="container3">
+        <div class="container2">
+            <span id="baidu" class="search-engine active" onclick="selectEngine('baidu')">百度</span>
+            <span id="bing" class="search-engine" onclick="selectEngine('bing')">必应</span>
+            <span id="sogou" class="search-engine" onclick="selectEngine('sogou')">搜狗</span>
+        </div>
+        <div class="container1">
+            <input type="text" id="searchBox" placeholder="输入搜索内容">
+            <button id="searchButton" onclick="performSearch()">搜索</button>
+        </div>
+
+    </div>
+    <div class="linksContainer">
+        <div class="sidebar">
+            <button class="category-button active" onclick="showCategory('common')">常用软件</button>
+            <button class="category-button" onclick="showCategory('adobe')">Adobe</button>
+            <button class="category-button" onclick="showCategory('autocad')">AutoCAD</button>
+            <!-- Add other buttons similarly -->
+        </div>
+
+        <div class="content">
+            <div id="common" class="category-list active">
+                <h2>常用软件</h2>
+                <ul>
+                    <li><a href="#">ACDSee</a></li>
+                    <li><a href="#">Capture One</a></li>
+                    <li><a href="#">Corel Painter</a></li>
+                    <li><a href="#">SAI</a></li>
+                    <li><a href="#">SketchBook</a></li>
+                </ul>
+            </div>
+
+            <!-- Add other categories similarly -->
+
+        </div>
+    </div>
+    <script defer type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

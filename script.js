@@ -40,28 +40,83 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 执行搜索
 function performSearch() {
-    if (selectedEngines.size === 0) {
-        alert("请至少选择一个搜索引擎");
-        return;
-    }
-
-    var query = document.getElementById('searchBox').value;
-    selectedEngines.forEach(function (engine) {
-        var searchUrl;
-        switch (engine) {
-            case 'baidu':
-                searchUrl = "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
-                break;
-            case 'bing':
-                searchUrl = "https://cn.bing.com/search?q=" + encodeURIComponent(query);
-                break;
-            case 'sogou':
-                searchUrl = "https://www.sogou.com/web?query=" + encodeURIComponent(query);
-                break;
+    var query = document.getElementById('searchBox').value.trim();
+    if (query === '') {
+        // 如果输入框为空
+        if (selectedEngines.size === 0) {
+            alert("请至少选择一个搜索引擎");
+            return;
         }
-        window.open(searchUrl, '_blank');
-    });
+        // 打开选中的搜索引擎的首页
+        selectedEngines.forEach(function (engine) {
+            var defaultSearchUrl;
+            switch (engine) {
+                case 'baidu':
+                    defaultSearchUrl = "https://www.baidu.com/";
+                    break;
+                case 'bing':
+                    defaultSearchUrl = "https://cn.bing.com/";
+                    break;
+                case 'sogou':
+                    defaultSearchUrl = "https://www.sogou.com/";
+                    break;
+                case 'zhihu':
+                    defaultSearchUrl = "https://www.zhihu.com/";
+                    break;
+                case 'weixin':
+                    defaultSearchUrl = "https://weixin.sogou.com/";
+                    break;
+                case 'google':
+                    defaultSearchUrl = "https://www.google.com/";
+                    break;
+                    case 'weibo':
+                        defaultSearchUrl = "https://weibo.com/";
+                        break;
+                        case 'douban':
+                            defaultSearchUrl = "https://www.douban.com/";
+                            break;
+            }
+            window.open(defaultSearchUrl, '_blank');
+        });
+    } else {
+        // 输入框有内容，执行搜索
+        if (selectedEngines.size === 0) {
+            alert("请至少选择一个搜索引擎");
+            return;
+        }
+        selectedEngines.forEach(function (engine) {
+            var searchUrl;
+            switch (engine) {
+                case 'baidu':
+                    searchUrl = "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
+                    break;
+                case 'bing':
+                    searchUrl = "https://cn.bing.com/search?q=" + encodeURIComponent(query);
+                    break;
+                case 'sogou':
+                    searchUrl = "https://www.sogou.com/web?query=" + encodeURIComponent(query);
+                    break;
+                case 'zhihu':
+                    searchUrl = "https://www.zhihu.com/search?type=content&q=" + encodeURIComponent(query);
+                    break;
+                case 'weixin':
+                    searchUrl = "https://weixin.sogou.com/weixin?ie=utf8&type=2&query=" + encodeURIComponent(query);
+                    break;
+                case 'google':
+                    searchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+                    break;
+                    case 'weibo':
+                        searchUrl = "https://s.weibo.com/weibo?q=" + encodeURIComponent(query);
+                        break;
+                    case 'douban':
+                        searchUrl = "https://www.douban.com/search?q=" + encodeURIComponent(query);
+                        break;
+            }
+            window.open(searchUrl, '_blank');
+        });
+    }
 }
+
 
 // 监听键盘事件，当用户按下Enter键时执行搜索
 document.addEventListener('DOMContentLoaded', function () {
@@ -79,25 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-
-// // Enter key---------------------------------------------------------------------------------------------------------------
-// document.addEventListener('DOMContentLoaded', function () {
-//     // 获取输入框和按钮的引用
-//     var input = document.getElementById('searchBox');
-//     var button = document.getElementById('searchButton');
-//     // 为输入框添加键盘按下事件监听器
-//     input.addEventListener('keypress', function (event) {
-//         // 检查按下的键是否是'Enter'
-//         if (event.key === 'Enter') {
-//             // 阻止Enter键的默认行为（例如表单提交）
-//             event.preventDefault();
-//             // 触发按钮的点击事件
-//             button.click();
-//         }
-//     });
-// });
 
 // 网址链接-----------------------------------------------------------------------------------------------------------------
 function showCategory(categoryId) {

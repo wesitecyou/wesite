@@ -1,14 +1,19 @@
-body {
-    text-align: center;
-    padding-top: 50px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container3 {
+body {
+    text-align: center;
+}
+
+.container4 {
     display: inline-block;
     margin-bottom: 20px;
     text-align: left;
     vertical-align: middle;
-    width: 60%;
+    width: 50%;
 }
 
 .container1 {
@@ -18,12 +23,26 @@ body {
 }
 
 .container2 {
-    width: 100%;
-    padding: 10px 10px 0 10px;
+    width: auto;
+    padding: 10px 10px 0 30px;
     display: flex;
+    flex-wrap: wrap;
+    /* 关键属性，允许子元素换行 */
+    justify-content: flex-start;
+    /* 或者使用 space-between, space-around 等 */
 }
 
-.search-engine {
+.container3 {
+    width: auto;
+    padding: 0 10px 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* 关键属性，允许子元素换行 */
+    justify-content: flex-start;
+    /* 或者使用 space-between, space-around 等 */
+}
+
+.search-engine-top {
     display: inline-block;
     padding: 5px 15px;
     cursor: pointer;
@@ -31,28 +50,49 @@ body {
     background-color: #f1f1f1;
     margin-right: 3px;
     width: auto;
+    margin-bottom: 3px;
 }
 
-.search-engine.active {
+.search-engine-bottom {
+    display: inline-block;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    margin-right: 3px;
+    width: auto;
+    margin-top: 3px;
+}
+
+.search-engine-top.active {
     background-color: #4569ff;
     color: white;
-    /* margin-bottom: 0; */
-    border-radius: 5px 5px 0 0;
     font-weight: 520;
+    margin-bottom: 0;
+    border-bottom: 3px solid yellow;
+}
+
+.search-engine-bottom.active {
+    background-color: #4569ff;
+    color: white;
+    font-weight: 520;
+    margin-top: 0;
+    border-top: 3px solid yellow;
 }
 
 #searchBox {
     width: 80%;
-    padding: 13px 10px;
+    padding: 10px 15px;
     border: 2px solid #4569ff;
     border-radius: 10px 0 0 10px;
     vertical-align: middle;
     outline: none;
+    font-size: medium;
 }
 
 #searchButton {
     width: 20%;
-    padding: 5px 15px;
+    padding: 10px 15px;
     border: 2px solid #4569ff;
     border-radius: 0 10px 10px 0;
     background-color: #4e6ef2;
@@ -60,13 +100,15 @@ body {
     cursor: pointer;
     vertical-align: middle;
     font-weight: 520;
+    font-size: medium;
 }
 
 /* 网址链接 */
 .linksContainer {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center; /* 水平居中 */
+    justify-content: center;
+    /* 水平居中 */
     width: 60%;
     height: 50vh;
     margin: auto;
@@ -89,9 +131,11 @@ body {
     width: 50%;
     height: 50vh;
     background-color: #f4f4f4;
+    overflow-y: auto;
+    /* 添加这一行以允许垂直滚动 */
 }
 
-ul {
+.rightTable {
     list-style-type: none;
     padding: 0;
 }
@@ -121,3 +165,44 @@ li {
 .category-list.active {
     display: block;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.browser-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+/* -----------------------------------------更多------------------------------------------ */
+.more-options {
+    display: none;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+#more-top,
+#more-bottom {
+    position: relative;
+    margin-bottom: 3px;
+}
+
+/* --------------------------------------------------------------------------------------------------- */

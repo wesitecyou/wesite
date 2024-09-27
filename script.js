@@ -135,6 +135,12 @@ function performSearch() {
                 case 'baiduxueshu':
                     defaultSearchUrl = "https://xueshu.baidu.com/";
                     break;
+                    case 'duckduckgo':
+                    defaultSearchUrl = "https://start.duckduckgo.com/";
+                    break;
+                    case 'yahoo':
+                    defaultSearchUrl = "https://search.yahoo.com/";
+                    break;
             }
             window.open(defaultSearchUrl, '_blank');
         });
@@ -228,6 +234,12 @@ function performSearch() {
                 case 'baiduxueshu':
                     searchUrl = "https://xueshu.baidu.com/s?wd=" + encodeURIComponent(query) + "&rsv_bp=0&tn=SE_baiduxueshu_c1gjeupa&rsv_spt=3&ie=utf-8&f=3&rsv_sug2=1&sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&rsp=1";
                     break;
+                    case 'duckduckgo':
+                    searchUrl = "https://duckduckgo.com/?t=h_&hps=1&start=1&q=" + encodeURIComponent(query) + "&ia=web";
+                    break;
+                    case 'yahoo':
+                    searchUrl = "https://search.yahoo.com/search?p=" + encodeURIComponent(query);
+                    break;
             }
             window.open(searchUrl, '_blank');
         });
@@ -298,3 +310,53 @@ function toggleMoreBottom() {
 
 
 // ppppppppppppppppppp
+document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth1');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth2');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth3');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth4');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth5');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth6');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth7');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth8');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth9');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.customWidth10');
+    var width = window.innerWidth * 0.05 - 7; // 计算宽度
+    element.style.width = width + 'px'; // 应用宽度
+  });

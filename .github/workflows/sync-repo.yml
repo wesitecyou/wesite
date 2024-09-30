@@ -3,7 +3,7 @@ name: Sync Repository
 on:
   push:
     branches:
-      - main  # 或者您想要同步的分支
+      - main # 或者您想要同步的分支
 
 jobs:
   sync:
@@ -11,27 +11,28 @@ jobs:
     steps:
     - name: Checkout source repository
       uses: actions/checkout@v3
-      with:
-        persist-credentials: false
-
-    - name: Set up Git
-      run: |
-        git config --global user.name 'GitHub Actions'
-        git config --global user.email 'actions@github.com'
 
     - name: Remove CNAME file
       run: |
-        # 确保文件存在才进行删除操作
         if [ -f "CNAME" ]; then
           git rm --cached CNAME
           git commit -m "Remove CNAME file"
         fi
 
-    - name: Add destination repository as remote
-      run: git remote add destination https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/maajie/baidu.git
+    - name: Set up Git
+      run: |
+        git config --global user.name "maajie"
+        git config --global user.email "majieln@qq.com"
+        git remote add destination "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/maajie/baidu.git"
+        git fetch destination
 
-    - name: Fetch branches and tags from destination repository
-      run: git fetch destination --tags
+    - name: Sync to destination repository
+      run: |
+        git push destination --all --force
+      continue-on-error: true # 这将允许步骤失败但工作流程继续
 
-    - name: Push to destination repository
-      run: git push destination --all
+    - name: Check for errors
+      if: ${{ failure() }}
+      run: |
+        echo "An error occurred during the sync process."
+        exit 1

@@ -6,35 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>开始页</title>
     <!-- 为浅色主题提供SVG favicon -->
-    <!-- <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)"> -->
+    <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
 
     <!-- 为深色主题提供SVG favicon -->
-    <!-- <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)"> -->
+    <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
 
     <!-- 为不支持prefers-color-scheme的浏览器提供一个默认的SVG favicon -->
     <!-- <link rel="icon" href="favicon-dark.svg" type="image/svg+xml"> -->
-         <!-- 默认的SVG favicon -->
-    <link rel="icon" href="favicon-dark.svg" id="favicon" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
-    <script>
-        // JavaScript用于动态更改favicon
-        function updateFavicon(theme) {
-            var favicon = document.getElementById('favicon');
-            if (theme === 'dark') {
-                favicon.href = 'favicon-light.svg';
-            } else {
-                favicon.href = 'favicon-dark.svg';
-            }
-        }
-
-        // 监听主题偏好变化
-        window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
-            updateFavicon(e.matches ? 'dark' : 'light');
-        });
-
-        // 初始化favicon
-        updateFavicon(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    </script>
 </head>
 
 <body>

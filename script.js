@@ -360,3 +360,88 @@ document.addEventListener('DOMContentLoaded', function() {
     var width = window.innerWidth * 0.05 - 7; // 计算宽度
     element.style.width = width + 'px'; // 应用宽度
   });
+
+//   ------------------------------timer-----------------------------------
+let timer = document.getElementById('timer');
+        let startPauseButton = document.getElementById('start-pause');
+        let resetButton = document.getElementById('reset');
+        let workTimeInput = document.getElementById('work-time');
+        let breakTimeInput = document.getElementById('break-time');
+        let confirmTimeButton = document.getElementById('confirm-time');
+        let bubbleNotification = document.getElementById('bubble-notification');
+        let intervalId;
+        let remainingTime = parseInt(workTimeInput.value) * 60; // Convert work time to seconds
+        let isRunning = false;
+        let isWorkTime = true;
+
+        function updateTimer() {
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
+            timer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            remainingTime--;
+            if (remainingTime < 0) {
+                clearInterval(intervalId);
+                if (isWorkTime) {
+                    bubbleNotification.textContent = '工作完成，休息时间到了！';
+                    remainingTime = parseInt(breakTimeInput.value) * 60;
+                    isWorkTime = false;
+                    showNotification();
+                    startPauseButton.textContent = '休息';
+                    // Update the timer display immediately without waiting for the next interval
+                    updateTimer();
+                    // Automatically start the break time
+                    startPause();
+                                } else {
+                    bubbleNotification.textContent = '休息结束，继续工作吧！';
+                    remainingTime = parseInt(workTimeInput.value) * 60;
+                    isWorkTime = true;
+                    showNotification();
+                    startPauseButton.textContent = '开始';
+                    // Update the timer display immediately without waiting for the next interval
+                    updateTimer();
+                    // Automatically start the work time
+                    startPause();
+                }
+            }
+        }
+
+        function startPause() {
+            if (!isRunning) {
+                intervalId = setInterval(updateTimer, 1000);
+                startPauseButton.textContent = isWorkTime ? '暂停' : '暂停休息';
+                isRunning = true;
+            } else {
+                clearInterval(intervalId);
+                startPauseButton.textContent = isWorkTime ? '继续' : '开始休息';
+                isRunning = false;
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(intervalId);
+            remainingTime = parseInt(workTimeInput.value) * 60;
+            isRunning = false;
+            isWorkTime = true;
+            updateTimer(); // Update the timer display immediately
+            startPauseButton.textContent = '开始';
+        }
+
+        function confirmTime() {
+            clearInterval(intervalId);
+            remainingTime = parseInt(workTimeInput.value) * 60;
+            isRunning = false;
+            isWorkTime = true;
+            updateTimer(); // Update the timer display immediately
+            startPauseButton.textContent = '开始';
+        }
+
+        function showNotification() {
+            bubbleNotification.style.display = 'block';
+            setTimeout(() => {
+                bubbleNotification.style.display = 'none';
+            }, 3000);
+        }
+
+        startPauseButton.addEventListener('click', startPause);
+        resetButton.addEventListener('click', resetTimer);
+        confirmTimeButton.addEventListener('click', confirmTime);

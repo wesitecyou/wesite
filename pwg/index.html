@@ -139,7 +139,7 @@
 
         function toggleAdvancedOptions() {
             const advancedOptions = document.getElementById('advanced-options');
-            advancedOptions.style.display = advancedOptions.style.display === 'none' ? 'block' : 'none';
+            advancedOptions.style.display = advancedOptions.style.display === 'none' || advancedOptions.style.display === '' ? 'block' : 'none';
             if (advancedOptions.style.display === 'block') {
                 populateAdvancedOptions();
             }

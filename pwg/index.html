@@ -31,6 +31,30 @@
             padding: 5px 10px;
             margin-top: 10px;
         }
+        .copy-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .tooltip {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px; /* 设置合适大小 */
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+        .tooltip.show {
+            opacity: 1;
+            visibility: visible;
+        }
         .uppercase {
             font-weight: bold;
             color: black;
@@ -72,7 +96,8 @@
         <br><br>
         <button onclick="generatePassword()">生成密码</button>
         <div class="password" id="password"></div>
-        <button class="copy-button" onclick="copyPassword()">复制密码</button>
+        <button class="copy-button" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
+        <div class="tooltip" id="copyTooltip"></div>
         <div class="history">
             <h2>历史记录</h2>
             <button onclick="clearHistory()">清除历史记录</button>
@@ -119,7 +144,7 @@
             }
 
             if (charset === "") {
-                alert('请至少选择一种字符类型');
+                showTooltip('请至少选择一种字符类型');
                 return;
             }
 
@@ -166,16 +191,27 @@
 
             document.getElementById('password').innerHTML = formattedPassword;
 
+            document.getElementById('copyButton').disabled = false; // 启用复制按钮
+
             addToHistory(password);
         }
 
         function copyPassword() {
             const password = document.getElementById('password').innerText;
             navigator.clipboard.writeText(password).then(() => {
-                alert('密码已复制到剪贴板');
+                showTooltip('已复制密码到剪贴板');
             }).catch(err => {
-                alert('复制失败: ' + err);
+                showTooltip('复制失败: ' + err);
             });
+        }
+
+        function showTooltip(message) {
+            const tooltip = document.getElementById('copyTooltip');
+            tooltip.innerText = message;
+            tooltip.classList.add('show');
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+            }, 2000);
         }
 
         function addToHistory(password) {

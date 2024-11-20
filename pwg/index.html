@@ -44,6 +44,16 @@
         .symbol {
             color: blue;
         }
+        .history {
+            margin-top: 20px;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+        }
+        .history-item {
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +73,11 @@
         <button onclick="generatePassword()">生成密码</button>
         <div class="password" id="password"></div>
         <button class="copy-button" onclick="copyPassword()">复制密码</button>
+        <div class="history">
+            <h2>历史记录</h2>
+            <button onclick="clearHistory()">清除历史记录</button>
+            <div id="historyList"></div>
+        </div>
     </div>
     <script>
         function checkLength() {
@@ -76,6 +91,7 @@
 
         function generatePassword() {
             const length = document.getElementById('length').value;
+            const exclude = document.getElementById('exclude').value;
             let charset = "";
             let mustIncludeCharset = "";
 
@@ -96,7 +112,6 @@
                 mustIncludeCharset += "!@#$%^&*()_+~`|}{[]:;?,./-=<>";
             }
 
-            const exclude = document.getElementById('exclude').value;
             if (exclude) {
                 const excludeSet = new Set(exclude);
                 charset = charset.split('').filter(char => !excludeSet.has(char)).join('');
@@ -108,40 +123,34 @@
                 return;
             }
 
-            // 确保包含每种字符类型
             let password = "";
-            if (mustIncludeCharset.length > 0) {
-                const requiredChars = [];
-                if (document.getElementById('uppercase').checked) {
-                    requiredChars.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-                }
-                if (document.getElementById('lowercase').checked) {
-                    requiredChars.push('abcdefghijklmnopqrstuvwxyz');
-                }
-                if (document.getElementById('numbers').checked) {
-                    requiredChars.push('0123456789');
-                }
-                if (document.getElementById('symbols').checked) {
-                    requiredChars.push('!@#$%^&*()_+~`|}{[]:;?,./-=<>');
-                }
-
-                requiredChars.forEach(charSet => {
-                    const filteredCharSet = charSet.split('').filter(char => !exclude.includes(char)).join('');
-                    if (filteredCharSet.length > 0) {
-                        password += filteredCharSet.charAt(Math.floor(Math.random() * filteredCharSet.length));
-                    }
-                });
+            const requiredChars = [];
+            if (document.getElementById('uppercase').checked) {
+                requiredChars.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            }
+            if (document.getElementById('lowercase').checked) {
+                requiredChars.push('abcdefghijklmnopqrstuvwxyz');
+            }
+            if (document.getElementById('numbers').checked) {
+                requiredChars.push('0123456789');
+            }
+            if (document.getElementById('symbols').checked) {
+                requiredChars.push('!@#$%^&*()_+~`|}{[]:;?,./-=<>');
             }
 
-            // 生成剩余的随机字符
+            requiredChars.forEach(charSet => {
+                const filteredCharSet = charSet.split('').filter(char => !exclude.includes(char)).join('');
+                if (filteredCharSet.length > 0) {
+                    password += filteredCharSet.charAt(Math.floor(Math.random() * filteredCharSet.length));
+                }
+            });
+
             for (let i = password.length; i < length; ++i) {
                 password += charset.charAt(Math.floor(Math.random() * charset.length));
             }
 
-            // 打乱密码
             password = password.split('').sort(() => 0.5 - Math.random()).join('');
 
-            // 格式化密码
             let formattedPassword = "";
             for (const char of password) {
                 if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(char)) {
@@ -156,6 +165,8 @@
             }
 
             document.getElementById('password').innerHTML = formattedPassword;
+
+            addToHistory(password);
         }
 
         function copyPassword() {
@@ -166,6 +177,40 @@
                 alert('复制失败: ' + err);
             });
         }
+
+        function addToHistory(password) {
+            const history = JSON.parse(localStorage.getItem('passwordHistory')) || [];
+            history.unshift({ password });
+
+            if (history.length > 10) {
+                history.pop();
+            }
+
+            localStorage.setItem('passwordHistory', JSON.stringify(history));
+            updateHistoryUI();
+        }
+
+        function updateHistoryUI() {
+            const history = JSON.parse(localStorage.getItem('passwordHistory')) || [];
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = '';
+
+            history.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.classList.add('history-item');
+                historyItem.innerText = item.password; // 设置为纯文本
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        function clearHistory() {
+            localStorage.removeItem('passwordHistory');
+            updateHistoryUI();
+        }
+
+        window.onload = function() {
+            updateHistoryUI();
+        };
     </script>
 </body>
 </html>

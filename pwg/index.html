@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +13,21 @@
             align-items: center;
             height: 100vh;
         }
+
         .container {
             text-align: center;
         }
+
         input[type="number"] {
             width: 50px;
         }
+
         .password {
             font-size: 1.2em;
             margin: 10px 0;
             word-break: break-all;
         }
+
         .copy-button {
             cursor: pointer;
             background-color: #4CAF50;
@@ -31,22 +36,28 @@
             padding: 5px 10px;
             margin-top: 10px;
         }
+
         .uppercase {
             font-weight: bold;
             color: black;
         }
+
         .lowercase {
             color: black;
         }
+
         .number {
             color: red;
         }
+
         .symbol {
             color: blue;
         }
+
         .advanced-options-button {
             margin-top: 10px;
         }
+
         .advanced-options {
             display: none;
             margin-top: 10px;
@@ -56,16 +67,19 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         .character-options {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
         }
+
         .character-options div {
             margin: 10px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>随机密码生成器</h1>
@@ -170,66 +184,66 @@
             document.getElementById('numberOption').checked = document.getElementById('numbers').checked;
             document.getElementById('symbolOption').checked = document.getElementById('symbols').checked;
 
-            document.getElementById('uppercaseOption').addEventListener('change', function() {
+            document.getElementById('uppercaseOption').addEventListener('change', function () {
                 document.querySelectorAll('.uppercaseChar').forEach(checkbox => checkbox.checked = this.checked);
                 document.getElementById('uppercase').checked = this.checked;
             });
 
-            document.getElementById('lowercaseOption').addEventListener('change', function() {
+            document.getElementById('lowercaseOption').addEventListener('change', function () {
                 document.querySelectorAll('.lowercaseChar').forEach(checkbox => checkbox.checked = this.checked);
                 document.getElementById('lowercase').checked = this.checked;
             });
 
-            document.getElementById('numberOption').addEventListener('change', function() {
+            document.getElementById('numberOption').addEventListener('change', function () {
                 document.querySelectorAll('.numberChar').forEach(checkbox => checkbox.checked = this.checked);
                 document.getElementById('numbers').checked = this.checked;
             });
 
-            document.getElementById('symbolOption').addEventListener('change', function() {
+            document.getElementById('symbolOption').addEventListener('change', function () {
                 document.querySelectorAll('.symbolChar').forEach(checkbox => checkbox.checked = this.checked);
                 document.getElementById('symbols').checked = this.checked;
             });
 
             document.querySelectorAll('.uppercaseChar').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function () {
                     updateTypeCheckbox('uppercaseChar', 'uppercaseOption', 'uppercase');
                 });
             });
 
             document.querySelectorAll('.lowercaseChar').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function () {
                     updateTypeCheckbox('lowercaseChar', 'lowercaseOption', 'lowercase');
                 });
             });
 
             document.querySelectorAll('.numberChar').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function () {
                     updateTypeCheckbox('numberChar', 'numberOption', 'numbers');
                 });
             });
 
             document.querySelectorAll('.symbolChar').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function () {
                     updateTypeCheckbox('symbolChar', 'symbolOption', 'symbols');
                 });
             });
 
-            document.getElementById('uppercase').addEventListener('change', function() {
+            document.getElementById('uppercase').addEventListener('change', function () {
                 document.getElementById('uppercaseOption').checked = this.checked;
                 document.querySelectorAll('.uppercaseChar').forEach(checkbox => checkbox.checked = this.checked);
             });
 
-            document.getElementById('lowercase').addEventListener('change', function() {
+            document.getElementById('lowercase').addEventListener('change', function () {
                 document.getElementById('lowercaseOption').checked = this.checked;
                 document.querySelectorAll('.lowercaseChar').forEach(checkbox => checkbox.checked = this.checked);
             });
 
-            document.getElementById('numbers').addEventListener('change', function() {
+            document.getElementById('numbers').addEventListener('change', function () {
                 document.getElementById('numberOption').checked = this.checked;
                 document.querySelectorAll('.numberChar').forEach(checkbox => checkbox.checked = this.checked);
             });
 
-            document.getElementById('symbols').addEventListener('change', function() {
+            document.getElementById('symbols').addEventListener('change', function () {
                 document.getElementById('symbolOption').checked = this.checked;
                 document.querySelectorAll('.symbolChar').forEach(checkbox => checkbox.checked = this.checked);
             });
@@ -299,7 +313,7 @@
                 });
             }
 
-            if (charset === "") {
+            if (mustIncludeCharset === "") {
                 alert('请至少选择一种字符类型');
                 return;
             }
@@ -342,4 +356,5 @@
         }
     </script>
 </body>
+
 </html>

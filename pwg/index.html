@@ -5,15 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>随机密码生成器</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100dvh;
         }
         .container {
             text-align: center;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
         }
         input[type="number"] {
             width: 50px;
@@ -77,6 +87,11 @@
         .history-item {
             margin-bottom: 10px;
             word-break: break-all;
+        }
+        #historyList {
+            background-color: #cccccc;
+            border: 1px solid white;
+            border-radius: 10px;
         }
     </style>
 </head>

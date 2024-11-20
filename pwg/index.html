@@ -129,13 +129,9 @@
         const symbolChars = "!@#$%^&*()_+~`|}{[]:;?,./-=<>";
 
         function checkLength() {
-            const lengthInput = document.getElementById('length');
-            if (lengthInput.value > 64) {
-                lengthInput.value = 64;
-            } else if (lengthInput.value < 4) {
-                lengthInput.value = 4;
-            }
-        }
+    const lengthInput = document.getElementById('length');
+    lengthInput.value = Math.max(4, Math.min(64, lengthInput.value));
+}
 
         function toggleAdvancedOptions() {
             const advancedOptions = document.getElementById('advanced-options');
@@ -284,67 +280,67 @@
         }
 
         function generatePassword() {
-            const length = document.getElementById('length').value;
-            let charset = "";
-            let mustIncludeCharset = "";
+    const length = document.getElementById('length').value;
+    let charset = "";
+    let mustIncludeCharset = "";
 
-            if (document.getElementById('uppercase').checked) {
-                document.querySelectorAll('.uppercaseChar:checked').forEach(checkbox => {
-                    charset += checkbox.value;
-                    mustIncludeCharset += checkbox.value;
-                });
-            }
-            if (document.getElementById('lowercase').checked) {
-                document.querySelectorAll('.lowercaseChar:checked').forEach(checkbox => {
-                    charset += checkbox.value;
-                    mustIncludeCharset += checkbox.value;
-                });
-            }
-            if (document.getElementById('numbers').checked) {
-                document.querySelectorAll('.numberChar:checked').forEach(checkbox => {
-                    charset += checkbox.value;
-                    mustIncludeCharset += checkbox.value;
-                });
-            }
-            if (document.getElementById('symbols').checked) {
-                document.querySelectorAll('.symbolChar:checked').forEach(checkbox => {
-                    charset += checkbox.value;
-                    mustIncludeCharset += checkbox.value;
-                });
-            }
-
-            if (mustIncludeCharset === "") {
-                alert('请至少选择一种字符类型');
-                return;
-            }
-
-            // 确保包含每种字符类型
-            let password = mustIncludeCharset;
-
-            // 生成剩余的随机字符
-            for (let i = password.length; i < length; ++i) {
-                password += charset.charAt(Math.floor(Math.random() * charset.length));
-            }
-
-            // 打乱密码
-            password = password.split('').sort(() => 0.5 - Math.random()).join('');
-
-            // 格式化密码
-            let formattedPassword = "";
-            for (const char of password) {
-                if (uppercaseChars.includes(char)) {
-                    formattedPassword += `<span class="uppercase">${char}</span>`;
-                } else if (lowercaseChars.includes(char)) {
-                    formattedPassword += `<span class="lowercase">${char}</span>`;
-                } else if (numberChars.includes(char)) {
-                    formattedPassword += `<span class="number">${char}</span>`;
-                } else {
-                    formattedPassword += `<span class="symbol">${char}</span>`;
-                }
-            }
-
-            document.getElementById('password').innerHTML = formattedPassword;
+    if (document.getElementById('uppercase').checked) {
+        let selectedUppercase = Array.from(document.querySelectorAll('.uppercaseChar:checked')).map(checkbox => checkbox.value).join('');
+        if (selectedUppercase) {
+            charset += selectedUppercase;
+            mustIncludeCharset += selectedUppercase[Math.floor(Math.random() * selectedUppercase.length)];
         }
+    }
+    if (document.getElementById('lowercase').checked) {
+        let selectedLowercase = Array.from(document.querySelectorAll('.lowercaseChar:checked')).map(checkbox => checkbox.value).join('');
+        if (selectedLowercase) {
+            charset += selectedLowercase;
+            mustIncludeCharset += selectedLowercase[Math.floor(Math.random() * selectedLowercase.length)];
+        }
+    }
+    if (document.getElementById('numbers').checked) {
+        let selectedNumbers = Array.from(document.querySelectorAll('.numberChar:checked')).map(checkbox => checkbox.value).join('');
+        if (selectedNumbers) {
+            charset += selectedNumbers;
+            mustIncludeCharset += selectedNumbers[Math.floor(Math.random() * selectedNumbers.length)];
+        }
+    }
+    if (document.getElementById('symbols').checked) {
+        let selectedSymbols = Array.from(document.querySelectorAll('.symbolChar:checked')).map(checkbox => checkbox.value).join('');
+        if (selectedSymbols) {
+            charset += selectedSymbols;
+            mustIncludeCharset += selectedSymbols[Math.floor(Math.random() * selectedSymbols.length)];
+        }
+    }
+
+    if (mustIncludeCharset === "") {
+        alert('请至少选择一种字符类型');
+        return;
+    }
+
+    let password = mustIncludeCharset;
+
+    for (let i = password.length; i < length; ++i) {
+        password += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+
+    password = password.split('').sort(() => 0.5 - Math.random()).join('');
+
+    let formattedPassword = "";
+    for (const char of password) {
+        if (uppercaseChars.includes(char)) {
+            formattedPassword += `<span class="uppercase">${char}</span>`;
+        } else if (lowercaseChars.includes(char)) {
+            formattedPassword += `<span class="lowercase">${char}</span>`;
+        } else if (numberChars.includes(char)) {
+            formattedPassword += `<span class="number">${char}</span>`;
+        } else {
+            formattedPassword += `<span class="symbol">${char}</span>`;
+        }
+    }
+
+    document.getElementById('password').innerHTML = formattedPassword;
+}
 
         function copyPassword() {
             const password = document.getElementById('password').innerText;

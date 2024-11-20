@@ -57,6 +57,9 @@
         <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
         <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
         <br><br>
+        <label for="exclude">要排除的字符:</label>
+        <input type="text" id="exclude" name="exclude">
+        <br><br>
         <button onclick="generatePassword()">生成密码</button>
         <div class="password" id="password"></div>
         <button class="copy-button" onclick="copyPassword()">复制密码</button>
@@ -93,6 +96,13 @@
                 mustIncludeCharset += "!@#$%^&*()_+~`|}{[]:;?,./-=<>";
             }
 
+            const exclude = document.getElementById('exclude').value;
+            if (exclude) {
+                const excludeSet = new Set(exclude);
+                charset = charset.split('').filter(char => !excludeSet.has(char)).join('');
+                mustIncludeCharset = mustIncludeCharset.split('').filter(char => !excludeSet.has(char)).join('');
+            }
+
             if (charset === "") {
                 alert('请至少选择一种字符类型');
                 return;
@@ -116,7 +126,10 @@
                 }
 
                 requiredChars.forEach(charSet => {
-                    password += charSet.charAt(Math.floor(Math.random() * charSet.length));
+                    const filteredCharSet = charSet.split('').filter(char => !exclude.includes(char)).join('');
+                    if (filteredCharSet.length > 0) {
+                        password += filteredCharSet.charAt(Math.floor(Math.random() * filteredCharSet.length));
+                    }
                 });
             }
 

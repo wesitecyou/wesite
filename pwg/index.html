@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机密码生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        .password {
+            font-size: 1.2em;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .copy-button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+        .uppercase {
+            font-weight: bold;
+            color: black;
+        }
+        .lowercase {
+            color: black;
+        }
+        .number {
+            color: red;
+        }
+        .symbol {
+            color: blue;
+        }
+        .advanced-options-button {
+            margin-top: 10px;
+        }
+        .advanced-options {
+            display: none;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .character-options {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .character-options div {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>随机密码生成器</h1>
+        <label for="length">密码长度:</label>
+        <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()">
+        <br><br>
+        <label><input type="checkbox" id="uppercase" checked> 大写字母</label>
+        <label><input type="checkbox" id="lowercase" checked> 小写字母</label>
+        <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
+        <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
+        <br><br>
+        <button class="advanced-options-button" onclick="toggleAdvancedOptions()">高级选项</button>
+        <div class="advanced-options" id="advanced-options">
+            <h3>高级选项</h3>
+            <button onclick="selectAllChars()">全选</button>
+            <button onclick="deselectAllChars()">全不选</button>
+            <button onclick="invertCharSelection()">反选</button>
+            <br><br>
+            <div class="character-options">
+                <div>
+                    <label><input type="checkbox" id="uppercaseOption" checked> 大写字母</label>
+                    <div id="uppercaseChars"></div>
+                </div>
+                <div>
+                    <label><input type="checkbox" id="lowercaseOption" checked> 小写字母</label>
+                    <div id="lowercaseChars"></div>
+                </div>
+                <div>
+                    <label><input type="checkbox" id="numberOption" checked> 阿拉伯数字</label>
+                    <div id="numberChars"></div>
+                </div>
+                <div>
+                    <label><input type="checkbox" id="symbolOption" checked> 特殊符号</label>
+                    <div id="symbolChars"></div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <button onclick="generatePassword()">生成密码</button>
+        <div class="password" id="password"></div>
+        <button class="copy-button" onclick="copyPassword()">复制密码</button>
+    </div>
+    <script>
+        const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+        const numberChars = "0123456789";
+        const symbolChars = "!@#$%^&*()_+~`|}{[]:;?,./-=<>";
+
+        function checkLength() {
+            const lengthInput = document.getElementById('length');
+            if (lengthInput.value > 64) {
+                lengthInput.value = 64;
+            } else if (lengthInput.value < 4) {
+                lengthInput.value = 4;
+            }
+        }
+
+        function toggleAdvancedOptions() {
+            const advancedOptions = document.getElementById('advanced-options');
+            advancedOptions.style.display = advancedOptions.style.display === 'none' ? 'block' : 'none';
+            if (advancedOptions.style.display === 'block') {
+                populateAdvancedOptions();
+            }
+        }
+
+        function populateAdvancedOptions() {
+            const uppercaseContainer = document.getElementById('uppercaseChars');
+            const lowercaseContainer = document.getElementById('lowercaseChars');
+            const numberContainer = document.getElementById('numberChars');
+            const symbolContainer = document.getElementById('symbolChars');
+
+            uppercaseContainer.innerHTML = createCheckboxes(uppercaseChars, 'uppercaseChar', 'uppercaseOption');
+            lowercaseContainer.innerHTML = createCheckboxes(lowercaseChars, 'lowercaseChar', 'lowercaseOption');
+            numberContainer.innerHTML = createCheckboxes(numberChars, 'numberChar', 'numberOption');
+            symbolContainer.innerHTML = createCheckboxes(symbolChars, 'symbolChar', 'symbolOption');
+
+            syncOptionsWithCheckboxes();
+        }
+
+        function createCheckboxes(chars, className, typeCheckboxId) {
+            return chars.split('').map(char => `<label><input type="checkbox" class="${className}" value="${char}" checked> ${char}</label>`).join('');
+        }
+
+        function selectAllChars() {
+            document.querySelectorAll('.advanced-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = true);
+            syncTypeCheckboxes();
+        }
+
+        function deselectAllChars() {
+            document.querySelectorAll('.advanced-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            syncTypeCheckboxes();
+        }
+
+        function invertCharSelection() {
+            document.querySelectorAll('.advanced-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = !checkbox.checked);
+            syncTypeCheckboxes();
+        }
+
+        function syncOptionsWithCheckboxes() {
+            document.getElementById('uppercaseOption').checked = document.getElementById('uppercase').checked;
+            document.getElementById('lowercaseOption').checked = document.getElementById('lowercase').checked;
+            document.getElementById('numberOption').checked = document.getElementById('numbers').checked;
+            document.getElementById('symbolOption').checked = document.getElementById('symbols').checked;
+
+            document.getElementById('uppercaseOption').addEventListener('change', function() {
+                document.querySelectorAll('.uppercaseChar').forEach(checkbox => checkbox.checked = this.checked);
+                document.getElementById('uppercase').checked = this.checked;
+            });
+
+            document.getElementById('lowercaseOption').addEventListener('change', function() {
+                document.querySelectorAll('.lowercaseChar').forEach(checkbox => checkbox.checked = this.checked);
+                document.getElementById('lowercase').checked = this.checked;
+            });
+
+            document.getElementById('numberOption').addEventListener('change', function() {
+                document.querySelectorAll('.numberChar').forEach(checkbox => checkbox.checked = this.checked);
+                document.getElementById('numbers').checked = this.checked;
+            });
+
+            document.getElementById('symbolOption').addEventListener('change', function() {
+                document.querySelectorAll('.symbolChar').forEach(checkbox => checkbox.checked = this.checked);
+                document.getElementById('symbols').checked = this.checked;
+            });
+
+            document.querySelectorAll('.uppercaseChar').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateTypeCheckbox('uppercaseChar', 'uppercaseOption', 'uppercase');
+                });
+            });
+
+            document.querySelectorAll('.lowercaseChar').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateTypeCheckbox('lowercaseChar', 'lowercaseOption', 'lowercase');
+                });
+            });
+
+            document.querySelectorAll('.numberChar').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateTypeCheckbox('numberChar', 'numberOption', 'numbers');
+                });
+            });
+
+            document.querySelectorAll('.symbolChar').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateTypeCheckbox('symbolChar', 'symbolOption', 'symbols');
+                });
+            });
+
+            document.getElementById('uppercase').addEventListener('change', function() {
+                document.getElementById('uppercaseOption').checked = this.checked;
+                document.querySelectorAll('.uppercaseChar').forEach(checkbox => checkbox.checked = this.checked);
+            });
+
+            document.getElementById('lowercase').addEventListener('change', function() {
+                document.getElementById('lowercaseOption').checked = this.checked;
+                document.querySelectorAll('.lowercaseChar').forEach(checkbox => checkbox.checked = this.checked);
+            });
+
+            document.getElementById('numbers').addEventListener('change', function() {
+                document.getElementById('numberOption').checked = this.checked;
+                document.querySelectorAll('.numberChar').forEach(checkbox => checkbox.checked = this.checked);
+            });
+
+            document.getElementById('symbols').addEventListener('change', function() {
+                document.getElementById('symbolOption').checked = this.checked;
+                document.querySelectorAll('.symbolChar').forEach(checkbox => checkbox.checked = this.checked);
+            });
+
+            syncTypeCheckboxes();
+        }
+
+        function updateTypeCheckbox(charClass, optionId, mainId) {
+            const checkboxes = document.querySelectorAll(`.${charClass}`);
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+            const someChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            const optionCheckbox = document.getElementById(optionId);
+            const mainCheckbox = document.getElementById(mainId);
+
+            if (allChecked) {
+                optionCheckbox.checked = true;
+                optionCheckbox.indeterminate = false;
+                mainCheckbox.checked = true;
+                mainCheckbox.indeterminate = false;
+            } else if (someChecked) {
+                optionCheckbox.checked = false;
+                optionCheckbox.indeterminate = true;
+                mainCheckbox.checked = false;
+                mainCheckbox.indeterminate = true;
+            } else {
+                optionCheckbox.checked = false;
+                optionCheckbox.indeterminate = false;
+                mainCheckbox.checked = false;
+                mainCheckbox.indeterminate = false;
+            }
+        }
+
+        function syncTypeCheckboxes() {
+            updateTypeCheckbox('uppercaseChar', 'uppercaseOption', 'uppercase');
+            updateTypeCheckbox('lowercaseChar', 'lowercaseOption', 'lowercase');
+            updateTypeCheckbox('numberChar', 'numberOption', 'numbers');
+            updateTypeCheckbox('symbolChar', 'symbolOption', 'symbols');
+        }
+
+        function generatePassword() {
+            const length = document.getElementById('length').value;
+            let charset = "";
+            let mustIncludeCharset = "";
+
+            if (document.getElementById('uppercase').checked) {
+                document.querySelectorAll('.uppercaseChar:checked').forEach(checkbox => {
+                    charset += checkbox.value;
+                    mustIncludeCharset += checkbox.value;
+                });
+            }
+            if (document.getElementById('lowercase').checked) {
+                document.querySelectorAll('.lowercaseChar:checked').forEach(checkbox => {
+                    charset += checkbox.value;
+                    mustIncludeCharset += checkbox.value;
+                });
+            }
+            if (document.getElementById('numbers').checked) {
+                document.querySelectorAll('.numberChar:checked').forEach(checkbox => {
+                    charset += checkbox.value;
+                    mustIncludeCharset += checkbox.value;
+                });
+            }
+            if (document.getElementById('symbols').checked) {
+                document.querySelectorAll('.symbolChar:checked').forEach(checkbox => {
+                    charset += checkbox.value;
+                    mustIncludeCharset += checkbox.value;
+                });
+            }
+
+            if (charset === "") {
+                alert('请至少选择一种字符类型');
+                return;
+            }
+
+            // 确保包含每种字符类型
+            let password = mustIncludeCharset;
+
+            // 生成剩余的随机字符
+            for (let i = password.length; i < length; ++i) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+
+            // 打乱密码
+            password = password.split('').sort(() => 0.5 - Math.random()).join('');
+
+            // 格式化密码
+            let formattedPassword = "";
+            for (const char of password) {
+                if (uppercaseChars.includes(char)) {
+                    formattedPassword += `<span class="uppercase">${char}</span>`;
+                } else if (lowercaseChars.includes(char)) {
+                    formattedPassword += `<span class="lowercase">${char}</span>`;
+                } else if (numberChars.includes(char)) {
+                    formattedPassword += `<span class="number">${char}</span>`;
+                } else {
+                    formattedPassword += `<span class="symbol">${char}</span>`;
+                }
+            }
+
+            document.getElementById('password').innerHTML = formattedPassword;
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('password').innerText;
+            navigator.clipboard.writeText(password).then(() => {
+                alert('密码已复制到剪贴板');
+            }).catch(err => {
+                alert('复制失败: ' + err);
+            });
+        }
+    </script>
+</body>
+</html>

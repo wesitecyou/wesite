@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    justify-content: center; /* 水平居中内部容器 */
+    align-items: center;     /* 垂直居中内部容器 */
+    flex-direction: column;  /* 内部容器垂直排列 */
+    width: 100dvw;
+    height: 100dvh;
+}
+
+.container4 {
+    display: flex;
+    margin-bottom: 20px;
+    text-align: left;
+    vertical-align: middle;
+    width: 50%;
+    height: 30dvh;
+    justify-content: flex-start; /* 水平居中内部容器 */
+    align-items: center;     /* 垂直居中内部容器 */
+    flex-direction: column;  /* 内部容器垂直排列 */
+}
+
+.container1 {
+    display: flex;
+    width: 100%;
+    /* 容器宽度设置为100% */
+}
+
+.container2 {
+    width: 100%;
+    height: fit-content;
+    padding: 10px 10px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* 关键属性，允许子元素换行 */
+    justify-content: flex-start;
+    /* 或者使用 space-between, space-around 等 */
+}
+
+.container3 {
+    width: 100%;
+    padding: 0 10px 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* 关键属性，允许子元素换行 */
+    justify-content: flex-start;
+    /* 或者使用 space-between, space-around 等 */
+    height: fit-content;
+}
+
+.search-engine-top {
+    display: flex;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    margin-right: 3px;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 3px;
+}
+
+.search-engine-bottom {
+    display: flex;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    margin-right: 3px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 3px;
+}
+
+.customWidth1, .customWidth2, .customWidth3, .customWidth4, .customWidth5 .customWidth6, .customWidth7, .customWidth8, .customWidth9, .customWidth10 {
+    align-items: center;
+    justify-content: center;
+}
+
+/* 鼠标悬停时的样式 */
+.search-engine-top:hover, .search-engine-bottom:hover {
+    transform: translateY(-1px); /* 向上轻微移动 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增加阴影深度 */
+    cursor: pointer; /* 鼠标样式变为指针 */
+  }
+
+.search-engine-top.active {
+    transform: translateY(0); /* 移动回原始位置 */
+    background-color: #4569ff;
+    color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* 渐变背景 */
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* 过渡效果 */
+}
+
+.search-engine-bottom.active {
+    transform: translateY(0); /* 移动回原始位置 */
+    background-color: #007bff; /* 背景色变化 */
+    color: #fff; /* 文字颜色变化，如果有的话 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* 渐变背景 */
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* 过渡效果 */
+}
+
+#searchBox {
+    width: 80%;
+    padding: 10px 15px;
+    border: 2px solid #4569ff;
+    border-radius: 10px 0 0 10px;
+    vertical-align: middle;
+    outline: none;
+    font-size: medium;
+}
+
+#searchButton {
+    width: 20%;
+    padding: 10px 15px;
+    border: 2px solid #4569ff;
+    border-radius: 0 10px 10px 0;
+    background-color: #4e6ef2;
+    color: white;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 520;
+    font-size: medium;
+}
+
+/* 网址链接 */
+.linksContainer {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    width: 50dvw;
+    height: 50dvh;
+    /* margin: auto; */
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 1dvh 0.5dvw;
+    position: sticky;
+    top: 0;
+    width: 7dvw;
+    height: 50dvh;
+}
+
+.content {
+    flex-grow: 1;
+    margin-left: 1dvw;
+    padding: 1dvh 0.5dvw;
+    width: 42dvw;
+    height: 50dvh;
+    background-color: #f4f4f4;
+   /* overflow-y: auto; */
+    /* 添加这一行以允许垂直滚动 */
+}
+
+#table1 {
+    overflow-y: auto;
+    height: 48dvh;
+    width: 41dvw;
+}
+#table2 {
+    overflow: hidden;
+    position: relative;
+    height: 48dvh;
+    width: 41dvw;
+}
+
+
+.rightTable {
+    list-style-type: none;
+    padding: 0;
+    height: 49dvh;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.category-button {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.category-button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.category-list {
+    display: none;
+    height: 49dvh;
+}
+
+.category-list.active {
+    display: block;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.browser-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+/* -----------------------------------------更多------------------------------------------ */
+.more-options {
+    display: none;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+#more-top,
+#more-bottom {
+    position: relative;
+    margin-bottom: 3px;
+}
+
+/* --------------------------------------------timer------------------------------------------------------- */
+.pomodoro-clock {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.timer {
+    font-size: 48px;
+    margin: 20px 0;
+}
+.controls {
+    margin: 20px 0;
+}
+.controls button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.controls button.start-pause {
+    background-color: #4CAF50;
+    color: white;
+}
+.controls button.reset {
+    background-color: #2196F3;
+    color: white;
+}
+.time-input {
+    margin-top: 20px;
+}
+.time-input input {
+    width: 50px;
+    text-align: center;
+}
+.time-input button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #FFC107;
+    color: white;
+}
+.bubble-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF5722;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+}

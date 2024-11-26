@@ -15,7 +15,7 @@
 
         <!-- -----page-1-start------ -->
         <div class="page" id="page1">
-            
+
             <div class="search-container">
                 <p class="search-title">神奇搜索</p>
 
@@ -28,11 +28,11 @@
                     <input type="text" id="search" placeholder="请输入搜索内容" required>
                     <button type="submit">搜索</button>
                 </form>
-            
+
                 <div class="category-container" id="categoryContainer">
                     <!-- 分类按钮将动态生成 -->
                 </div>
-            
+
                 <div class="searchEngineButtonContainer" id="searchEngineContainer">
                     <!-- 搜索引擎按钮将动态生成 -->
                 </div>
@@ -40,61 +40,29 @@
                 <script>
                     // 定义分类和对应的搜索引擎
                     const categories = {
+                        '常用': [
+                            { name: '百度', engine: 'baidu' },
+                            { name: '谷歌', engine: 'google' },
+                            { name: '知乎', engine: 'bing' },
+                            { name: '微信', engine: 'duckduckgo' },
+                            { name: '淘宝', engine: 'startpage' },
+                            { name: '优酷', engine: 'duckduckgo' },
+                            { name: 'B站', engine: 'duckduckgo' },
+                            { name: '小红书', engine: 'startpage' },
+                            { name: '百度百科', engine: 'startpage' }
+
+                        ],
                         '搜索': [
                             { name: '百度', engine: 'baidu' },
                             { name: '谷歌', engine: 'google' },
-                            { name: '必应', engine: 'bing' },
+                            { name: '知乎', engine: 'bing' },
                             { name: '微信', engine: 'duckduckgo' },
-                            { name: '知乎', engine: 'startpage' },
-                            { name: '豆瓣', engine: 'duckduckgo' },
+                            { name: '搜狗', engine: 'startpage' },
+                            { name: '雅虎', engine: 'duckduckgo' },
                             { name: '贴吧', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '哔哩', engine: 'startpage' }
-                            
-                        ],
-                        '图片': [
-                        { name: '哔哩', engine: 'duckduckgo' },
-                            { name: '腾讯视频', engine: 'startpage' },
-                            { name: '爱奇艺', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '芒果', engine: 'duckduckgo' },
-                            { name: '西瓜', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
-                            { name: 'FreeOK', engine: 'startpage' }
-                        ],
-                        '视频': [
-                            { name: '哔哩哔哩', engine: 'duckduckgo' },
-                            { name: '腾讯视频', engine: 'startpage' },
-                            { name: '爱奇艺', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '芒果TV', engine: 'duckduckgo' },
-                            { name: '西瓜视频', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
-                            { name: 'FreeOK', engine: 'startpage' }
-                        ],
-                        '读书': [
-                        { name: '豆瓣', engine: 'duckduckgo' },
-                            { name: '腾讯视频', engine: 'startpage' },
-                            { name: '爱奇艺', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '芒果TV', engine: 'duckduckgo' },
-                            { name: '西瓜视频', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
-                            { name: 'FreeOK', engine: 'startpage' }
-                        ],
-                        '音乐': [
-                        { name: 'QQ音乐', engine: 'duckduckgo' },
-                            { name: '酷狗音乐', engine: 'startpage' },
-                            { name: '网易云音乐', engine: 'duckduckgo' },
-                            { name: '酷我音乐', engine: 'startpage' },
-                            { name: '汽水', engine: 'duckduckgo' },
-                            { name: '哔哩', engine: 'startpage' },
-                            { name: 'Apple Music', engine: 'duckduckgo' },
-                            { name: 'MyFreeMP3', engine: 'startpage' },
-                            { name: '果核音乐', engine: 'startpage' }
+                            { name: '必应', engine: 'startpage' },
+                            { name: '百度百科', engine: 'startpage' }
+
                         ],
                         '社区': [
                             { name: '知乎', engine: 'baiduScholar' },
@@ -104,66 +72,103 @@
                             { name: '哔哩哔哩', engine: 'googleScholar' },
                             { name: '小红书', engine: 'googleScholar' },
                             { name: '微信公众号', engine: 'baiduScholar' },
-                            { name: 'V2ex', engine: 'googleScholar' },
-                            { name: '少数派', engine: 'douban' }
+                            { name: 'X(Twitter)', engine: 'googleScholar' },
+                            { name: 'TikTok', engine: 'douban' }
                         ],
-                        '开发': [
-                        { name: '哔哩哔哩', engine: 'duckduckgo' },
+                        '购物': [
+                            { name: '淘宝', engine: 'duckduckgo' },
+                            { name: '天猫', engine: 'startpage' },
+                            { name: '闲鱼', engine: 'duckduckgo' },
+                            { name: '京东', engine: 'startpage' },
+                            { name: '什么值得买', engine: 'duckduckgo' },
+                            { name: '美团', engine: 'startpage' },
+                            { name: '饿了么', engine: 'duckduckgo' },
+                            { name: '亚马逊', engine: 'startpage' },
+                            { name: '沃尔玛', engine: 'startpage' }
+                        ],
+                        '新闻': [
+                            { name: '百度新闻', engine: 'duckduckgo' },
+                            { name: '腾讯新闻', engine: 'startpage' },
+                            { name: '今日头条', engine: 'duckduckgo' },
+                            { name: '央视新闻', engine: 'startpage' },
+                            { name: '网易新闻', engine: 'duckduckgo' },
+                            { name: 'BBC', engine: 'startpage' },
+                            { name: '华尔街日报', engine: 'duckduckgo' },
+                            { name: 'MSN', engine: 'startpage' },
+                            { name: '微博', engine: 'startpage' }
+                        ],
+                        '图片': [
+                            { name: '百度图片', engine: 'duckduckgo' },
+                            { name: '小红书', engine: 'startpage' },
+                            { name: '堆糖', engine: 'duckduckgo' },
+                            { name: '花瓣', engine: 'startpage' },
+                            { name: 'Instagram', engine: 'duckduckgo' },
+                            { name: '谷歌图片', engine: 'startpage' },
+                            { name: '必应壁纸', engine: 'duckduckgo' },
+                            { name: 'wallpaper', engine: 'startpage' },
+                            { name: 'wallhaven', engine: 'startpage' }
+                        ],
+                        '视频': [
+                            { name: '哔哩哔哩', engine: 'duckduckgo' },
                             { name: '腾讯视频', engine: 'startpage' },
                             { name: '爱奇艺', engine: 'duckduckgo' },
                             { name: '优酷', engine: 'startpage' },
-                            { name: '芒果TV', engine: 'duckduckgo' },
-                            { name: '西瓜视频', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
+                            { name: '西瓜视频', engine: 'duckduckgo' },
+                            { name: 'TikTok', engine: 'startpage' },
+                            { name: 'Netflix', engine: 'duckduckgo' },
+                            { name: 'YouTube', engine: 'startpage' },
                             { name: 'FreeOK', engine: 'startpage' }
                         ],
-                        '学术': [
-                        { name: '哔哩哔哩', engine: 'duckduckgo' },
-                            { name: '腾讯视频', engine: 'startpage' },
-                            { name: '爱奇艺', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '芒果TV', engine: 'duckduckgo' },
-                            { name: '西瓜视频', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
-                            { name: 'FreeOK', engine: 'startpage' }
+                        '音乐': [
+                        { name: 'Apple Music', engine: 'duckduckgo' },
+                            { name: 'QQ音乐', engine: 'duckduckgo' },
+                            { name: '酷狗音乐', engine: 'startpage' },
+                            { name: '网易云音乐', engine: 'duckduckgo' },
+                            { name: '酷我音乐', engine: 'startpage' },
+                            { name: '汽水音乐', engine: 'duckduckgo' },
+                            { name: '哔哩哔哩音乐', engine: 'duckduckgo' },
+                            { name: 'Spotify', engine: 'startpage' },
+                            { name: 'MyFreeMP3', engine: 'startpage' }
+                        ],
+                        '读书': [
+                            { name: '知搜', engine: 'duckduckgo' },
+                            { name: '豆瓣读书', engine: 'startpage' },
+                            { name: 'Z-Lib', engine: 'duckduckgo' },
+                            { name: '安娜的档案', engine: 'startpage' },
+                            { name: 'SCIHub', engine: 'duckduckgo' },
+                            { name: '鸠摩搜书', engine: 'startpage' },
+                            { name: '微信读书', engine: 'duckduckgo' },
+                            { name: '百度学术', engine: 'startpage' },
+                            { name: '知网', engine: 'startpage' }
                         ],
                         
-                        '工具': [
-                        { name: '哔哩哔哩', engine: 'duckduckgo' },
-                            { name: '腾讯视频', engine: 'startpage' },
-                            { name: '爱奇艺', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '芒果TV', engine: 'duckduckgo' },
-                            { name: '西瓜视频', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
-                            { name: 'FreeOK', engine: 'startpage' }
+
+                        '开发': [
+                            { name: '博客园', engine: 'duckduckgo' },
+                            { name: '掘金', engine: 'startpage' },
+                            { name: '思否', engine: 'duckduckgo' },
+                            { name: 'CSDN', engine: 'startpage' },
+                            { name: 'GitHub', engine: 'duckduckgo' },
+                            { name: 'Gitee', engine: 'startpage' },
+                            { name: '开源中国', engine: 'duckduckgo' },
+                            { name: '腾讯云', engine: 'startpage' },
+                            { name: 'Stack Overflow', engine: 'startpage' }
                         ],
-                        '网盘': [
-                        { name: '哔哩哔哩', engine: 'duckduckgo' },
-                            { name: '腾讯视频', engine: 'startpage' },
-                            { name: '爱奇艺', engine: 'duckduckgo' },
-                            { name: '优酷', engine: 'startpage' },
-                            { name: '芒果TV', engine: 'duckduckgo' },
-                            { name: '西瓜视频', engine: 'startpage' },
-                            { name: '追影猫', engine: 'duckduckgo' },
-                            { name: '搜片', engine: 'startpage' },
-                            { name: 'FreeOK', engine: 'startpage' }
-                        ]
+                        
+                        
+
                         // 可以根据需要添加更多分类
                     };
-            
+
                     // 当前选中的分类和搜索引擎
                     let currentCategory = null;
-            
+
                     // 获取容器元素
                     const categoryContainer = document.getElementById('categoryContainer');
                     const searchEngineContainer = document.getElementById('searchEngineContainer');
                     const searchForm = document.getElementById('searchForm');
                     const searchInput = document.getElementById('search');
-            
+
                     // 初始化分类按钮
                     function initCategories() {
                         const categoryNames = Object.keys(categories);
@@ -181,16 +186,16 @@
                             categoryContainer.appendChild(button);
                         });
                     }
-            
+
                     // 初始化搜索引擎按钮
                     function initSearchEngines() {
                         renderSearchEngines(currentCategory);
                     }
-            
+
                     // 切换分类
                     function switchCategory(category) {
                         if (currentCategory === category) return;
-            
+
                         // 更新分类按钮的样式
                         const buttons = categoryContainer.getElementsByClassName('category-button');
                         Array.from(buttons).forEach(btn => {
@@ -200,16 +205,16 @@
                                 btn.classList.remove('active');
                             }
                         });
-            
+
                         currentCategory = category;
                         renderSearchEngines(category);
                     }
-            
+
                     // 渲染搜索引擎按钮
                     function renderSearchEngines(category) {
                         // 清空当前的搜索引擎按钮
                         searchEngineContainer.innerHTML = '';
-            
+
                         const engines = categories[category];
                         engines.forEach((item, index) => {
                             const button = document.createElement('button');
@@ -230,7 +235,7 @@
                             searchEngineContainer.appendChild(button);
                         });
                     }
-            
+
                     // 更改搜索引擎
                     function changeSearchEngine(engine) {
                         switch (engine) {
@@ -268,33 +273,51 @@
                                 searchInput.name = 'wd';
                         }
                     }
-            
+
                     // 初始化页面
-                    window.onload = function() {
+                    window.onload = function () {
                         initCategories();
                         initSearchEngines();
                     };
                 </script>
-            
+
 
                 <div class="pined-container">
-                <div class="pined-row">
-                    <div class="pined-grid">
-                        <div class="pined-items"></div>
+                    <div class="pined-row">
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
                     </div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                </div>
-                <div class="pined-row">
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                    <div class="pined-grid"><div class="pined-items"></div></div>
-                </div>
-                    
+                    <div class="pined-row">
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                        <div class="pined-grid">
+                            <div class="pined-items"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

@@ -36,7 +36,7 @@
                 <div class="searchEngineButtonContainer" id="searchEngineContainer">
                     <!-- 搜索引擎按钮将动态生成 -->
                 </div>
-                <!-- <button class="getMore">更多</button> -->
+
                 <script>
                     // 定义分类和对应的搜索引擎
                     const categories = {
@@ -44,104 +44,76 @@
                             { name: '百度', engine: 'baidu' },
                             { name: '谷歌', engine: 'google' },
                             { name: '知乎', engine: 'zhihu' },
-                            { name: '微信', engine: 'wechat' },
-                            { name: '淘宝', engine: 'taobao' },
+
+
                             { name: '优酷', engine: 'youku' },
-                            { name: 'B站', engine: 'bili' },
-                            { name: '小红书', engine: 'xhs' },
-                            { name: '百度百科', engine: 'bdbk' },
-                            { name: 'Apple Music', engine: 'am' }
+
+                            { name: '百科', engine: 'bdbk' }
+
                         ],
                         '搜索': [
                             { name: '百度', engine: 'baidu' },
                             { name: '谷歌', engine: 'google' },
-                            { name: '知乎', engine: 'zhihu' },
-                            { name: '微信', engine: 'wechat' },
                             { name: '搜狗', engine: 'sogou' },
                             { name: '雅虎', engine: 'yahoo' },
-                            { name: '贴吧', engine: 'tieba' },
-                            { name: '必应', engine: 'bing' },
-                            { name: '百度百科', engine: 'bdbk' }
-
+                            { name: '必应', engine: 'bing' }
                         ],
                         '社区': [
                             { name: '知乎', engine: 'baiduScholar' },
                             { name: '贴吧', engine: 'googleScholar' },
                             { name: '豆瓣', engine: 'googleScholar' },
                             { name: '微博', engine: 'baiduScholar' },
-                            { name: '哔哩哔哩', engine: 'googleScholar' },
-                            { name: '小红书', engine: 'googleScholar' },
-                            { name: '微信公众号', engine: 'baiduScholar' },
-                            { name: 'X(Twitter)', engine: 'googleScholar' },
-                            { name: 'TikTok', engine: 'douban' }
+                            { name: '小红书', engine: 'googleScholar' }
                         ],
                         '购物': [
                             { name: '淘宝', engine: 'duckduckgo' },
                             { name: '天猫', engine: 'startpage' },
                             { name: '闲鱼', engine: 'duckduckgo' },
-                            { name: '京东', engine: 'startpage' },
-                            { name: '什么值得买', engine: 'duckduckgo' },
+                            { name: '京东', engine: 'startpage' },                       
                             { name: '美团', engine: 'startpage' },
                             { name: '饿了么', engine: 'duckduckgo' },
-                            { name: '亚马逊', engine: 'startpage' },
-                            { name: '沃尔玛', engine: 'startpage' }
+                            
                         ],
                         '新闻': [
                             { name: '百度新闻', engine: 'duckduckgo' },
                             { name: '腾讯新闻', engine: 'startpage' },
                             { name: '今日头条', engine: 'duckduckgo' },
                             { name: '央视新闻', engine: 'startpage' },
-                            { name: '网易新闻', engine: 'duckduckgo' },
-                            { name: 'BBC', engine: 'startpage' },
-                            { name: '华尔街日报', engine: 'duckduckgo' },
-                            { name: 'MSN', engine: 'startpage' },
                             { name: '微博', engine: 'startpage' }
                         ],
                         '图片': [
-                            { name: '百度图片', engine: 'duckduckgo' },
+                            { name: '百度', engine: 'duckduckgo' },
                             { name: '小红书', engine: 'startpage' },
                             { name: '堆糖', engine: 'duckduckgo' },
                             { name: '花瓣', engine: 'startpage' },
-                            { name: 'Instagram', engine: 'duckduckgo' },
-                            { name: '谷歌图片', engine: 'startpage' },
-                            { name: '必应壁纸', engine: 'duckduckgo' },
-                            { name: 'wallpaper', engine: 'startpage' },
-                            { name: 'wallhaven', engine: 'startpage' }
+                            { name: '谷歌', engine: 'startpage' },
+                            
                         ],
                         '视频': [
                             { name: '哔哩哔哩', engine: 'duckduckgo' },
                             { name: '腾讯视频', engine: 'startpage' },
                             { name: '爱奇艺', engine: 'duckduckgo' },
                             { name: '优酷', engine: 'startpage' },
-                            { name: '西瓜视频', engine: 'duckduckgo' },
-                            { name: 'TikTok', engine: 'startpage' },
-                            { name: 'Netflix', engine: 'duckduckgo' },
-                            { name: 'YouTube', engine: 'startpage' },
+                            { name: '西瓜', engine: 'duckduckgo' },
                             { name: 'FreeOK', engine: 'startpage' }
                         ],
                         '音乐': [
-                        { name: 'Apple Music', engine: 'duckduckgo' },
-                            { name: 'QQ音乐', engine: 'duckduckgo' },
-                            { name: '酷狗音乐', engine: 'startpage' },
-                            { name: '网易云音乐', engine: 'duckduckgo' },
-                            { name: '酷我音乐', engine: 'startpage' },
-                            { name: '汽水音乐', engine: 'duckduckgo' },
-                            { name: '哔哩哔哩音乐', engine: 'duckduckgo' },
-                            { name: 'Spotify', engine: 'startpage' },
+                            { name: 'AM', engine: 'duckduckgo' },
+                            { name: 'Q音', engine: 'duckduckgo' },
+                            { name: '酷狗', engine: 'startpage' },
+                            { name: '网易', engine: 'duckduckgo' },
+                            { name: '酷我', engine: 'startpage' },
                             { name: 'MyFreeMP3', engine: 'startpage' }
                         ],
                         '读书': [
-                            { name: '知搜', engine: 'duckduckgo' },
                             { name: '豆瓣读书', engine: 'startpage' },
                             { name: 'Z-Lib', engine: 'duckduckgo' },
                             { name: '安娜的档案', engine: 'startpage' },
                             { name: 'SCIHub', engine: 'duckduckgo' },
-                            { name: '鸠摩搜书', engine: 'startpage' },
-                            { name: '微信读书', engine: 'duckduckgo' },
                             { name: '百度学术', engine: 'startpage' },
                             { name: '知网', engine: 'startpage' }
                         ],
-                        
+
 
                         '开发': [
                             { name: '博客园', engine: 'duckduckgo' },
@@ -149,13 +121,11 @@
                             { name: '思否', engine: 'duckduckgo' },
                             { name: 'CSDN', engine: 'startpage' },
                             { name: 'GitHub', engine: 'duckduckgo' },
-                            { name: 'Gitee', engine: 'startpage' },
                             { name: '开源中国', engine: 'duckduckgo' },
-                            { name: '腾讯云', engine: 'startpage' },
-                            { name: 'Stack Overflow', engine: 'startpage' }
+                            
                         ],
-                        
-                        
+
+
 
                         // 可以根据需要添加更多分类
                     };
@@ -331,30 +301,7 @@
 
     </div><!-- -----page-2-end----- -->
     <script defer type="text/javascript" src="script.js"></script>
-    <!-- <script>
-        function changeSearchEngine(engine) {
-            var form = document.getElementById('searchForm');
-            var searchInput = document.getElementById('search');
-            switch (engine) {
-                case 'baidu':
-                    form.action = 'https://www.baidu.com/s';
-                    searchInput.name = 'wd';
-                    break;
-                case 'google':
-                    form.action = 'https://www.google.com/search';
-                    searchInput.name = 'q';
-                    break;
-                case 'bing':
-                    form.action = 'https://www.bing.com/search';
-                    searchInput.name = 'q';
-                    break;
-                // 可以添加更多的搜索引擎
-                default:
-                    form.action = 'https://www.baidu.com/s';
-                    searchInput.name = 'wd';
-            }
-        }
-    </script> -->
+
 </body>
 
 </html>

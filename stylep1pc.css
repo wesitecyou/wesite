@@ -74,7 +74,7 @@ form button:hover {
     height: 30dvh;
     background-color: aliceblue;
     position: absolute;
-    top: 11.5dvh;
+    top: 12dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,46 +107,17 @@ form button:hover {
     border-radius: 2.5dvh;
     background-color: orange;
 }
-
-.searchEngineButtonContainer {
-    width: 45dvw;
-    height: 5dvh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: absolute;
-    bottom: -5dvh;
-}
-
-.searchEngineButtonContainer button {
-    /* width: 4.5dvw;
-    height: 5dvh; */
-    border: none;
-    padding: 1dvh 1dvw;
-}
-
-.searchEngineButtonContainer button:hover {
-    background-color: #dad4cb;
-    border-radius: 0 0 1dvh 1dvh;
-}
-.searchEngineButtonContainer button.active {
-    /* background-color: darkgray; */
-    border-radius: 0 0 1dvh 1dvh;
-    border-top: none;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-}
+/* -------------------------------------------------- */
 .category-container {
     position: absolute;
-    width: 45dvw;
+    width: 40dvw;
     height: 5dvh;
     top: -5.5dvh;
+    right: 33dvw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
 .category-container .category-button {
     /* width: 3dvw;
     height: 4.5dvh; */
@@ -155,35 +126,45 @@ form button:hover {
     /* border-radius: 1dvh; */
 }
 
-/* .category-container button:hover {
-    background-color: #dad4cb;
-    border-radius: 1dvh 1dvh 0 0;
-    border: none;
-} */
 .category-container .category-button.active {
     /* background-color: darkgray; */
     /* border-radius: 10px; */
     border-bottom: 3px solid black;
 }
-.category-container .category-button.active:hover {
+.category-container .category-button:hover {
     background-color: darkgray;
     /* border-radius: 10px; */
-    border-bottom: 3px solid black;
+    /* border-bottom: 3px solid black; */
 }
-
-.getMore {
+/* --------------------------------------------------- */
+.searchEngineButtonContainer {
     position: absolute;
-    width: 5dvw;
+    width: 25dvw;
     height: 5dvh;
-    bottom: -5dvh;
-    right: 25dvw;
-    border: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    right: 40.5dvw;
+    bottom: -5.5dvh;
+    /* overflow-x: auto;
+  white-space: nowrap; */
 }
 
-.getMore:hover {
+.searchEngineButtonContainer button {
+    /* width: 4.5dvw;
+    height: 5dvh; */
+    border: none;
+    padding: 1dvh 1dvw;
+    white-space: nowrap;
+}
+
+.searchEngineButtonContainer button:hover {
     background-color: #dad4cb;
     border-radius: 1dvh;
 }
+.searchEngineButtonContainer button.active {
+    background-color: darkgray;
+    border-radius: 1dvh;
+}
+
+

@@ -1,46 +1,75 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+.sheet {
+    display: none;
 }
 
-.search-container {
+.sheet.active {
+    display: table;
+}
+
+#page2 {
     display: flex;
+    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: white;
-    padding: 20px;
+}
+
+.tableContainer {
+    width: 50vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.tableTitle {
+    width: 10dvw;
+    height: 80dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 1px solid black;
+    padding: 3dvh 1dvw;
+}
+
+.tableTitle button {
+    height: 5dvh;
+    width: 8dvw;
+    border-radius: 10px;
+}
+
+.tableContent {
+    width: 40dvw;
+    height: 80dvh;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2dvh 0dvw;
+    /* overflow: auto; */
+}
+
+.tableContainer table {
+    border-collapse: separate;
+    border-spacing: 1dvw 1dvh;
+    height: 76dvh;
+    width: 40dvw;
+}
+
+.tableContainer table tr td {
+    border: 1px solid black;
+    padding: 1dvh 1dvw;
+    width: 18dvw;
+    height: 6.5dvh;
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
-.search-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px 15px;
+.tableContainer table tr td select {
+    width: 100%;
+    height: 100%;
     border: none;
-    border-radius: 4px;
-    background-color: blue;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: darkblue;
+    text-align: center;
 }

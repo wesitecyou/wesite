@@ -21,3 +21,30 @@ function scrollToPage(pageIndex) {
         behavior: 'smooth' // 平滑滚动
     });
 }
+
+// -----------------------------P2------------------------------
+function showSheet(sheetId) {
+    // Hide all sheets
+    document.querySelectorAll('.sheet').forEach(sheet => {
+        sheet.classList.remove('active');
+    });
+    // Show the selected sheet
+    document.getElementById(sheetId).classList.add('active');
+}
+
+document.getElementById('tableDropdown').addEventListener('focus', function() {
+    this.querySelector('option[value=""]').style.display = 'none';
+});
+document.getElementById('tableDropdown').addEventListener('blur', function() {
+    if (this.value === '') {
+        this.querySelector('option[value=""]').style.display = 'block';
+    }
+});
+
+function navigateToLink() {
+    var dropdown = document.getElementById("tableDropdown");
+    var selectedValue = dropdown.value;
+    if (selectedValue) {
+        window.open(selectedValue, '_blank');
+    }
+}

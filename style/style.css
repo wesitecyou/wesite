@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden; /* 隐藏默认滚动条 */
+}
+
+.container {
+    height: 100vh;
+    overflow-y: scroll; /* 允许垂直滚动 */
+    -webkit-overflow-scrolling: touch; /* 提升滚动性能 */
+}
+
+.page {
+    height: 100vh; /* 每页高度为视口高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 24px; */
+    scroll-snap-align: start; /* 设置对齐方式 */
+}
+
+#page1 {
+    background-color: #f0f0f0;
+}
+
+#page2 {
+    background-color: #d0d0d0;
+}
+
+/* 隐藏滚动条 */
+.container::-webkit-scrollbar {
+    display: none; /* Safari 和 Chrome */
+}
+
+.container {
+    -ms-overflow-style: none; /* IE 和 Edge */
+    scrollbar-width: none; /* Firefox */
+}

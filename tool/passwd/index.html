@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机密码生成器</title>
+    <link rel="stylesheet" type="" text/css" href="../../style/normalize.css">
+    <link rel="stylesheet" type="" text/css" href="../../style/common.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="toolconcentcontainer">
+        <h1>随机密码生成器</h1>
+        <h2 style="margin-bottom: 1dvh;">字符选项</h2>
+        <div class="passwdlength"><label for="length">密码长度:&nbsp;&nbsp;</label>
+            <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()">
+        </div>
+        
+        <div class="textoptions">
+            字符选项:&nbsp;&nbsp;
+            <label><input type="checkbox" id="uppercase" checked> 大写字母</label>
+            <label><input type="checkbox" id="lowercase" checked> 小写字母</label>
+            <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
+            <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
+        </div>
+        
+        <div class="excludetext">
+            <label for="exclude">要排除的字符:&nbsp;&nbsp;</label>
+            <input type="text" id="exclude" name="exclude">
+        </div>
+        
+        <div class="password" id="password"></div>
+        <div class="passwdactionbutton">
+            <button class="generatebutton" onclick="generatePassword()">生成密码</button>
+            <button class="copybutton" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
+            <button class="deletebutton" onclick="clearHistory()">清除历史记录</button>
+            
+        </div>
+        <div class="tooltip" id="copyTooltip"></div>
+        <div class="history">
+            <h2>本地历史记录</h2>
+            
+        </div>
+            <div id="historyList"></div>
+        
+    </div>
+    <script defer>
+        function checkLength() {
+            const lengthInput = document.getElementById('length');
+            if (lengthInput.value > 64) {
+                lengthInput.value = 64;
+            } else if (lengthInput.value < 4) {
+                lengthInput.value = 4;
+            }
+        }
+
+        function generatePassword() {
+            const length = document.getElementById('length').value;
+            const exclude = document.getElementById('exclude').value;
+            let charset = "";
+            let mustIncludeCharset = "";
+
+            if (document.getElementById('uppercase').checked) {
+                charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                mustIncludeCharset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+            if (document.getElementById('lowercase').checked) {
+                charset += "abcdefghijklmnopqrstuvwxyz";
+                mustIncludeCharset += "abcdefghijklmnopqrstuvwxyz";
+            }
+            if (document.getElementById('numbers').checked) {
+                charset += "0123456789";
+                mustIncludeCharset += "0123456789";
+            }
+            if (document.getElementById('symbols').checked) {
+                charset += "!@#$%^&*()_+~`|}{[]:;?,./-=<>";
+                mustIncludeCharset += "!@#$%^&*()_+~`|}{[]:;?,./-=<>";
+            }
+
+            if (exclude) {
+                const excludeSet = new Set(exclude);
+                charset = charset.split('').filter(char => !excludeSet.has(char)).join('');
+                mustIncludeCharset = mustIncludeCharset.split('').filter(char => !excludeSet.has(char)).join('');
+            }
+
+            if (charset === "") {
+                showTooltip('请至少选择一种字符类型');
+                return;
+            }
+
+            let password = "";
+            const requiredChars = [];
+            if (document.getElementById('uppercase').checked) {
+                requiredChars.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            }
+            if (document.getElementById('lowercase').checked) {
+                requiredChars.push('abcdefghijklmnopqrstuvwxyz');
+            }
+            if (document.getElementById('numbers').checked) {
+                requiredChars.push('0123456789');
+            }
+            if (document.getElementById('symbols').checked) {
+                requiredChars.push('!@#$%^&*()_+~`|}{[]:;?,./-=<>');
+            }
+
+            requiredChars.forEach(charSet => {
+                const filteredCharSet = charSet.split('').filter(char => !exclude.includes(char)).join('');
+                if (filteredCharSet.length > 0) {
+                    password += filteredCharSet.charAt(Math.floor(Math.random() * filteredCharSet.length));
+                }
+            });
+
+            for (let i = password.length; i < length; ++i) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+
+            password = password.split('').sort(() => 0.5 - Math.random()).join('');
+
+            let formattedPassword = "";
+            for (const char of password) {
+                if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(char)) {
+                    formattedPassword += `<span class="uppercase">${char}</span>`;
+                } else if ("abcdefghijklmnopqrstuvwxyz".includes(char)) {
+                    formattedPassword += `<span class="lowercase">${char}</span>`;
+                } else if ("0123456789".includes(char)) {
+                    formattedPassword += `<span class="number">${char}</span>`;
+                } else {
+                    formattedPassword += `<span class="symbol">${char}</span>`;
+                }
+            }
+
+            document.getElementById('password').innerHTML = formattedPassword;
+
+            document.getElementById('copyButton').disabled = false; // 启用复制按钮
+
+            addToHistory(password);
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('password').innerText;
+            navigator.clipboard.writeText(password).then(() => {
+                showTooltip('已复制密码到剪贴板');
+            }).catch(err => {
+                showTooltip('复制失败: ' + err);
+            });
+        }
+
+        function showTooltip(message) {
+            const tooltip = document.getElementById('copyTooltip');
+            tooltip.innerText = message;
+            tooltip.classList.add('show');
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+            }, 2000);
+        }
+
+        function addToHistory(password) {
+            const history = JSON.parse(localStorage.getItem('passwordHistory')) || [];
+            history.unshift({ password });
+
+            if (history.length > 10) {
+                history.pop();
+            }
+
+            localStorage.setItem('passwordHistory', JSON.stringify(history));
+            updateHistoryUI();
+        }
+
+        function updateHistoryUI() {
+            const history = JSON.parse(localStorage.getItem('passwordHistory')) || [];
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = '';
+
+            history.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.classList.add('history-item');
+                historyItem.innerText = item.password; // 设置为纯文本
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        function clearHistory() {
+            localStorage.removeItem('passwordHistory');
+            updateHistoryUI();
+        }
+
+        window.onload = function () {
+            updateHistoryUI();
+        };
+    </script>
+</body>
+
+</html>

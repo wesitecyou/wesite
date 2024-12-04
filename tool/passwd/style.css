@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolconcentcontainer {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: white;
+    /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+input[type="number"] {
+    width: 50px;
+    border-radius: 5px;
+}
+
+.password {
+    font-size: 1.2em;
+    margin: 1dvw;
+    word-break: break-all;
+    height: 5dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tooltip {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    /* 设置合适大小 */
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.uppercase {
+    font-weight: bold;
+    color: black;
+}
+
+.lowercase {
+    color: black;
+}
+
+.number {
+    color: red;
+}
+
+.symbol {
+    color: blue;
+}
+
+.history {
+    margin-bottom: 1dvh;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* border-radius: 5px; */
+}
+
+.history-item {
+    /* height: 3dvh; */
+    word-break: break-all;
+    margin-bottom: 1dvh;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#historyList {
+    /* background-color: #cccccc; */
+    border: 1px solid white;
+    border-radius: 10px;
+    /* height: 50dvh; */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+}
+
+.passwdlength {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1dvh;
+}
+
+.textoptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1dvh;
+}
+
+.excludetext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 1dvh; */
+}
+
+.excludetext input {
+    border-radius: 5px;
+}
+.passwdactionbutton {
+    display: flex;
+    margin-bottom: 1dvh;
+}
+.passwdactionbutton button {
+    cursor: pointer;
+    background-color: #07c160;
+    font-size: 15px;
+    
+    border-radius: 6px;
+    padding: 8px 12px;
+    border: none;
+}
+.generatebutton {
+    background-color: #07c160;
+    color: white;
+}
+.generatebutton:hover {
+    background-color: #06ad56;
+}
+.copybutton {
+    background-color: rgba(0, 0, 0, 0.05)!important;
+    color: black!important;
+    margin-left: 10px;
+}
+
+.copybutton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+.deletebutton {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #fa5151!important;
+    color: white;
+    border: none;
+    /* width: 8dvw; */
+    /* height: 2dvw; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 10px;
+}

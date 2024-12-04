@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type=""text/css" href="../style/normalize.css">
+    <!-- <link rel="stylesheet" href="style.css" type="text/css"> -->
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .calculator {
+            background-color: #333;
+            border-radius: 30px;
+            padding: 20px;
+            width: 320px;
+            max-width: 100%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .display {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            font-size: 48px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            overflow: hidden;
+        }
+
+        #operator-display {
+            font-size: 36px;
+            color: #f09a36;
+        }
+
+        #number-display {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .button {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s;
+        }
+
+        .button:active {
+            background-color: #666;
+        }
+
+        .button.operator {
+            background-color: #f09a36;
+        }
+
+        .button.operator:active {
+            background-color: #e08a30;
+        }
+
+        .button.double {
+            grid-column: span 2;
+            border-radius: 50px;
+        }
+
+        .button.zero {
+            grid-column: span 2;
+            border-radius: 50px;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button.clear {
+            background-color: #d4d4d2;
+            color: black;
+        }
+
+        .button.clear:active {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display" id="display">
+            <span id="operator-display"></span><span id="number-display">0</span>
+        </div>
+        <div class="buttons">
+            <div class="button clear" id="clear">C</div>
+            <div class="button" id="plus-minus">±</div>
+            <div class="button" id="percent">%</div>
+            <div class="button operator" id="divide">÷</div>
+            <div class="button" id="7">7</div>
+            <div class="button" id="8">8</div>
+            <div class="button" id="9">9</div>
+            <div class="button operator" id="multiply">×</div>
+            <div class="button" id="4">4</div>
+            <div class="button" id="5">5</div>
+            <div class="button" id="6">6</div>
+            <div class="button operator" id="subtract">−</div>
+            <div class="button" id="1">1</div>
+            <div class="button" id="2">2</div>
+            <div class="button" id="3">3</div>
+            <div class="button operator" id="add">+</div>
+            <div class="button zero" id="0">0</div>
+            <div class="button" id="decimal">.</div>
+            <div class="button operator" id="equals">=</div>
+        </div>
+    </div>
+    <!-- <script src="script.js" type="text/javascript"></script> -->
+    <script>
+        const display = document.getElementById('number-display');
+        const operatorDisplay = document.getElementById('operator-display');
+        let currentValue = '0';
+        let operator = null;
+        let previousValue = null;
+        let waitingForSecondValue = false;
+        function updateDisplay() {
+            if (currentValue.length > 10) {
+                currentValue = parseFloat(currentValue).toExponential(5);
+            }
+            display.textContent = currentValue;
+        }
+        function updateOperatorDisplay() {
+            if (operator) {
+                operatorDisplay.textContent = getOperatorSymbol(operator);
+            } else {
+                operatorDisplay.textContent = '';
+            }
+        }
+        function getOperatorSymbol(op) {
+            switch (op) {
+                case 'add':
+                    return '+';
+                case 'subtract':
+                    return '−';
+                case 'multiply':
+                    return '×';
+                case 'divide':
+                    return '÷';
+                case 'equals':
+                    return '=';
+                default:
+                    return '';
+            }
+        }
+        function handleNumber(number) {
+            if (waitingForSecondValue) {
+                currentValue = number;
+                waitingForSecondValue = false;
+            } else {
+                currentValue = currentValue === '0' ? number : currentValue + number;
+            }
+            updateDisplay();
+        }
+        function handleOperator(nextOperator) {
+            if (operator && !waitingForSecondValue) {
+                performCalculation();
+            }
+            operator = nextOperator;
+            previousValue = currentValue;
+            waitingForSecondValue = true;
+            updateOperatorDisplay();
+        }
+        function performCalculation() {
+            const prev = parseFloat(previousValue);
+            const current = parseFloat(currentValue);
+            if (operator === 'add') {
+                currentValue = String(roundResult(prev + current));
+            } else if (operator === 'subtract') {
+                currentValue = String(roundResult(prev - current));
+            } else if (operator === 'multiply') {
+                currentValue = String(roundResult(prev * current));
+            } else if (operator === 'divide') {
+                currentValue = String(roundResult(prev / current));
+            }
+            operator = null;
+            previousValue = currentValue;
+            waitingForSecondValue = true;
+            updateDisplay();
+            updateOperatorDisplay();
+        }
+        function roundResult(value) {
+            return Math.round(value * 1000000000000000) / 1000000000000000;
+        }
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                const { id } = button;
+                if (['add', 'subtract', 'multiply', 'divide'].includes(id)) {
+                    handleOperator(id);
+                } else if (id === 'equals') {
+                    performCalculation();
+                    operator = 'equals';
+                    updateOperatorDisplay();
+                    operator = null;
+                } else if (id === 'clear') {
+                    currentValue = '0';
+                    operator = null;
+                    previousValue = null;
+                    waitingForSecondValue = false;
+                    operatorDisplay.textContent = '';
+                } else if (id === 'plus-minus') {
+                    currentValue = String(parseFloat(currentValue) * -1);
+                } else if (id === 'percent') {
+                    currentValue = String(roundResult(parseFloat(currentValue) / 100));
+                } else if (id === 'decimal') {
+                    if (!currentValue.includes('.')) {
+                        currentValue += '.';
+                    }
+                } else {
+                    handleNumber(id);
+                }
+                updateDisplay();
+            });
+        });
+        updateDisplay();
+    </script>
+</body>
+
+</html>

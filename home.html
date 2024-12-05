@@ -778,81 +778,23 @@
                 </tr>
             </table>
             <table id="sheet12" class="sheet">
-                <tr>
-                    <td>
-                        <select id="tableDropdown" onchange="navigateToLink()">
-                            <option value="" selected hidden>IDE(集成开发环境)</option>
-                        <option value="https://www.baidu.com">Visual Studio</option>
-                        <option value="https://www.google.com">Eclipse</option>
-                        <option value="https://www.baidu.com">Xcode</option>
-                        <option value="https://www.google.com">PyCharm</option>
-                        <option value="https://www.baidu.com">WebStorm</option>
-                        <option value="https://www.google.com">Android Studio</option>
-                        <option value="https://www.baidu.com">IntelliJ IDEA</option>
-                        <option value="https://www.google.com">NetBeans</option>
-                        <option value="https://www.baidu.com">CLion</option>
-                        <option value="https://www.google.com">RubyMine</option>
-                        <option value="https://www.google.com">HBuilder</option>
-                    </select>
-                </td>
-                    <td>
-                        <select id="tableDropdown" onchange="navigateToLink()">
-                            <option value="" selected hidden>代码编辑器</option>
-                        <option value="https://www.baidu.com">Visual Studio Code</option>
-                        <option value="https://www.google.com">Sublime Text</option>
-                        <option value="https://www.gnu.org/software/emacs/">Emacs</option>
-                        <option value="https://www.vim.org/">Vim</option>
-                        <option value="https://www.baidu.com">WebStorm</option>
-                        <option value="https://www.google.com">Android Studio</option>
-                        <option value="https://www.baidu.com">IntelliJ IDEA</option>
-                        <option value="https://www.google.com">NetBeans</option>
-                        <option value="https://www.baidu.com">CLion</option>
-                        <option value="https://www.google.com">RubyMine</option>
-                    </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Node.js</td>
-                    <td>AutoCAD</td>
-                </tr>
-                <tr>
-                    <td>
-                        <select>
-                            <option value="Option1">Option 1</option>
-                            <option value="Option2">Option 2</option>
-                            <option value="Option3">Option 3</option>
-                        </select>
-                    </td>
-                    <td>三维设计</td>
-                </tr>
-                <tr>
-                    <td>影视动画</td>
-                    <td>建筑设计</td>
-                </tr>
-                <tr>
-                    <td>机械设计</td>
-                    <td>电子电路</td>
-                </tr>
-                <tr>
-                    <td>数据分析</td>
-                    <td>化工设计</td>
-                </tr>
-                <tr>
-                    <td>影音娱乐</td>
-                    <td>编程开发</td>
-                </tr>
-                <tr>
-                    <td>电脑必备</td>
-                    <td>系统镜像</td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>20</td>
-                </tr>
+                
+                        <div id="tableDropdown">
+    
+                            <button class="category" onclick="loadContent('home.html')">首页</button>
+                            <button class="category" onclick="toggleCategory('cat1')">常用</button>
+                            <div class="sub-buttons" id="cat1">
+                              <button onclick="loadContent('tools/passwd/index.html')">随机密码生成器</button>
+                              <button onclick="loadContent('toolscalc/index.html')">简单计算器</button>
+                            </div>
+                            
+                            <button class="category" onclick="toggleCategory('cat2')">Category 2</button>
+                            <div class="sub-buttons" id="cat2">
+                              <button onclick="loadContent('page3.html')">Page 3</button>
+                              <button onclick="loadContent('page4.html')">Page 4</button>
+                            </div>
+                          </div>
+                
             </table>
             </div>
         </div>

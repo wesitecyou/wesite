@@ -42,3 +42,46 @@ html, body {
     -ms-overflow-style: none; /* IE 和 Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+#container {
+    display: flex;
+    /* padding: 2dvh 1dvw; */
+    height: 100dvh;
+    width: 100dvw;
+  }
+  
+  #tableDropdown {
+    /* width: 0; */
+    background-color: #f2f2f2;
+    /* padding: 3dvh 0; */
+    height: 10dvh;
+    /* overflow: hidden; */
+    /* float: left; */
+  }
+  
+  .category {
+    width: 100%;
+    /* text-align: left; */
+    padding: 10px;
+    border: none;
+    background-color: #ddd;
+    outline: none;
+    white-space: nowrap;
+  }
+  
+  .sub-buttons {
+    display: none;
+    padding-left: 20px;
+    white-space: nowrap;
+  }
+  
+  .sub-buttons button {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 5px;
+    border: none;
+    background-color: #eee;
+    outline: none;
+    white-space: nowrap;
+  }

@@ -32,19 +32,32 @@ function showSheet(sheetId) {
     document.getElementById(sheetId).classList.add('active');
 }
 
-document.getElementById('tableDropdown').addEventListener('focus', function() {
-    this.querySelector('option[value=""]').style.display = 'none';
-});
-document.getElementById('tableDropdown').addEventListener('blur', function() {
-    if (this.value === '') {
-        this.querySelector('option[value=""]').style.display = 'block';
-    }
-});
+// document.getElementById('tableDropdown').addEventListener('focus', function() {
+//     this.querySelector('option[value=""]').style.display = 'none';
+// });
+// document.getElementById('tableDropdown').addEventListener('blur', function() {
+//     if (this.value === '') {
+//         this.querySelector('option[value=""]').style.display = 'block';
+//     }
+// });
 
-function navigateToLink() {
-    var dropdown = document.getElementById("tableDropdown");
-    var selectedValue = dropdown.value;
-    if (selectedValue) {
-        window.open(selectedValue, '_blank');
+// function navigateToLink() {
+//     var dropdown = document.getElementById("tableDropdown");
+//     var selectedValue = dropdown.value;
+//     if (selectedValue) {
+//         window.open(selectedValue, '_blank');
+//     }
+// }
+
+
+
+// page2分类折叠
+function toggleCategory(categoryId) {
+    var subButtons = document.getElementById(categoryId);
+    if (subButtons.style.display === 'block') {
+      subButtons.style.display = 'none';
+    } else {
+      subButtons.style.display = 'block';
     }
-}
+  }
+  

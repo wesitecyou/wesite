@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buy majie a bread 🍞</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../styles/common.css">
+    <link rel="stylesheet" type="text/css" href="./styles/index.css">
+    <script defer type="text/javascript" src="./scripts/index.js"></script>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="topTitle">🎈Buy me a bread 🍞</div>
+        <div class="topTitleWord">🎈Buy me a bread 🍞</div>
+
+        <img src="./images/me.webp" alt="头像" class="profile-image">
+
+        <div class="support-text">你的支持是我最大的动力</div>
+
+        <div class="amount-grid">
+            <button class="amount-button selected" data-amount="5">🍞×1</button>
+            <button class="amount-button" data-amount="10">🍞×2</button>
+            <button class="amount-button" data-amount="15">🍞×3</button>
+        </div>
+
+        <div class="payment-buttons">
+            <button class="alipay-button" id="alipay-button">支付宝</button>
+            <button class="wechat-button" id="wechat-button">微信</button>
+            <a href="https://www.paypal.me/majiiie" target="_blank"><button class="paypal-button"
+                    id="paypal-button">Paypal</button></a>
+        </div>
+
+        <div class="payment-images">
+            <img id="alipay-amount-1" src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png"
+                alt="支付宝收款码1" style="display:none;">
+            <img id="alipay-amount-2" src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png"
+                alt="支付宝收款码2" style="display:none;">
+            <img id="alipay-amount-3" src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png"
+                alt="支付宝收款码3" style="display:none;">
+            <img id="wechat-amount-1" src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png"
+                alt="微信收款码1" style="display:none;">
+            <img id="wechat-amount-2" src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png"
+                alt="微信收款码2" style="display:none;">
+            <img id="wechat-amount-3" src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png"
+                alt="微信收款码3" style="display:none;">
+        </div>
+
+        <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+        <div id="popup" class="popup">
+            <span class="close-button" onclick="closePopup()">&times;</span>
+            <div id="popup-content" class="popup-content">
+                <!-- Content will be injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

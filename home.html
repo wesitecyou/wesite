@@ -42,46 +42,28 @@
                 <script>
                     // 定义分类和对应的搜索引擎
                     const categories = {
-                        '常用': [
-                            { name: '百度', engine: 'baidu' },
-                            { name: '谷歌', engine: 'google' },
-                            { name: '知乎', engine: 'zhihu' },
-
-
-                            { name: '优酷', engine: 'youku' },
-
-                            { name: '百科', engine: 'bdbk' }
-
-                        ],
                         '搜索': [
                             { name: '百度', engine: 'baidu' },
                             { name: '谷歌', engine: 'google' },
                             { name: '搜狗', engine: 'sogou' },
-                            { name: '雅虎', engine: 'yahoo' },
-                            { name: '必应', engine: 'bing' }
+                            { name: '必应', engine: 'bing' },
+                            { name: '好搜', engine: 'haosou' }
                         ],
                         '社区': [
-                            { name: '知乎', engine: 'baiduScholar' },
-                            { name: '贴吧', engine: 'googleScholar' },
-                            { name: '豆瓣', engine: 'googleScholar' },
-                            { name: '微博', engine: 'baiduScholar' },
-                            { name: '小红书', engine: 'googleScholar' }
+                            { name: '知乎', engine: 'zhihu' },
+                            { name: '贴吧', engine: 'tieba' },
+                            { name: '豆瓣', engine: 'douban' },
+                            { name: '微博', engine: 'weibo' },
+                            { name: '小红书', engine: 'xhs' }
                         ],
                         '购物': [
-                            { name: '淘宝', engine: 'duckduckgo' },
-                            { name: '天猫', engine: 'startpage' },
-                            { name: '闲鱼', engine: 'duckduckgo' },
-                            { name: '京东', engine: 'startpage' },
-                            { name: '美团', engine: 'startpage' },
-                            { name: '饿了么', engine: 'duckduckgo' },
+                            { name: '淘宝', engine: 'taobao' },
+                            { name: '天猫', engine: 'tmall' },
+                            { name: '闲鱼', engine: 'goofish' },
+                            { name: '京东', engine: 'jd' },
+                            { name: '美团', engine: 'meituan' },
+                            { name: '饿了么', engine: 'eleme' },
 
-                        ],
-                        '新闻': [
-                            { name: '百度新闻', engine: 'duckduckgo' },
-                            { name: '腾讯新闻', engine: 'startpage' },
-                            { name: '今日头条', engine: 'duckduckgo' },
-                            { name: '央视新闻', engine: 'startpage' },
-                            { name: '微博', engine: 'startpage' }
                         ],
                         '图片': [
                             { name: '百度', engine: 'duckduckgo' },
@@ -114,22 +96,7 @@
                             { name: 'SCIHub', engine: 'duckduckgo' },
                             { name: '百度学术', engine: 'startpage' },
                             { name: '知网', engine: 'startpage' }
-                        ],
-
-
-                        '开发': [
-                            { name: '博客园', engine: 'duckduckgo' },
-                            { name: '掘金', engine: 'startpage' },
-                            { name: '思否', engine: 'duckduckgo' },
-                            { name: 'CSDN', engine: 'startpage' },
-                            { name: 'GitHub', engine: 'duckduckgo' },
-                            { name: '开源中国', engine: 'duckduckgo' },
-
-                        ],
-
-
-
-                        // 可以根据需要添加更多分类
+                        ]
                     };
 
                     // 当前选中的分类和搜索引擎

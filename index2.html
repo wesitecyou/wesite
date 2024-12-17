@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find-X</title>
+<link rel="stylesheet" type="text/css" href="styles/normalize.css">
+<link rel="stylesheet" type="text/css" href="styles/index.css">
+</head>
+<body>
+
+<div id="container">
+  <div id="sidebar">
+    
+    <button class="category" onclick="loadContent('home.html')">首页</button>
+    <button class="category" onclick="toggleCategory('cat1')">常用</button>
+    <div class="sub-buttons" id="cat1">
+      <button onclick="loadContent('tools/passwd/index.html')">随机密码生成器</button>
+      <button onclick="loadContent('toolscalc/index.html')">简单计算器</button>
+    </div>
+    
+    <button class="category" onclick="toggleCategory('cat2')">Category 2</button>
+    <div class="sub-buttons" id="cat2">
+      <button onclick="loadContent('page3.html')">Page 3</button>
+      <button onclick="loadContent('page4.html')">Page 4</button>
+    </div>
+  </div>
+  
+  <div id="content">
+    
+    <!-- Content will be loaded here -->
+    <iframe src="home.html"></iframe>
+  </div>
+  <button id="toggle-button">展开</button>
+</div>
+
+<script defer type="text/javascript" src="scripts/index.js"></script>
+<script defer>
+  var sidebar = document.getElementById('sidebar');
+  var content = document.getElementById('content');
+  var toggleButton = document.getElementById('toggle-button');
+  var isSidebarVisible = false;
+
+  toggleButton.addEventListener('click', function() {
+    sidebar.classList.toggle('collapsed');
+    if (isSidebarVisible) {
+      // sidebar.style.width = '0';
+      // sidebar.style.padding = '3dvh 0';
+      
+      content.style.width = '100dvw';
+      toggleButton.style.left = '0';
+      toggleButton.textContent = '展开';
+      isSidebarVisible = false;
+    } else {
+      // sidebar.style.width = '15dvw';
+      // sidebar.style.padding = '3dvh 1dvw';
+      content.style.width = '85dvw';
+      toggleButton.style.left = '15dvw';
+      toggleButton.textContent = '收起';
+      isSidebarVisible = true;
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/homep1pc.css">
     <link rel="stylesheet" href="styles/homep2pc.css">
     <title>神奇搜索</title>
@@ -47,7 +48,7 @@
                             { name: '谷歌', engine: 'google' },
                             { name: '搜狗', engine: 'sogou' },
                             { name: '必应', engine: 'bing' },
-                            { name: '好搜', engine: 'haosou' }
+                            { name: 'AI搜索', engine: 'aise' }
                         ],
                         '社区': [
                             { name: '知乎', engine: 'zhihu' },
@@ -61,16 +62,14 @@
                             { name: '天猫', engine: 'tmall' },
                             { name: '闲鱼', engine: 'goofish' },
                             { name: '京东', engine: 'jd' },
-                            { name: '美团', engine: 'meituan' },
-                            { name: '饿了么', engine: 'eleme' },
-
+                            { name: '亚马逊', engine: 'amazon' },
                         ],
                         '图片': [
-                            { name: '百度', engine: 'duckduckgo' },
+                            { name: '百度图片', engine: 'duckduckgo' },
                             { name: '小红书', engine: 'startpage' },
                             { name: '堆糖', engine: 'duckduckgo' },
                             { name: '花瓣', engine: 'startpage' },
-                            { name: '谷歌', engine: 'startpage' },
+                            { name: '谷歌图片', engine: 'startpage' },
 
                         ],
                         '视频': [
@@ -78,24 +77,30 @@
                             { name: '腾讯视频', engine: 'startpage' },
                             { name: '爱奇艺', engine: 'duckduckgo' },
                             { name: '优酷', engine: 'startpage' },
-                            { name: '西瓜', engine: 'duckduckgo' },
                             { name: 'FreeOK', engine: 'startpage' }
                         ],
                         '音乐': [
-                            { name: 'AM', engine: 'duckduckgo' },
-                            { name: 'Q音', engine: 'duckduckgo' },
-                            { name: '酷狗', engine: 'startpage' },
-                            { name: '网易', engine: 'duckduckgo' },
-                            { name: '酷我', engine: 'startpage' },
-                            { name: 'MyFreeMP3', engine: 'startpage' }
+                            { name: 'Apple Music', engine: 'applemusic' },
+                            { name: 'QQ音乐', engine: 'qqmusic' },
+                            { name: '酷狗', engine: 'kugou' },
+                            { name: '网易云音乐', engine: 'wyyyy' },
+                            { name: '酷我', engine: 'kuwo' },
+                            { name: 'Spotify', engine: 'spotify' },
+                            { name: 'MyFreeMP3', engine: 'myfreemp3' }
                         ],
                         '读书': [
-                            { name: '豆瓣读书', engine: 'startpage' },
-                            { name: 'Z-Lib', engine: 'z-lib' },
-                            { name: '安娜的档案', engine: 'startpage' },
-                            { name: 'SCIHub', engine: 'duckduckgo' },
-                            { name: '百度学术', engine: 'startpage' },
-                            { name: '知网', engine: 'startpage' }
+                            { name: '豆瓣读书', engine: 'dbbook' },
+                            { name: 'Z-Library', engine: 'z-lib' },
+                            { name: '安娜的档案', engine: 'anna' },
+                            { name: '古腾堡计划', engine: 'gutenberg' },
+                            { name: 'LibGen', engine: 'libgen' }
+                        ],
+                        '更多': [
+                            { name: '翻译', engine: 'dbbook' },
+                            { name: '快递查询', engine: 'z-lib' },
+                            { name: '软件下载', engine: 'anna' },
+                            { name: 'Whois', engine: 'gutenberg' },
+                            { name: 'LibGen', engine: 'libgen' }
                         ]
                     };
 
@@ -199,6 +204,26 @@
                             case 'z-lib':
                                 baseUrl = 'https://zh.z-library.sk/s/';
                                 break;
+                            // 音乐
+                            case 'applemusic':
+                                baseUrl = 'https://music.apple.com/cn/search?term=';
+                                break;
+                            case 'qqmusic':
+                                baseUrl = 'https://y.qq.com/n/ryqq/search?w=';
+                                break;
+                            case 'kugou':
+                                baseUrl = 'https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=';
+                                break;
+                            case 'kuwo':
+                                baseUrl = 'https://kuwo.cn/search/list?key=';
+                                break;
+                            case 'wyyyy':
+                                baseUrl = 'https://music.163.com/#/search/m/?s=';
+                                break;
+                            case 'myfreemp3':
+                                baseUrl = 'https://tool.liumingye.cn/music/#/search/M/song/';
+                                break;
+                            // 默认
                             default:
                                 baseUrl = 'https://www.baidu.com/s?wd=';
                         }
@@ -213,7 +238,7 @@
 
                         const keyword = encodeURIComponent(searchInput.value); // 编码关键词以防止特殊字符问题
 
-                        
+
                         let fullUrl = `${window.searchBaseUrl}${keyword}`;
 
                         // 如果有额外的查询参数，则添加到URL中
@@ -784,7 +809,7 @@
         </div><!-- -----page-2-end----- -->
 
     </div>
-    <script defer type="text/javascript" src="scripts/home.js"></script>
+    <script defer type="text/javascript" src="scripts/index.js"></script>
 
 </body>
 

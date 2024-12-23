@@ -61,3 +61,45 @@ function toggleCategory(categoryId) {
     }
   }
   
+
+  function toggleCategory(categoryId) {
+    var subButtons = document.getElementById(categoryId);
+    if (subButtons.style.display === 'block') {
+      subButtons.style.display = 'none';
+    } else {
+      subButtons.style.display = 'block';
+    }
+  }
+  
+  function loadContent(page) {
+    var contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '<iframe src="' + page + '" width="100%" height="100dvh"></iframe>';
+  }
+
+
+  var sidebar = document.getElementById('sidebar');
+  var content = document.getElementById('content');
+  var toggleButton = document.getElementById('toggle-button');
+  var isSidebarVisible = false;
+
+  toggleButton.addEventListener('click', function() {
+    sidebar.classList.toggle('collapsed');
+    if (isSidebarVisible) {
+      // sidebar.style.width = '0';
+      // sidebar.style.padding = '3dvh 0';
+      
+      content.style.width = '100dvw';
+      toggleButton.style.left = '0';
+      toggleButton.textContent = '展开';
+      isSidebarVisible = false;
+    } else {
+      // sidebar.style.width = '15dvw';
+      // sidebar.style.padding = '3dvh 1dvw';
+    //   sidebar.style.position = 'fixed';
+    // sidebar.style.position = 'absolute';
+      content.style.width = '85dvw';
+      toggleButton.style.left = '15dvw';
+      toggleButton.textContent = '收起';
+      isSidebarVisible = true;
+    }
+  });

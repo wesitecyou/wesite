@@ -1,0 +1,44 @@
+
+
+
+
+.pined-container {
+    width: 50dvw;
+    height: 30dvh;
+    background-color: aliceblue;
+    position: absolute;
+    top: 12dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pined-row {
+    width: 50dvw;
+    height: 15dvh;
+    display: flex;
+    justify-content: space-between;
+    /* padding: 2dvh 2dvw; */
+
+}
+
+.pined-grid {
+    width: 10dvw;
+    height: 15dvh;
+    background-color: #f0f0f0;
+    /* 背景颜色，用于显示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pined-items {
+    width: 5dvh;
+    height: 5dvh;
+    border-radius: 2.5dvh;
+    background-color: orange;
+}
+/* -------------------------------------------------- */
+

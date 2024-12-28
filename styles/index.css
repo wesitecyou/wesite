@@ -1,171 +1,208 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-html, body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden; /* 隐藏默认滚动条 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-    height: 100vh;
-    overflow-y: scroll; /* 允许垂直滚动 */
-    -webkit-overflow-scrolling: touch; /* 提升滚动性能 */
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
-.page {
-    height: 100vh; /* 每页高度为视口高度 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* font-size: 24px; */
-    scroll-snap-align: start; /* 设置对齐方式 */
+#sidebar-container {
+  display: flex;
+  /* padding: 2dvh 1dvw; */
+  /* height: 100dvh; */
+  width: 100dvw;
 }
 
-#page1 {
-    background-color: #f0f0f0;
+#sidebar {
+  width: 0;
+  background-color: #f2f2f2;
+  padding: 3dvh 0;
+  transition: padding 1s ease, width 1s;
+  /* 合并过渡效果 */
+  height: 100%;
+  overflow: hidden;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden
 }
 
-#page2 {
-    background-color: #d0d0d0;
+#sidebar a {
+  white-space: nowrap;
 }
 
-/* 隐藏滚动条 */
-.container::-webkit-scrollbar {
-    display: none; /* Safari 和 Chrome */
+#sidebar.collapsed {
+  padding: 3dvh 1dvh;
+  width: 15dvw;
+  /* 确保在折叠时宽度也为0 */
 }
 
-.container {
-    -ms-overflow-style: none; /* IE 和 Edge */
-    scrollbar-width: none; /* Firefox */
+#content {
+  flex-grow: 1;
+  /* padding: 0 1dvw; */
+  border-left: 1px solid #ccc;
+  height: 100%;
+  width: 85dvw;
+  float: left;
+  transition: width 1s;
+  overflow: auto;
 }
 
-#container {
-    display: flex;
-    /* padding: 2dvh 1dvw; */
-    height: 100dvh;
-    width: 100dvw;
-  }
-  
-  #tableDropdown {
-    /* width: 0; */
-    background-color: #f2f2f2;
-    /* padding: 3dvh 0; */
-    height: 10dvh;
-    /* overflow: hidden; */
-    /* float: left; */
-  }
-  
-  .category {
-    width: 100%;
-    /* text-align: left; */
-    padding: 10px;
-    border: none;
-    background-color: #ddd;
-    outline: none;
-    white-space: nowrap;
-  }
-  
-  .sub-buttons {
-    display: none;
-    padding-left: 20px;
-    white-space: nowrap;
-  }
-  
-  .sub-buttons button {
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-    padding: 5px;
-    border: none;
-    background-color: #eee;
-    outline: none;
-    white-space: nowrap;
-  }
+#toggle-button {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 1000;
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: left 1s, background-color 1s;
+  /* 添加按钮的过渡效果 */
+}
 
+#toggle-button:hover {
+  background-color: #777;
+  /* 鼠标悬停时的背景颜色变化 */
+}
 
-  #sidebar-container {
-    display: flex;
-    /* padding: 2dvh 1dvw; */
-    height: 100dvh;
-    width: 100dvw;
-  }
-  
-  #sidebar {
-    width: 0;
-    background-color: #f2f2f2;
-    padding: 3dvh 0;
-    transition: padding 1s ease, width 1s; /* 合并过渡效果 */
-    /* height: 100dvh; */
-    overflow: hidden;
-    float: left;
-  }
-  
-  #sidebar.collapsed {
-    padding: 3dvh 1dvh;
-    width: 15dvw; /* 确保在折叠时宽度也为0 */
-  }
-  .category {
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-    border: none;
-    background-color: #ddd;
-    outline: none;
-    white-space: nowrap;
-  }
-  
-  .sub-buttons {
-    display: none;
-    padding-left: 20px;
-    white-space: nowrap;
-  }
-  
-  .sub-buttons button {
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-    padding: 5px;
-    border: none;
-    background-color: #eee;
-    outline: none;
-    white-space: nowrap;
-  }
-  
-  #content {
-    flex-grow: 1;
-    /* padding: 0 1dvw; */
-    border-left: 1px solid #ccc;
-    height: 100dvh;
-    width: 85dvw;
-    float: left;
-    transition: width 1s;
-  }
-  
-  #content iframe {
-    width: 100%;
-    height: 100dvh;
-    border: none;
-  }
-  
-  #toggle-button {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    z-index: 1000;
-    padding: 10px;
-    background-color: #555;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: left 1s, background-color 1s;
-    /* 添加按钮的过渡效果 */
-  }
-  
-  #toggle-button:hover {
-    background-color: #777;
-    /* 鼠标悬停时的背景颜色变化 */
-  }
+.two-columns {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100dvh; */
+  width: 50vw;
+  /* background: white; */
+  /* padding: 0 20px; */
+  border-radius: 5px;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
+.search-title {
+  font-weight: bold;
+  position: absolute;
+  top: -15dvh;
+  font-size: 25px;
+}
+
+input[type="text"] {
+  width: 42dvw;
+  height: 6.5dvh;
+  padding: 10px;
+  /* border: 2px solid gray; */
+  border-style: solid;
+  border-width: 2px 0 2px 2px;
+  border-color: gray;
+  border-radius: 1.5dvh 0 0 1.5dvh;
+}
+
+input[type="text"]:focus {
+  border-style: solid;
+  border-width: 2px 0 2px 2px;
+  border-color: blue;
+  outline: none;
+}
+
+form button {
+  width: 8dvw;
+  height: 6.5dvh;
+  padding: 10px 15px;
+  border: none;
+  /* border: 1.5px solid blue; */
+  border-radius: 0 1.5dvh 1.5dvh 0;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: darkblue;
+}
+
+.category-container {
+  position: absolute;
+  width: 40dvw;
+  height: 5dvh;
+  top: -5.5dvh;
+  right: 8dvw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.category-container .category-button {
+  /* width: 3dvw;
+  height: 4.5dvh; */
+  border: none;
+  padding: 1dvh 1dvw;
+  /* border-radius: 1dvh; */
+}
+
+.category-container .category-button.active {
+  /* background-color: darkgray; */
+  /* border-radius: 10px; */
+  border-bottom: 3px solid black;
+}
+.category-container .category-button:hover {
+  background-color: darkgray;
+  /* border-radius: 10px; */
+  /* border-bottom: 3px solid black; */
+}
+/* --------------------------------------------------- */
+.searchEngineButtonContainer {
+  position: absolute;
+  width: 25dvw;
+  height: 5dvh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* right: 40.5dvw; */
+  bottom: -5.5dvh;
+  /* overflow-x: auto;
+white-space: nowrap; */
+}
+
+.searchEngineButtonContainer button {
+  /* width: 4.5dvw;
+  height: 5dvh; */
+  border: none;
+  padding: 1dvh 1dvw;
+  white-space: nowrap;
+}
+
+.searchEngineButtonContainer button:hover {
+  background-color: #dad4cb;
+  border-radius: 1dvh;
+}
+.searchEngineButtonContainer button.active {
+  background-color: darkgray;
+  border-radius: 1dvh;
+}
+
+.right-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 160px;
+  background-color: beige;
+}

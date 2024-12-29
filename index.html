@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/index.css">
-
+    <link rel="stylesheet" href="styles/banner.css">
     <title>神奇搜索</title>
 </head>
 
@@ -28,16 +28,16 @@
 
             <div class="right-top">
                 <div class="search-container">
-                    <p class="search-title">神奇搜索</p>
+                    <!-- <p class="search-title">神奇搜索</p> -->
+
+                    <div class="category-container" id="categoryContainer">
+                        <!-- 分类按钮将动态生成 -->
+                    </div>
 
                     <form id="searchForm" method="GET" class="search-form">
                         <input type="text" id="search" placeholder="请输入搜索内容" required>
                         <button type="submit">搜索</button>
                     </form>
-
-                    <div class="category-container" id="categoryContainer">
-                        <!-- 分类按钮将动态生成 -->
-                    </div>
 
                     <div class="searchEngineButtonContainer" id="searchEngineContainer">
                         <!-- 搜索引擎按钮将动态生成 -->
@@ -265,6 +265,13 @@
 
 
                 </div>
+
+                <div id="app">loading...</div>
+
+    <br /><br />
+    <div id="selectBox"></div>
+    <br /><br />
+
             </div>
 
             <main>
@@ -429,7 +436,7 @@
 
 
     <script defer type="text/javascript" src="scripts/index.js"></script>
-
+    <script type="module" src="scripts/banner.js"></script>
 </body>
 
 </html>

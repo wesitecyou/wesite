@@ -1,0 +1,32 @@
+#app {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  min-width: 1000px;
+  min-height: 155px;
+  /* height: 10vw; */
+  width: 98%;
+  max-height: 240px;
+  z-index: 1;
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  user-select: none;
+  pointer-events: none;
+}
+
+#selectBox > button {
+  margin-right: 1em;
+}

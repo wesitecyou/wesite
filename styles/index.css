@@ -9,9 +9,9 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-.two-columns {
+.two-rows {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -23,11 +23,13 @@ body {
   padding: 3dvh 0;
   transition: padding 1s ease, width 1s;
   /* 合并过渡效果 */
-  height: 100%;
+  height: calc(100vh - 155px);
   overflow: hidden;
   float: left;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   overflow: hidden;
   position: relative;
   z-index: 999;
@@ -67,7 +69,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-.right-top {
+.header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -177,6 +179,7 @@ form button:hover {
   /* position: absolute; */
   width: 40%;
   height: 50px;
+  padding: 6px;
   /* top: -5.5dvh; */
   /* right: 8dvw; */
   display: flex;
@@ -189,17 +192,25 @@ form button:hover {
   /* width: 3dvw;
   height: 4.5dvh; */
   border: none;
-  padding: 1dvh 1dvw;
-  /* border-radius: 1dvh; */
+  padding: 5px;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0);
+  /* border-radius: 10px; */
+  display: inline-block; /* 确保元素是块级或行内块级 */
+  transition: transform 0.5s ease-in-out; /* 设置过渡效果 */
+  
 }
 
 .category-container .category-button.active {
   /* background-color: darkgray; */
   /* border-radius: 10px; */
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid white;
 }
 .category-container .category-button:hover {
-  background-color: darkgray;
+  cursor: pointer;
+  animation: quickBounce 0.5s ease-in-out forwards;
+  /* background-color: darkgray; */
   /* border-radius: 10px; */
   /* border-bottom: 3px solid black; */
 }
@@ -208,9 +219,10 @@ form button:hover {
   /* position: absolute; */
   width: 40%;
   height: 50px;
+  padding: 6px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   /* right: 40.5dvw; */
   /* bottom: -5.5dvh; */
   /* overflow-x: auto;
@@ -223,16 +235,37 @@ z-index: 999;
   /* width: 4.5dvw;
   height: 5dvh; */
   border: none;
-  padding: 1dvh 1dvw;
+  /* border-radius: 10px; */
+  margin: 0 10px;
+  padding: 5px;
   white-space: nowrap;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0);
+  display: inline-block; /* 确保元素是块级或行内块级 */
+  transition: transform 0.5s ease-in-out; /* 设置过渡效果 */
+}
+@keyframes quickBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px); /* 向上移动 */
+  }
+  100% {
+    transform: translateY(0); /* 回到原始位置 */
+  }
 }
 
 .searchEngineButtonContainer button:hover {
-  background-color: #dad4cb;
-  border-radius: 1dvh;
+  cursor: pointer;
+  animation: quickBounce 0.5s ease-in-out forwards;
+  /* background-color: #dad4cb; */
+  /* border-radius: 1dvh; */
 }
 .searchEngineButtonContainer button.active {
-  background-color: darkgray;
-  border-radius: 1dvh;
+  /* background-color: darkgray; */
+  /* border-radius: 1dvh; */
+  border-top: 3px solid white;
 }
 

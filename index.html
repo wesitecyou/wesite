@@ -15,422 +15,287 @@
 <body>
 
     <div class="two-columns">
-        <div id="sidebar">
+        <div id="sidebar" class="sidebar expanded">
             <a href="/">首页</a>
             <a href="#关于鸟类">关于鸟类</a>
             <a href="#威胁">威胁</a>
             <a href="#如何保护">如何保护</a>
         </div>
 
-        <div id="content">
+        <div id="content" class="content">
 
             <!-- Content will be loaded here -->
+            <div class="three-rows">
+                <div class="right-top">
+                    <div id="app">
+                        
 
-            <div class="right-top">
-                <div class="search-container">
-                    <!-- <p class="search-title">神奇搜索</p> -->
-
-                    <div class="category-container" id="categoryContainer">
-                        <!-- 分类按钮将动态生成 -->
                     </div>
+                    <br /><br />
+                    <div id="selectBox"></div>
+                    <br /><br />
+                    
+                        
+<!-- <p class="search-title">神奇搜索</p> -->
 
-                    <form id="searchForm" method="GET" class="search-form">
-                        <input type="text" id="search" placeholder="请输入搜索内容" required>
-                        <button type="submit">搜索</button>
-                    </form>
+<div class="category-container" id="categoryContainer">
+    <!-- 分类按钮将动态生成 -->
+</div>
 
-                    <div class="searchEngineButtonContainer" id="searchEngineContainer">
-                        <!-- 搜索引擎按钮将动态生成 -->
-                    </div>
+<form id="searchForm" method="GET" class="search-form">
+    <input type="text" id="search" placeholder="请输入搜索内容" required>
+    <button type="submit">搜索</button>
+</form>
 
-                    <script>
-                        // 定义分类和对应的搜索引擎
-                        const categories = {
-                            '搜索': [
-                                { name: '百度', engine: 'baidu' },
-                                { name: '谷歌', engine: 'google' },
-                                { name: '搜狗', engine: 'sogou' },
-                                { name: '必应', engine: 'bing' },
-                                { name: '站内', engine: 'insite' }
-                            ],
-                            '社区': [
-                                { name: '知乎', engine: 'zhihu' },
-                                { name: '贴吧', engine: 'tieba' },
-                                { name: '豆瓣', engine: 'douban' },
-                                { name: '微博', engine: 'weibo' },
-                                { name: '小红书', engine: 'xhs' }
-                            ],
-                            '购物': [
-                                { name: '淘宝', engine: 'taobao' },
-                                { name: '天猫', engine: 'tmall' },
-                                { name: '闲鱼', engine: 'goofish' },
-                                { name: '京东', engine: 'jd' },
-                                { name: '亚马逊', engine: 'amazon' },
-                            ],
-                            '图片': [
-                                { name: '百度图片', engine: 'duckduckgo' },
-                                { name: '小红书', engine: 'startpage' },
-                                { name: '堆糖', engine: 'duckduckgo' },
-                                { name: '花瓣', engine: 'startpage' },
-                                { name: '谷歌图片', engine: 'startpage' },
+<div class="searchEngineButtonContainer" id="searchEngineContainer">
+    <!-- 搜索引擎按钮将动态生成 -->
+</div>
 
-                            ],
-                            '视频': [
-                                { name: '哔哩哔哩', engine: 'duckduckgo' },
-                                { name: '腾讯视频', engine: 'startpage' },
-                                { name: '爱奇艺', engine: 'duckduckgo' },
-                                { name: '优酷', engine: 'startpage' },
-                                { name: 'FreeOK', engine: 'startpage' }
-                            ],
-                            '音乐': [
-                                { name: 'Apple Music', engine: 'applemusic' },
-                                { name: 'QQ音乐', engine: 'qqmusic' },
-                                { name: '酷狗', engine: 'kugou' },
-                                { name: '网易云音乐', engine: 'wyyyy' },
-                                { name: '酷我', engine: 'kuwo' },
-                                { name: 'Spotify', engine: 'spotify' },
-                                { name: 'MyFreeMP3', engine: 'myfreemp3' }
-                            ],
-                            '读书': [
-                                { name: '豆瓣读书', engine: 'dbbook' },
-                                { name: 'Z-Library', engine: 'z-lib' },
-                                { name: '安娜的档案', engine: 'anna' },
-                                { name: '古腾堡计划', engine: 'gutenberg' },
-                                { name: 'LibGen', engine: 'libgen' }
-                            ],
-                            '更多': [
-                                { name: '翻译', engine: 'dbbook' },
-                                { name: '快递查询', engine: 'z-lib' },
-                                { name: '软件下载', engine: 'anna' },
-                                { name: 'Whois', engine: 'gutenberg' },
-                                { name: 'LibGen', engine: 'libgen' }
-                            ]
-                        };
+<script>
+    // 定义分类和对应的搜索引擎
+    const categories = {
+        '搜索': [
+            { name: '百度', engine: 'baidu' },
+            { name: '谷歌', engine: 'google' },
+            { name: '搜狗', engine: 'sogou' },
+            { name: '必应', engine: 'bing' },
+            { name: '站内', engine: 'insite' }
+        ],
+        '社区': [
+            { name: '知乎', engine: 'zhihu' },
+            { name: '贴吧', engine: 'tieba' },
+            { name: '豆瓣', engine: 'douban' },
+            { name: '微博', engine: 'weibo' },
+            { name: '小红书', engine: 'xhs' }
+        ],
+        '购物': [
+            { name: '淘宝', engine: 'taobao' },
+            { name: '天猫', engine: 'tmall' },
+            { name: '闲鱼', engine: 'goofish' },
+            { name: '京东', engine: 'jd' },
+            { name: '亚马逊', engine: 'amazon' },
+        ],
+        '图片': [
+            { name: '百度图片', engine: 'duckduckgo' },
+            { name: '小红书', engine: 'startpage' },
+            { name: '堆糖', engine: 'duckduckgo' },
+            { name: '花瓣', engine: 'startpage' },
+            { name: '谷歌图片', engine: 'startpage' },
 
-                        // 当前选中的分类和搜索引擎
-                        let currentCategory = null;
+        ],
+        '视频': [
+            { name: '哔哩哔哩', engine: 'duckduckgo' },
+            { name: '腾讯视频', engine: 'startpage' },
+            { name: '爱奇艺', engine: 'duckduckgo' },
+            { name: '优酷', engine: 'startpage' },
+            { name: 'FreeOK', engine: 'startpage' }
+        ],
+        '音乐': [
+            { name: 'Apple Music', engine: 'applemusic' },
+            { name: 'QQ音乐', engine: 'qqmusic' },
+            { name: '酷狗', engine: 'kugou' },
+            { name: '网易云音乐', engine: 'wyyyy' },
+            { name: '酷我', engine: 'kuwo' },
+            { name: 'Spotify', engine: 'spotify' },
+            { name: 'MyFreeMP3', engine: 'myfreemp3' }
+        ],
+        '读书': [
+            { name: '豆瓣读书', engine: 'dbbook' },
+            { name: 'Z-Library', engine: 'z-lib' },
+            { name: '安娜的档案', engine: 'anna' },
+            { name: '古腾堡计划', engine: 'gutenberg' },
+            { name: 'LibGen', engine: 'libgen' }
+        ],
+        '更多': [
+            { name: '翻译', engine: 'dbbook' },
+            { name: '快递查询', engine: 'z-lib' },
+            { name: '软件下载', engine: 'anna' },
+            { name: 'Whois', engine: 'gutenberg' },
+            { name: 'LibGen', engine: 'libgen' }
+        ]
+    };
 
-                        // 获取容器元素
-                        const categoryContainer = document.getElementById('categoryContainer');
-                        const searchEngineContainer = document.getElementById('searchEngineContainer');
-                        const searchForm = document.getElementById('searchForm');
-                        const searchInput = document.getElementById('search');
+    // 当前选中的分类和搜索引擎
+    let currentCategory = null;
 
-                        // 初始化分类按钮
-                        function initCategories() {
-                            const categoryNames = Object.keys(categories);
-                            categoryNames.forEach((category, index) => {
-                                const button = document.createElement('button');
-                                button.textContent = category;
-                                button.classList.add('category-button');
-                                if (index === 0) {
-                                    button.classList.add('active');
-                                    currentCategory = category;
-                                }
-                                button.addEventListener('click', () => {
-                                    switchCategory(category);
-                                });
-                                categoryContainer.appendChild(button);
-                            });
-                        }
+    // 获取容器元素
+    const categoryContainer = document.getElementById('categoryContainer');
+    const searchEngineContainer = document.getElementById('searchEngineContainer');
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('search');
 
-                        // 初始化搜索引擎按钮
-                        function initSearchEngines() {
-                            renderSearchEngines(currentCategory);
-                        }
+    // 初始化分类按钮
+    function initCategories() {
+        const categoryNames = Object.keys(categories);
+        categoryNames.forEach((category, index) => {
+            const button = document.createElement('button');
+            button.textContent = category;
+            button.classList.add('category-button');
+            if (index === 0) {
+                button.classList.add('active');
+                currentCategory = category;
+            }
+            button.addEventListener('click', () => {
+                switchCategory(category);
+            });
+            categoryContainer.appendChild(button);
+        });
+    }
 
-                        // 切换分类
-                        function switchCategory(category) {
-                            if (currentCategory === category) return;
+    // 初始化搜索引擎按钮
+    function initSearchEngines() {
+        renderSearchEngines(currentCategory);
+    }
 
-                            // 更新分类按钮的样式
-                            const buttons = categoryContainer.getElementsByClassName('category-button');
-                            Array.from(buttons).forEach(btn => {
-                                if (btn.textContent === category) {
-                                    btn.classList.add('active');
-                                } else {
-                                    btn.classList.remove('active');
-                                }
-                            });
+    // 切换分类
+    function switchCategory(category) {
+        if (currentCategory === category) return;
 
-                            currentCategory = category;
-                            renderSearchEngines(category);
-                        }
+        // 更新分类按钮的样式
+        const buttons = categoryContainer.getElementsByClassName('category-button');
+        Array.from(buttons).forEach(btn => {
+            if (btn.textContent === category) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
 
-                        // 渲染搜索引擎按钮
-                        function renderSearchEngines(category) {
-                            // 清空当前的搜索引擎按钮
-                            searchEngineContainer.innerHTML = '';
+        currentCategory = category;
+        renderSearchEngines(category);
+    }
 
-                            const engines = categories[category];
-                            engines.forEach((item, index) => {
-                                const button = document.createElement('button');
-                                button.textContent = item.name;
-                                if (index === 0) {
-                                    button.classList.add('active');
-                                    changeSearchEngine(item.engine);
-                                }
-                                button.addEventListener('click', () => {
-                                    // 移除其他按钮的active状态
-                                    const buttons = searchEngineContainer.getElementsByTagName('button');
-                                    Array.from(buttons).forEach(btn => btn.classList.remove('active'));
-                                    // 添加当前按钮的active状态
-                                    button.classList.add('active');
-                                    // 更改搜索引擎
-                                    changeSearchEngine(item.engine);
-                                });
-                                searchEngineContainer.appendChild(button);
-                            });
-                        }
+    // 渲染搜索引擎按钮
+    function renderSearchEngines(category) {
+        // 清空当前的搜索引擎按钮
+        searchEngineContainer.innerHTML = '';
 
-                        // 更改搜索引擎
-                        function changeSearchEngine(engine) {
-                            let baseUrl = ''; // 包含了所有固定参数的基础链接
+        const engines = categories[category];
+        engines.forEach((item, index) => {
+            const button = document.createElement('button');
+            button.textContent = item.name;
+            if (index === 0) {
+                button.classList.add('active');
+                changeSearchEngine(item.engine);
+            }
+            button.addEventListener('click', () => {
+                // 移除其他按钮的active状态
+                const buttons = searchEngineContainer.getElementsByTagName('button');
+                Array.from(buttons).forEach(btn => btn.classList.remove('active'));
+                // 添加当前按钮的active状态
+                button.classList.add('active');
+                // 更改搜索引擎
+                changeSearchEngine(item.engine);
+            });
+            searchEngineContainer.appendChild(button);
+        });
+    }
 
-                            switch (engine) {
-                                case 'baidu':
-                                    baseUrl = 'https://www.baidu.com/s?wd=';
-                                    break;
-                                case 'google':
-                                    baseUrl = 'https://www.google.com/search?q=';
-                                    break;
-                                case 'bing':
-                                    baseUrl = 'https://www.bing.com/search?q=';
-                                    break;
-                                case 'duckduckgo':
-                                    baseUrl = 'https://duckduckgo.com/?q=';
-                                    break;
-                                case 'startpage':
-                                    baseUrl = 'https://www.startpage.com/do/search?query=';
-                                    break;
-                                // 读书
-                                case 'z-lib':
-                                    baseUrl = 'https://zh.z-library.sk/s/';
-                                    break;
-                                // 音乐
-                                case 'applemusic':
-                                    baseUrl = 'https://music.apple.com/cn/search?term=';
-                                    break;
-                                case 'qqmusic':
-                                    baseUrl = 'https://y.qq.com/n/ryqq/search?w=';
-                                    break;
-                                case 'kugou':
-                                    baseUrl = 'https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=';
-                                    break;
-                                case 'kuwo':
-                                    baseUrl = 'https://kuwo.cn/search/list?key=';
-                                    break;
-                                case 'wyyyy':
-                                    baseUrl = 'https://music.163.com/#/search/m/?s=';
-                                    break;
-                                case 'myfreemp3':
-                                    baseUrl = 'https://tool.liumingye.cn/music/#/search/M/song/';
-                                    break;
-                                // 默认
-                                default:
-                                    baseUrl = 'https://www.baidu.com/s?wd=';
-                            }
+    // 更改搜索引擎
+    function changeSearchEngine(engine) {
+        let baseUrl = ''; // 包含了所有固定参数的基础链接
 
-                            // 设置全局变量以便在表单提交时使用
-                            window.searchBaseUrl = baseUrl;
-                        }
+        switch (engine) {
+            case 'baidu':
+                baseUrl = 'https://www.baidu.com/s?wd=';
+                break;
+            case 'google':
+                baseUrl = 'https://www.google.com/search?q=';
+                break;
+            case 'bing':
+                baseUrl = 'https://www.bing.com/search?q=';
+                break;
+            case 'duckduckgo':
+                baseUrl = 'https://duckduckgo.com/?q=';
+                break;
+            case 'startpage':
+                baseUrl = 'https://www.startpage.com/do/search?query=';
+                break;
+            // 读书
+            case 'z-lib':
+                baseUrl = 'https://zh.z-library.sk/s/';
+                break;
+            // 音乐
+            case 'applemusic':
+                baseUrl = 'https://music.apple.com/cn/search?term=';
+                break;
+            case 'qqmusic':
+                baseUrl = 'https://y.qq.com/n/ryqq/search?w=';
+                break;
+            case 'kugou':
+                baseUrl = 'https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=';
+                break;
+            case 'kuwo':
+                baseUrl = 'https://kuwo.cn/search/list?key=';
+                break;
+            case 'wyyyy':
+                baseUrl = 'https://music.163.com/#/search/m/?s=';
+                break;
+            case 'myfreemp3':
+                baseUrl = 'https://tool.liumingye.cn/music/#/search/M/song/';
+                break;
+            // 默认
+            default:
+                baseUrl = 'https://www.baidu.com/s?wd=';
+        }
 
-                        // 提交表单时构建完整的URL
-                        searchForm.addEventListener('submit', function (event) {
-                            // event.preventDefault(); 
+        // 设置全局变量以便在表单提交时使用
+        window.searchBaseUrl = baseUrl;
+    }
 
-                            const keyword = encodeURIComponent(searchInput.value); // 编码关键词以防止特殊字符问题
+    // 提交表单时构建完整的URL
+    searchForm.addEventListener('submit', function (event) {
+        // event.preventDefault(); 
 
-
-                            let fullUrl = `${window.searchBaseUrl}${keyword}`;
-
-                            // 如果有额外的查询参数，则添加到URL中
-                            // if (window.searchQueryParams && !window.searchBaseUrl.includes('?')) {
-                            //     fullUrl += `&${window.searchQueryParams}`;
-                            // } else if (window.searchQueryParams) {
-                            //     fullUrl += `${window.searchQueryParams}`;
-                            // }
-
-                            // 重定向到构建的完整URL
-                            window.open(fullUrl, '_blank');
-                        });
-
-                        // 初始化页面
-                        window.onload = function () {
-                            initCategories();
-                            initSearchEngines();
-                        };
-                    </script>
+        const keyword = encodeURIComponent(searchInput.value); // 编码关键词以防止特殊字符问题
 
 
+        let fullUrl = `${window.searchBaseUrl}${keyword}`;
+
+        // 如果有额外的查询参数，则添加到URL中
+        // if (window.searchQueryParams && !window.searchBaseUrl.includes('?')) {
+        //     fullUrl += `&${window.searchQueryParams}`;
+        // } else if (window.searchQueryParams) {
+        //     fullUrl += `${window.searchQueryParams}`;
+        // }
+
+        // 重定向到构建的完整URL
+        window.open(fullUrl, '_blank');
+    });
+
+    // 初始化页面
+    window.onload = function () {
+        initCategories();
+        initSearchEngines();
+    };
+</script>
+
+                    
+
+                    
 
                 </div>
 
-                <div id="app">loading...</div>
+                <main>
+                    <div id="常用软件" class="section">
+                        <h3>常用软件</h3>
 
-    <br /><br />
-    <div id="selectBox"></div>
-    <br /><br />
+                    </div>
+                    <div id="资源搜索" class="section">
+                        <h3>资源搜索</h3>
+                    </div>
+                    <div id="办公软件护" class="section">
+                        <h3>办公软件</h3>
+                    </div>
+                </main>
+                <footer>
+                    <p>&copy; 2024 保护鸟类. 版权所有.</p>
+                </footer>
+
 
             </div>
-
-            <main>
-                <div id="常用软件" class="section">
-                    <h3>常用软件</h3>
-                    <div class="row">
-                        <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://tools.liumingye.cn/chatgpt/#/welcome" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://tools.liumingye.cn/chatgpt/#/welcome">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>ChatGPT</strong>
-                            </div>
-                            <p class="overflowClip_2">ChatGPT是一款智能助手，为用户提供一系列强大的功能。通过使用ChatGPT，用户可以轻松地进行文本总结、写作、检查语法和翻译文本等操作。</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://watermark.liumingye.cn" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://watermark.liumingye.cn">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://fastly.jsdelivr.net/gh/5ime/img/avatar.jpg" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>短视频/图集在线去水印解析</strong>
-                            </div>
-                            <p class="overflowClip_2">抖音快手等16个平台视频去水印下载</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://qwerty.liumingye.cn" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://qwerty.liumingye.cn">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://ae01.alicdn.com/kf/H06cc340673be400f82dd85b83dae0a4dt.jpg" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>Qwerty Learner</strong>
-                            </div>
-                            <p class="overflowClip_2">为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://epub.liumingye.cn" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://epub.liumingye.cn">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://ae01.alicdn.com/kf/H6d08324d3b254e3582d4f1e2b2807dbdI.jpg" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>epub阅读器</strong>
-                            </div>
-                            <p class="overflowClip_2">简单的 EPUB 电子书在线阅读器</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://paste.liumingye.cn" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://paste.liumingye.cn">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://ae01.alicdn.com/kf/H376820f3a08a494f881f8b6a8937289fo.jpg" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>PasteMe</strong>
-                            </div>
-                            <p class="overflowClip_2">快速分享文本，支持加密、一键复制、永久保存、阅后即焚等功能</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://bgm.liumingye.cn" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://bgm.liumingye.cn">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://bgm.liumingye.cn/public/favicons/apple-touch-icon.png" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>番组放送</strong>
-                            </div>
-                            <p class="overflowClip_2">新番放送兼版权引进播放地址聚合站</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://tool.liumingye.cn/avbv" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://tool.liumingye.cn/avbv">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://ae01.alicdn.com/kf/Hf2f02939cecd464481485afce03fc43cU.jpg" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>哔哩哔哩 AV/BV 转换</strong>
-                            </div>
-                            <p class="overflowClip_2">在线哔哩哔哩 AV/BV 互相转换</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                          <div class="xe-card col-sm-4 col-md-3 ">
-                  
-                            <a href="https://liumingye.cn" target="_blank" class="xe-widget xe-conversations box2 label-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://liumingye.cn">
-                    <div class="xe-comment-entry">
-                        <div class="xe-user-img">
-                                                    <img class="img-circle lazy" src="https://wework.qpic.cn/wwpic/827477_Ahb3dwBhQbqMaFw_1729589030" onerror="javascript:this.src='http://tools.liumingye.cn/wp-content/themes/WebStack/images/favicon.png'" width="40">
-                                                </div>
-                        <div class="xe-comment">
-                            <div class="xe-user-name overflowClip_1">
-                                <strong>泡泡社区</strong>
-                            </div>
-                            <p class="overflowClip_2">微社区</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                      </div>
-                </div>
-                <div id="资源搜索" class="section">
-                    <h3>资源搜索</h3>
-                </div>
-                <div id="办公软件护" class="section">
-                    <h3>办公软件</h3>
-                </div>
-            </main>
-            <footer>
-                <p>&copy; 2024 保护鸟类. 版权所有.</p>
-            </footer>
-
-
-
         </div>
-        <button id="toggle-button">展开</button>
+        <button id="toggleSidebar">收起/展开边栏</button>
     </div>
 
 

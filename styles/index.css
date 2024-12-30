@@ -3,22 +3,22 @@
   margin: 0;
   padding: 0;
 }
-
 html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
-
-#sidebar-container {
+.two-columns {
   display: flex;
-  /* padding: 2dvh 1dvw; */
-  /* height: 100dvh; */
-  width: 100dvw;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
-#sidebar {
-  width: 0;
+.sidebar {
+  width: 12%;
   background-color: #f2f2f2;
   padding: 3dvh 0;
   transition: padding 1s ease, width 1s;
@@ -28,34 +28,66 @@ body {
   float: left;
   display: flex;
   flex-direction: column;
-  overflow: hidden
+  overflow: hidden;
+  position: relative;
+  z-index: 999;
+}
+
+
+.expanded {
+  width: 12%; /* 默认展开宽度 */
+}
+
+.collapsed {
+  width: 0; /* 收起后的宽度 */
 }
 
 #sidebar a {
   white-space: nowrap;
 }
 
-#sidebar.collapsed {
+/* #sidebar.collapsed {
   padding: 3dvh 1dvh;
-  width: 15dvw;
-  /* 确保在折叠时宽度也为0 */
-}
+  width: 12dvw;
+} */
 
-#content {
+.content {
   flex-grow: 1;
   /* padding: 0 1dvw; */
   border-left: 1px solid #ccc;
   height: 100%;
-  width: 85dvw;
+  width: 88%;
   float: left;
   transition: width 1s;
-  overflow: auto;
+  overflow-x: hidden;
+}
+.three-rows {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.right-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 155px;
+}
+main {
+  width: 100%;
+  height: auto;
+}
+footer {
+  width: 100%;
+  height: 100px;
 }
 
 #toggle-button {
   position: absolute;
   top: 10px;
-  left: 0;
+  left: 12%;
   z-index: 1000;
   padding: 10px;
   background-color: #555;
@@ -71,11 +103,7 @@ body {
   /* 鼠标悬停时的背景颜色变化 */
 }
 
-.two-columns {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
+
 
 .search-container {
   position: relative;
@@ -84,7 +112,8 @@ body {
   justify-content: center;
   align-items: center;
   /* height: 100dvh; */
-  width: 50vw;
+  width: 100%;
+  height: 100%;
   max-height: 240px;
   /* background: white; */
   /* padding: 0 20px; */
@@ -97,19 +126,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
+  width: 50%;
+  height: 50px;
+  position: relative;
+  z-index: 999;
 }
 
 .search-title {
   font-weight: bold;
   position: absolute;
-  top: -15dvh;
+  /* top: -15dvh; */
   font-size: 25px;
 }
 
 input[type="text"] {
-  width: 42dvw;
-  height: 6.5dvh;
+  width: 85%;
+  height: 100%;
   padding: 10px;
   /* border: 2px solid gray; */
   border-style: solid;
@@ -126,8 +158,8 @@ input[type="text"]:focus {
 }
 
 form button {
-  width: 8dvw;
-  height: 6.5dvh;
+  width: 15%;
+  height: 100%;
   padding: 10px 15px;
   border: none;
   /* border: 1.5px solid blue; */
@@ -143,13 +175,15 @@ form button:hover {
 
 .category-container {
   /* position: absolute; */
-  width: 40dvw;
-  height: 5dvh;
+  width: 40%;
+  height: 50px;
   /* top: -5.5dvh; */
   /* right: 8dvw; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
+  z-index: 999;
 }
 .category-container .category-button {
   /* width: 3dvw;
@@ -172,8 +206,8 @@ form button:hover {
 /* --------------------------------------------------- */
 .searchEngineButtonContainer {
   /* position: absolute; */
-  width: 25dvw;
-  height: 5dvh;
+  width: 40%;
+  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -181,6 +215,8 @@ form button:hover {
   /* bottom: -5.5dvh; */
   /* overflow-x: auto;
 white-space: nowrap; */
+position: relative;
+z-index: 999;
 }
 
 .searchEngineButtonContainer button {
@@ -200,12 +236,3 @@ white-space: nowrap; */
   border-radius: 1dvh;
 }
 
-.right-top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 20vh;
-  /* background-color: beige; */
-}

@@ -77,29 +77,36 @@ function toggleCategory(categoryId) {
   }
 
 
-  var sidebar = document.getElementById('sidebar');
-  var content = document.getElementById('content');
-  var toggleButton = document.getElementById('toggle-button');
-  var isSidebarVisible = false;
+  // var sidebar = document.getElementById('sidebar');
+  // var content = document.getElementById('content');
+  // var toggleButton = document.getElementById('toggle-button');
+  // var isSidebarVisible = false;
 
-  toggleButton.addEventListener('click', function() {
-    sidebar.classList.toggle('collapsed');
-    if (isSidebarVisible) {
-      // sidebar.style.width = '0';
-      // sidebar.style.padding = '3dvh 0';
+  // toggleButton.addEventListener('click', function() {
+  //   sidebar.classList.toggle('collapsed');
+  //   if (isSidebarVisible) {
+  //     sidebar.style.width = '0';
       
-      content.style.width = '100dvw';
-      toggleButton.style.left = '0';
-      toggleButton.textContent = '展开';
-      isSidebarVisible = false;
+  //     content.style.width = '88dvw';
+  //     toggleButton.style.left = '12vw';
+  //     toggleButton.textContent = '收起';
+  //     isSidebarVisible = true;
+  //   } else {
+  //     sidebar.style.width = '12dvw';
+  //     content.style.width = '100dvw';
+  //     toggleButton.style.left = '0';
+  //     toggleButton.textContent = '展开';
+  //     isSidebarVisible = flase;
+  //   }
+  // });
+
+  document.getElementById('toggleSidebar').addEventListener('click', function() {
+    var sidebar = document.getElementById('sidebar');
+    if (sidebar.classList.contains('expanded')) {
+      sidebar.classList.remove('expanded');
+      sidebar.classList.add('collapsed');
     } else {
-      // sidebar.style.width = '15dvw';
-      // sidebar.style.padding = '3dvh 1dvw';
-    //   sidebar.style.position = 'fixed';
-    // sidebar.style.position = 'absolute';
-      content.style.width = '85dvw';
-      toggleButton.style.left = '15dvw';
-      toggleButton.textContent = '收起';
-      isSidebarVisible = true;
+      sidebar.classList.remove('collapsed');
+      sidebar.classList.add('expanded');
     }
   });

@@ -100,13 +100,28 @@ function toggleCategory(categoryId) {
   //   }
   // });
 
-  document.getElementById('toggleSidebar').addEventListener('click', function() {
-    var sidebar = document.getElementById('sidebar');
-    if (sidebar.classList.contains('expanded')) {
-      sidebar.classList.remove('expanded');
-      sidebar.classList.add('collapsed');
-    } else {
-      sidebar.classList.remove('collapsed');
-      sidebar.classList.add('expanded');
-    }
-  });
+  // document.getElementById('toggleSidebar').addEventListener('click', function() {
+  //   var sidebar = document.getElementById('sidebar');
+  //   if (sidebar.classList.contains('expanded')) {
+  //     sidebar.classList.remove('expanded');
+  //     sidebar.classList.add('collapsed');
+  //   } else {
+  //     sidebar.classList.remove('collapsed');
+  //     sidebar.classList.add('expanded');
+  //   }
+  // });
+
+// toggle-color
+// 获取所有链接元素，类名为 toggle-color
+const toggleColorLinks = document.querySelectorAll('.toggle-color');
+
+// 为每个链接添加点击事件
+toggleColorLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        // 先移除所有链接的高亮样式
+        toggleColorLinks.forEach(l => l.classList.remove('active'));
+        
+        // 给当前点击的链接添加高亮样式
+        this.classList.add('active');
+    });
+});

@@ -1,29 +1,50 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  
-  a img {
-    border: none;
-  }
-  
-  a {
-    text-decoration: none;
-    cursor: default;
-  }
-  
-  input,
-  textarea {
-    caret-color: #07c160;
-  }
-  
-  ::-webkit-input-placeholder {
-    color: rgba(0, 0, 0, 0.3);
-  }
-  
-  ::placeholder {
-    color: rgba(0, 0, 0, 0.3);
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a img {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:link {
+  color: #0000EE;
+}
+
+/* 未访问的链接 */
+a:visited {
+  color: #551A8B;
+}
+
+/* 已访问的链接 */
+a:hover {
+  color: darkblue;
+}
+
+/* 鼠标悬停时 */
+a:active {
+  color: black;
+}
+
+/* 激活（点击）时 */
+
+input,
+textarea {
+  caret-color: #07c160;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}

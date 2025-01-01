@@ -1,36 +1,36 @@
-let currentPage = 0;
-const pages = document.querySelectorAll('.page');
-const container = document.querySelector('.container');
+// let currentPage = 0;
+// const pages = document.querySelectorAll('.page');
+// const container = document.querySelector('.container');
 
-window.addEventListener('wheel', (event) => {
-    if (event.deltaY > 0) {
-        // 向下滚动
-        currentPage = Math.min(currentPage + 1, pages.length - 1);
-    } else {
-        // 向上滚动
-        currentPage = Math.max(currentPage - 1, 0);
-    }
-    scrollToPage(currentPage);
-    event.preventDefault(); // 防止页面滚动
-}, { passive: false }); // 设置为非被动模式
+// window.addEventListener('wheel', (event) => {
+//     if (event.deltaY > 0) {
+//         // 向下滚动
+//         currentPage = Math.min(currentPage + 1, pages.length - 1);
+//     } else {
+//         // 向上滚动
+//         currentPage = Math.max(currentPage - 1, 0);
+//     }
+//     scrollToPage(currentPage);
+//     event.preventDefault(); // 防止页面滚动
+// }, { passive: false }); // 设置为非被动模式
 
-function scrollToPage(pageIndex) {
-    const scrollToPosition = pageIndex * window.innerHeight;
-    container.scrollTo({
-        top: scrollToPosition,
-        behavior: 'smooth' // 平滑滚动
-    });
-}
+// function scrollToPage(pageIndex) {
+//     const scrollToPosition = pageIndex * window.innerHeight;
+//     container.scrollTo({
+//         top: scrollToPosition,
+//         behavior: 'smooth' // 平滑滚动
+//     });
+// }
 
 // -----------------------------P2------------------------------
-function showSheet(sheetId) {
-    // Hide all sheets
-    document.querySelectorAll('.sheet').forEach(sheet => {
-        sheet.classList.remove('active');
-    });
-    // Show the selected sheet
-    document.getElementById(sheetId).classList.add('active');
-}
+// function showSheet(sheetId) {
+//     // Hide all sheets
+//     document.querySelectorAll('.sheet').forEach(sheet => {
+//         sheet.classList.remove('active');
+//     });
+//     // Show the selected sheet
+//     document.getElementById(sheetId).classList.add('active');
+// }
 
 // document.getElementById('tableDropdown').addEventListener('focus', function() {
 //     this.querySelector('option[value=""]').style.display = 'none';
@@ -52,29 +52,29 @@ function showSheet(sheetId) {
 
 
 // page2分类折叠
-function toggleCategory(categoryId) {
-    var subButtons = document.getElementById(categoryId);
-    if (subButtons.style.display === 'block') {
-      subButtons.style.display = 'none';
-    } else {
-      subButtons.style.display = 'block';
-    }
-  }
+// function toggleCategory(categoryId) {
+//     var subButtons = document.getElementById(categoryId);
+//     if (subButtons.style.display === 'block') {
+//       subButtons.style.display = 'none';
+//     } else {
+//       subButtons.style.display = 'block';
+//     }
+//   }
   
 
-  function toggleCategory(categoryId) {
-    var subButtons = document.getElementById(categoryId);
-    if (subButtons.style.display === 'block') {
-      subButtons.style.display = 'none';
-    } else {
-      subButtons.style.display = 'block';
-    }
-  }
+//   function toggleCategory(categoryId) {
+//     var subButtons = document.getElementById(categoryId);
+//     if (subButtons.style.display === 'block') {
+//       subButtons.style.display = 'none';
+//     } else {
+//       subButtons.style.display = 'block';
+//     }
+//   }
   
-  function loadContent(page) {
-    var contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '<iframe src="' + page + '" width="100%" height="100dvh"></iframe>';
-  }
+//   function loadContent(page) {
+//     var contentDiv = document.getElementById('content');
+//     contentDiv.innerHTML = '<iframe src="' + page + '" width="100%" height="100dvh"></iframe>';
+//   }
 
 
   // var sidebar = document.getElementById('sidebar');
@@ -124,4 +124,26 @@ toggleColorLinks.forEach(link => {
         // 给当前点击的链接添加高亮样式
         this.classList.add('active');
     });
+});
+
+
+// sidebar
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.querySelector(".toggle-toc");
+  const sidebarToc = document.querySelector(".sidebar-toc");
+
+  let isHidden = false;
+
+  toggleButton.addEventListener("click", () => {
+      if (isHidden) {
+          // 显示目录
+          sidebarToc.classList.remove("hidden");
+          toggleButton.textContent = "隐藏目录";
+      } else {
+          // 隐藏目录
+          sidebarToc.classList.add("hidden");
+          toggleButton.textContent = "显示目录";
+      }
+      isHidden = !isHidden;
+  });
 });

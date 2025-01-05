@@ -2,6 +2,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* 隐藏默认的滚动条样式 */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, and Opera */
 }
 
 html,
@@ -50,7 +60,7 @@ body {
   display: flex;
   flex-direction: row;
   /* justify-content: center; */
-  align-items: center;
+  align-items: flex-end;
   overflow: hidden;
   position: relative;
   z-index: 999;
@@ -159,9 +169,9 @@ button.toggle-toc:hover {
 
 .content {
   flex: 1;
-  padding: 10px 10px 0 10px;
+  padding: 0 30px;
   border-left: 1px solid #ccc;
-  height: 100%;
+  height: 98%;
   /* width: 88%; */
   float: left;
   /* transition: width 1s; */
@@ -179,7 +189,9 @@ button.toggle-toc:hover {
   display: none;
   /* Chrome, Safari, and Opera */
 }
-
+.section h3 {
+  margin: 10px 0;
+}
 .three-rows {
   width: 100%;
   height: 100%;
@@ -289,6 +301,7 @@ form button {
   background-color: blue;
   color: white;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 form button:hover {
@@ -307,6 +320,7 @@ form button:hover {
   justify-content: space-between;
   position: relative;
   z-index: 999;
+  overflow: auto;
 }
 
 .category-container .category-button {
@@ -322,6 +336,7 @@ form button:hover {
   /* 确保元素是块级或行内块级 */
   transition: transform 0.5s ease-in-out;
   /* 设置过渡效果 */
+  white-space: nowrap;
 
 }
 
@@ -354,6 +369,7 @@ form button:hover {
 white-space: nowrap; */
   position: relative;
   z-index: 999;
+  overflow: auto;
 }
 
 .searchEngineButtonContainer button {
@@ -371,6 +387,7 @@ white-space: nowrap; */
   /* 确保元素是块级或行内块级 */
   transition: transform 0.5s ease-in-out;
   /* 设置过渡效果 */
+  white-space: nowrap;
 }
 
 @keyframes quickBounce {
@@ -409,14 +426,16 @@ white-space: nowrap; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   /* 默认每行显示4个方块 */
-  gap: 10px;
+  gap: 30px;
   /* 方块之间的间距 */
 }
 
 /* 设置方块的样式 */
 .sub-box {
-  background-color: #4CAF50;
-  height: 100px;
+  background-color: #fff;
+    height: 100px;
+    border: 0.5px solid #dad4cb;
+    border-radius: 10px;
 }
 
 /* 媒体查询，针对手机设备 */

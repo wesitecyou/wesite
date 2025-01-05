@@ -81,7 +81,7 @@ body {
 .sidebar-toc {
   /* width: 10%; */
   height: 100%;
-  padding: 0 50px;
+  /* padding: 0 30px; */
   display: flex;
   flex-direction: column;
   /* justify-content: space-evenly; */
@@ -100,9 +100,10 @@ body {
 .toc-links {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
   height: 100%;
+  padding: 5% 0;
 }
 
 /* 默认链接样式 */
@@ -113,12 +114,21 @@ body {
   font-size: 16px;
   white-space: nowrap;
   text-decoration: none;
+  padding: 0 50px;
+  height: 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 鼠标悬停时的颜色 */
 .sidebar-toc a:hover {
   color: #fff;
+  font-weight: bold;
   /* 悬停颜色 */
+  /* animation: leftRight 0.5s ease-in-out forwards; */
+  background-color: black;
+
 }
 
 /* 被选中的链接高亮 */
@@ -403,6 +413,25 @@ white-space: nowrap; */
   100% {
     transform: translateY(0);
     /* 回到原始位置 */
+  }
+}
+@keyframes leftRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+  /* 75% {
+    transform: translateX(5px);
+  } */
+  100% {
+    transform: translateX(10px);
   }
 }
 

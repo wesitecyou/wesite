@@ -28,7 +28,7 @@ body {
   /* padding: 3dvh 0; */
   transition: padding 1s ease, width 1s;
   /* 合并过渡效果 */
-  height: 100%;
+  height: calc(100vh - 155px);
   overflow: hidden;
   float: left;
   display: flex;
@@ -66,7 +66,6 @@ body {
   transform: translateX(0); /* 初始位置 */
   white-space: nowrap;
   opacity: 1;
-  z-index: 1000;
     position: relative; /* 确保不影响布局 */
 }
 /* 默认链接样式 */
@@ -121,11 +120,7 @@ button.toggle-toc:hover {
 
 .content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px 50px 10px 50px;
+  padding: 10px 10px 0 10px;
   border-left: 1px solid #ccc;
   height: 100%;
   /* width: 88%; */
@@ -147,18 +142,11 @@ button.toggle-toc:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
-  /* position: absolute; */
+  height: 155px;
 }
 main {
   width: 100%;
   height: auto;
-  /* padding-top: 160px; */
-  position: relative;
-  bottom: 0;
-}
-.section {
-  padding-top: 30px;
 }
 footer {
   width: 100%;

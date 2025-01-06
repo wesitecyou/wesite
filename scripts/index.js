@@ -138,11 +138,13 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButton.addEventListener("click", () => {
         if (isHidden) {
             // 显示目录
+            sidebarToc.style.position = 'relative';
             sidebarToc.classList.remove("hidden");
             // leftTopLogo.classList.remove("hidden");
             toggleButton.textContent = "隐藏目录";
         } else {
             // 隐藏目录
+            sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             // leftTopLogo.classList.add("hidden");
             toggleButton.textContent = "显示目录";

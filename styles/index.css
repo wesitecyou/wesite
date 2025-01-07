@@ -225,10 +225,69 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  /* width: 50%; */
   height: 50px;
   position: relative;
   z-index: 999;
+}
+@media (min-width: 1200px) {
+  .search-form {
+    width: 50%;
+  }
+  .category-container {
+    width: 40%;
+  }
+  .searchEngineButtonContainer {
+    width: 40%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .search-form {
+    width: 50%;
+  }
+  .category-container {
+    width: 40%;
+  }
+  .searchEngineButtonContainer {
+    width: 40%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .search-form {
+    width: 50%;
+  }
+  .category-container {
+    width: 40%;
+  }
+  .searchEngineButtonContainer {
+    width: 40%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .search-form {
+    width: 90%;
+  }
+  .category-container {
+    width: 80%;
+  }
+  .searchEngineButtonContainer {
+    width: 80%;
+  }
+}
+
+@media (max-width: 479px) {
+  .search-form {
+    width: 90%;
+  }
+  .category-container {
+    width: 80%;
+  }
+  .searchEngineButtonContainer {
+    width: 80%;
+  }
 }
 
 .search-title {
@@ -257,7 +316,7 @@ input[type="text"]:focus {
 }
 
 form button {
-  width: 15%;
+  /* width: 15%; */
   height: 100%;
   padding: 10px 15px;
   border: none;
@@ -275,7 +334,7 @@ form button:hover {
 
 .category-container {
   /* position: absolute; */
-  width: 40%;
+  /* width: 40%; */
   height: 50px;
   padding: 6px;
   /* top: -5.5dvh; */
@@ -321,12 +380,12 @@ form button:hover {
 /* --------------------------------------------------- */
 .searchEngineButtonContainer {
   /* position: absolute; */
-  width: 40%;
+  /* width: 40%; */
   height: 50px;
   padding: 6px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   /* right: 40.5dvw; */
   /* bottom: -5.5dvh; */
   /* overflow-x: auto;

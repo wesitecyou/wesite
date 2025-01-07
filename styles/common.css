@@ -15,26 +15,21 @@ a {
   cursor: pointer;
 }
 
-a:link {
+/* a:link {
   color: #0000EE;
 }
 
-/* 未访问的链接 */
 a:visited {
   color: #551A8B;
 }
 
-/* 已访问的链接 */
 a:hover {
   color: darkblue;
 }
 
-/* 鼠标悬停时 */
 a:active {
   color: black;
-}
-
-/* 激活（点击）时 */
+} */
 
 input,
 textarea {

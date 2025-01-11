@@ -508,6 +508,15 @@ white-space: nowrap; */
     grid-template-columns: 1fr;
     /* 每行显示1个方块 */
   }
+  #app {
+    display: none!important;
+  }
+  #selectBox {
+    display: none;
+  }
+  .searchEngineButtonContainer button {
+    margin: 0;
+  }
 }
 
 @media (orientation: portrait) {

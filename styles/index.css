@@ -523,6 +523,9 @@ white-space: nowrap; */
   .searchEngineButtonContainer button {
     margin: 0;
   }
+  .sidebar-toc {
+    background-color: #fff;
+  }
 }
 
 @media (orientation: portrait) {

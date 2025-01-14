@@ -33,6 +33,7 @@ body {
   display: flex;
   overflow: hidden;
 }
+
 .left-top {
   /* width: 25%; */
   height: 155px;
@@ -42,6 +43,7 @@ body {
   display: flex;
   align-items: center;
 }
+
 .left-top-logo {
   padding: 5px 10px;
   border-radius: 6px;
@@ -448,6 +450,176 @@ white-space: nowrap; */
     transform: translateX(10px);
   }
 }
+
+
+
+/* ---------------------------------------------------------------- */
+/* <style>Time */
+:root {
+  --font-size: 55px;
+  /* 时钟字体大小 */
+  --center-border: 2px solid #000;
+  /* 翻页中间的边框色 */
+  --col-width: 45px;
+  /* 6个时间块的宽度 */
+  --col-height: 60px;
+  /* 时钟高度 */
+  --col-color: #ddd;
+  /* 时钟字体颜色 */
+  --col-bg: #1a1a1a;
+  /* 时钟背景色 */
+}
+
+body {
+  background-color: var(--body-bg);
+}
+
+/* 容器样式 */
+.clock-container {
+  /* width: 100%; */
+  height: 155px;
+  padding-right: 30px;
+  max-width: 25vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+}
+/* <style>Date */
+.date-container {
+  /* width: 100%; */
+  height: 155px;
+  /* padding-right: 30px; */
+  padding-bottom: 15px;
+  max-width: 25vw;
+  /* margin: 0 auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  /* right: 0; */
+}
+
+.date-display {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+/* </style> */
+
+.time {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: 700;
+  overflow: hidden;
+  height: 100%;
+}
+.time-round-dot {
+  color: white;
+  font-size: 55px;
+  position: absolute;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.col {
+  width: var(--col-width);
+  height: var(--col-height);
+  perspective: var(--col-height);
+}
+
+.col:nth-child(3),
+.col:nth-child(5) {
+  margin-left: 10px;
+}
+
+.curr,
+.next {
+  position: relative;
+  width: var(--col-width);
+  height: calc(var(--col-height) / 2);
+  font-size: var(--font-size);
+  background: var(--col-bg);
+  border-radius: 5px;
+  color: var(--col-color);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.flip .curr::before,
+.flip .next::before,
+.col>.curr::before,
+.col>.next::before {
+  position: absolute;
+  content: attr(data-t);
+  line-height: var(--col-height);
+  text-align: center;
+  height: var(--col-height);
+  left: 0;
+  right: 0;
+}
+
+.flip .curr::before,
+.col>.next::before {
+  top: 0;
+}
+
+.flip .next::before,
+.col>.curr::before {
+  bottom: 0;
+}
+
+.flip .curr,
+.col>.next {
+  border-bottom: var(--center-border);
+}
+
+.flip .next,
+.col>.curr {
+  border-top: var(--center-border);
+}
+
+.flip .next {
+  transform: rotateX(-180deg);
+  backface-visibility: hidden;
+}
+
+.flip .curr {
+  position: absolute;
+  top: 0;
+  backface-visibility: hidden;
+}
+
+.flip {
+  position: absolute;
+  width: var(--col-width);
+  height: var(--col-height);
+  z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform 0s;
+  transform: rotateX(0);
+}
+
+.flip.active {
+  transition: all 0.5s ease-in-out;
+  transform: rotateX(-180deg);
+}
+
+/* </style> */
+
 /* ------------------------从大到小排序（桌面优先设计）---------------------------------- */
 @media (min-width: 1200px) {
   .search-form {
@@ -457,6 +629,7 @@ white-space: nowrap; */
   .sidebar-toc a {
     padding: 0 60px;
   }
+
   .sub-item {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -470,6 +643,7 @@ white-space: nowrap; */
   .sidebar-toc a {
     padding: 0 60px;
   }
+
   .sub-item {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -483,6 +657,7 @@ white-space: nowrap; */
   .sidebar-toc a {
     padding: 0 50px;
   }
+
   .sub-item {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -496,6 +671,7 @@ white-space: nowrap; */
   .sidebar-toc a {
     padding: 0 30px;
   }
+
   .sub-item {
     grid-template-columns: repeat(2, 1fr);
     /* 屏幕宽度小于768px时，每行显示2个方块 */
@@ -510,151 +686,37 @@ white-space: nowrap; */
   .sidebar-toc a {
     padding: 0 20px;
   }
+
   .sub-item {
     grid-template-columns: 1fr;
     /* 每行显示1个方块 */
   }
+
   #app {
-    display: none!important;
+    display: none !important;
   }
+
   #selectBox {
     display: none;
   }
+
   .searchEngineButtonContainer button {
     margin: 0;
   }
+
   .sidebar-toc {
     background-color: #fff;
+  }
+  .clock-container {
+    display: none;
   }
 }
 
 @media (orientation: portrait) {
   /* 竖屏样式 */
 }
+
 @media (orientation: landscape) {
   /* 横屏样式 */
 }
-
-/* ---------------------------------------------------------------- */
-/* <style>Time */
-    :root {
-        --font-size: 55px; /* 时钟字体大小 */
-        --center-border: 2px solid #000; /* 翻页中间的边框色 */
-        --col-width: 45px; /* 6个时间块的宽度 */
-        --col-height: 60px; /* 时钟高度 */
-        --col-color: #ddd; /* 时钟字体颜色 */
-        --col-bg: #1a1a1a; /* 时钟背景色 */
-    }
-
-    body {
-        background-color: var(--body-bg);
-    }
-
-    /* 容器样式 */
-    .clock-container {
-        /* width: 100%; */
-        height: 155px;
-        padding-right: 30px;
-        max-width: 25vw;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        position: absolute;
-        right: 0;
-    }
-
-    .time {
-        display: flex;
-        gap: 5px;
-        justify-content: center;
-        align-items: center;
-        font-family: sans-serif;
-        font-weight: 700;
-        overflow: hidden;
-        height: 100%;
-    }
-
-    .col {
-        width: var(--col-width);
-        height: var(--col-height);
-        perspective: var(--col-height);
-    }
-    .col:nth-child(3),
-    .col:nth-child(5) {
-        margin-left: 10px;
-    }
-
-    .curr,
-    .next {
-        position: relative;
-        width: var(--col-width);
-        height: calc(var(--col-height) / 2);
-        font-size: var(--font-size);
-        background: var(--col-bg);
-        border-radius: 5px;
-        color: var(--col-color);
-        overflow: hidden;
-        box-sizing: border-box;
-    }
-
-    .flip .curr::before,
-    .flip .next::before,
-    .col > .curr::before,
-    .col > .next::before {
-        position: absolute;
-        content: attr(data-t);
-        line-height: var(--col-height);
-        text-align: center;
-        height: var(--col-height);
-        left: 0;
-        right: 0;
-    }
-
-    .flip .curr::before,
-    .col > .next::before {
-        top: 0;
-    }
-
-    .flip .next::before,
-    .col > .curr::before {
-        bottom: 0;
-    }
-
-    .flip .curr,
-    .col > .next {
-        border-bottom: var(--center-border);
-    }
-
-    .flip .next,
-    .col > .curr {
-        border-top: var(--center-border);
-    }
-
-    .flip .next {
-        transform: rotateX(-180deg);
-        backface-visibility: hidden;
-    }
-
-    .flip .curr {
-        position: absolute;
-        top: 0;
-        backface-visibility: hidden;
-    }
-
-    .flip {
-        position: absolute;
-        width: var(--col-width);
-        height: var(--col-height);
-        z-index: 1;
-        transform-style: preserve-3d;
-        transition: transform 0s;
-        transform: rotateX(0);
-    }
-
-    .flip.active {
-        transition: all 0.5s ease-in-out;
-        transform: rotateX(-180deg);
-    }
-/* </style> */
+/* ------------------------------------------------------------------------ */

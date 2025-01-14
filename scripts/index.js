@@ -223,6 +223,30 @@ document.addEventListener("DOMContentLoaded", () => {
     run();
 {/* </script> */}
 
+{/* <script>Date */}
+function updateTime() {
+    const now = new Date();
+
+    // 获取年月日
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // 补零
+    const day = String(now.getDate()).padStart(2, '0'); // 补零
+
+    // 获取星期
+    const options = { weekday: 'long' };
+    const weekday = now.toLocaleDateString('zh-CN', options);
+
+    // 拼接年月日和星期
+    const formattedTime = `${year}年${month}月${day}日 ${weekday}`;
+    document.getElementById('currentDate').textContent = formattedTime;
+}
+
+// 初始化显示
+updateTime();
+
+// 每秒更新一次
+setInterval(updateTime, 1000);
+{/* </script> */}
 
 // search
 // 定义分类和对应的搜索引擎

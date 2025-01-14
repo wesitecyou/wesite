@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 {/* </script> */}
 
 {/* <script>Date */}
-function updateTime() {
+function updateDate() {
     const now = new Date();
 
     // 获取年月日
@@ -242,10 +242,10 @@ function updateTime() {
 }
 
 // 初始化显示
-updateTime();
+updateDate();
 
 // 每秒更新一次
-setInterval(updateTime, 1000);
+setInterval(updateDate, 1000);
 {/* </script> */}
 
 // search

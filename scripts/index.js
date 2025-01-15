@@ -141,13 +141,13 @@ document.addEventListener("DOMContentLoaded", () => {
             sidebarToc.style.position = 'relative';
             sidebarToc.classList.remove("hidden");
             // leftTopLogo.classList.remove("hidden");
-            toggleButton.textContent = "隐藏目录";
+            toggleButton.textContent = "←";
         } else {
             // 隐藏目录
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             // leftTopLogo.classList.add("hidden");
-            toggleButton.textContent = "显示目录";
+            toggleButton.textContent = "→";
         }
         isHidden = !isHidden;
     });

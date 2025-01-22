@@ -1,125 +1,205 @@
 /* ------------------------媒体查询--从大到小排序--桌面优先设计---------------------------------- */
-@media (min-width: 1400px) {
-
-}
+/* 常用屏幕宽度区间
+名称	                    屏幕宽度范围	                    常用设备例子
+超小屏幕 (xs)	            小于 576px	                        手机（竖屏）
+小屏幕 (sm)	                576px 到 767px	                    手机（大屏/横屏）
+中屏幕 (md)	                768px 到 991px	                    平板设备
+大屏幕 (lg)	                992px 到 1199px	                    小型笔记本
+超大屏幕 (xl)	            1200px 及以上	                    桌面显示器 */
 @media (min-width: 1200px) {
+    body {
+        width: 75%;
+    }
     .search-form {
-      width: 40%;
+        width: 40%;
     }
-  
+
     .sidebar-toc a {
-      padding: 0 50px;
+        padding: 0 50px;
     }
-  
+
     .sub-item {
-      grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
-  }
-  
-  @media (min-width: 992px) {
-    .search-form {
-      width: 40%;
-    }
-  
-    .sidebar-toc a {
-      padding: 0 50px;
-    }
-  
-    .sub-item {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .search-form {
-      width: 40%;
-    }
-  
-    .sidebar-toc a {
-      padding: 0 50px;
-    }
-  
-    .sub-item {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 576px) {
-    .search-form {
-      width: 90%;
-    }
-  
-    .sidebar-toc a {
-      padding: 0 30px;
-    }
-  
-    .sub-item {
-      grid-template-columns: repeat(2, 1fr);
-      /* 屏幕宽度小于768px时，每行显示2个方块 */
-    }
-  }
-  /* ==============================================================================================================576px======== */
-  @media (min-width: 0px) {
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
     body {
         width: 100%;
     }
     .search-form {
-      width: 90%;
+        width: 50%;
     }
-  
+
     .sidebar-toc a {
-      padding: 0 20px;
+        padding: 0 50px;
     }
-  
+
     .sub-item {
-      grid-template-columns: 1fr;
-      /* 每行显示1个方块 */
+        grid-template-columns: repeat(4, 1fr);
     }
-  
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    body {
+        width: 100%;
+    }
+    .search-form {
+        width: 75%;
+    }
+
+    .sidebar-toc a {
+        padding: 0 50px;
+    }
+
+    .sub-item {
+        grid-template-columns: repeat(2, 1fr);
+    }
     #app {
-      display: none !important;
+        display: none !important;
     }
-  
+
     #selectBox {
-      display: none;
+        display: none;
     }
-  
-    .searchEngineButtonContainer button {
-      margin: 0;
-    }
-  
+
     .sidebar-toc {
-      background-color: #fff;
+        background-color: #fff;
     }
-  
+
     .clock-container {
-      display: none;
+        display: none;
     }
-  
+
     .sidebar-toc a:hover {
-      font-weight: bold;
-      background-color: unset;
+        font-weight: bold;
+        background-color: unset;
     }
-  
+
     .ctrlButton {
-      padding: 10px 2px;
+        padding: 10px 2px;
     }
-  
+
     button.toggle-toc {
-      padding: 5px;
+        padding: 5px;
     }
-  
+
     button.backToTop {
-      padding: 5px;
+        padding: 5px;
     }
-  }
-  
-  @media (orientation: portrait) {
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    body {
+        width: 100%;
+    }
+
+    .search-form {
+        width: 80%;
+    }
+
+    .sidebar-toc a {
+        padding: 0 30px;
+    }
+
+    .sub-item {
+        grid-template-columns: repeat(2, 1fr);
+        /* 屏幕宽度小于768px时，每行显示2个方块 */
+    }
+
+    #app {
+        display: none !important;
+    }
+
+    #selectBox {
+        display: none;
+    }
+
+    .sidebar-toc {
+        background-color: #fff;
+    }
+
+    .clock-container {
+        display: none;
+    }
+
+    .sidebar-toc a:hover {
+        font-weight: bold;
+        background-color: unset;
+    }
+
+    .ctrlButton {
+        padding: 10px 2px;
+    }
+
+    button.toggle-toc {
+        padding: 5px;
+    }
+
+    button.backToTop {
+        padding: 5px;
+    }
+}
+
+/* ==============================================================================================================576px======== */
+@media (max-width: 576px) {
+    body {
+        width: 100%;
+    }
+
+    .search-form {
+        width: 90%;
+    }
+
+    .sidebar-toc a {
+        padding: 0 20px;
+    }
+
+    .sub-item {
+        grid-template-columns: 1fr;
+        /* 每行显示1个方块 */
+    }
+
+    #app {
+        display: none !important;
+    }
+
+    #selectBox {
+        display: none;
+    }
+
+    .sidebar-toc {
+        background-color: #fff;
+    }
+
+    .clock-container {
+        display: none;
+    }
+
+    .sidebar-toc a:hover {
+        font-weight: bold;
+        background-color: unset;
+    }
+
+    .ctrlButton {
+        padding: 10px 2px;
+    }
+
+    button.toggle-toc {
+        padding: 5px;
+    }
+
+    button.backToTop {
+        padding: 5px;
+    }
+}
+
+@media (orientation: portrait) {
     /* 竖屏样式 */
-  }
-  
-  @media (orientation: landscape) {
+}
+
+@media (orientation: landscape) {
     /* 横屏样式 */
-  }
-  
-  /* ------------------------------------------------------------------------ */
+}
+
+/* ------------------------------------------------------------------------ */

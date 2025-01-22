@@ -419,23 +419,19 @@ white-space: nowrap; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-/* 媒体查询，针对手机设备 */
-@media (max-width: 768px) {
-  .sub-item {
-    grid-template-columns: repeat(2, 1fr);
-    /* 屏幕宽度小于768px时，每行显示2个方块 */
-  }
+.sub-box-title {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 更小的设备，每行一个方块 */
-@media (max-width: 480px) {
-  .sub-item {
-    grid-template-columns: 1fr;
-    /* 每行显示1个方块 */
-  }
-}
+
 
 @keyframes quickBounce {
   0% {
@@ -645,122 +641,3 @@ body {
 
 /* </style> */
 
-/* ------------------------从大到小排序（桌面优先设计）---------------------------------- */
-@media (min-width: 1200px) {
-  .search-form {
-    width: 40%;
-  }
-
-  .sidebar-toc a {
-    padding: 0 50px;
-  }
-
-  .sub-item {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-  .search-form {
-    width: 40%;
-  }
-
-  .sidebar-toc a {
-    padding: 0 50px;
-  }
-
-  .sub-item {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 768px) and (max-width: 992px) {
-  .search-form {
-    width: 40%;
-  }
-
-  .sidebar-toc a {
-    padding: 0 50px;
-  }
-
-  .sub-item {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 576px) and (max-width: 768px) {
-  .search-form {
-    width: 90%;
-  }
-
-  .sidebar-toc a {
-    padding: 0 30px;
-  }
-
-  .sub-item {
-    grid-template-columns: repeat(2, 1fr);
-    /* 屏幕宽度小于768px时，每行显示2个方块 */
-  }
-}
-
-@media (max-width: 576px) {
-  .search-form {
-    width: 90%;
-  }
-
-  .sidebar-toc a {
-    padding: 0 20px;
-  }
-
-  .sub-item {
-    grid-template-columns: 1fr;
-    /* 每行显示1个方块 */
-  }
-
-  #app {
-    display: none !important;
-  }
-
-  #selectBox {
-    display: none;
-  }
-
-  .searchEngineButtonContainer button {
-    margin: 0;
-  }
-
-  .sidebar-toc {
-    background-color: #fff;
-  }
-
-  .clock-container {
-    display: none;
-  }
-
-  .sidebar-toc a:hover {
-    font-weight: bold;
-    background-color: unset;
-  }
-
-  .ctrlButton {
-    padding: 10px 2px;
-  }
-
-  button.toggle-toc {
-    padding: 5px;
-  }
-
-  button.backToTop {
-    padding: 5px;
-  }
-}
-
-@media (orientation: portrait) {
-  /* 竖屏样式 */
-}
-
-@media (orientation: landscape) {
-  /* 横屏样式 */
-}
-
-/* ------------------------------------------------------------------------ */

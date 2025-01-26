@@ -420,8 +420,13 @@ white-space: nowrap; */
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: rgba(255, 255, 255, 0);
 }
-
+.sub-box:hover {
+  background-image: none!important;
+  background-color: black!important;
+  color: white;
+}
 .sub-box-title {
   width: 100%;
   height: 100%;

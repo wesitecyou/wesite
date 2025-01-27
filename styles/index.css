@@ -417,15 +417,31 @@ white-space: nowrap; */
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0);
+  color: #000;
 }
-.sub-box:hover {
-  background-image: none!important;
-  background-color: black!important;
+.sub-box img {
+  height: 50%;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
+}
+
+ .blackbgcwhitetext:hover {
+  background-color: #000!important;
+  color: #fff;
+  font-weight: bold;
+ }
+.weixinlg:hover, .chromelg:hover, .logioptionsplus:hover {
   color: white;
+  font-weight: bold;
+}
+.weixinlg:hover {
+  background-color: #04d166;
+}
+.logioptionsplus:hover {
+  background-color: #ac3fef;
 }
 .sub-box-title {
   width: 100%;

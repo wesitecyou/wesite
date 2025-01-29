@@ -434,7 +434,7 @@ white-space: nowrap; */
   font-weight: bold;
  }
 
-.weixinlg:hover, .chromelg:hover, .logioptionsplus:hover {
+.weixinlg:hover, .logioptionsplus:hover, .firefoxlg:hover, .yuquelg:hover {
   color: white;
   font-weight: bold;
 }
@@ -444,7 +444,12 @@ white-space: nowrap; */
 .logioptionsplus:hover {
   background-color: #ac3fef;
 }
-
+.firefoxlg:hover {
+  background-color: #20123a;
+}
+.yuquelg:hover {
+  background-color: #2bc25b;
+}
 
 .sub-box-title {
   width: 100%;

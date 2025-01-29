@@ -146,12 +146,12 @@ body {
 }
 
 button.toggle-toc {
-  padding: 5px;
+  padding: 6px;
   background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 button.toggle-toc:hover {
@@ -159,12 +159,12 @@ button.toggle-toc:hover {
 }
 
 button.backToTop {
-  padding: 5px;
+  padding: 6px;
   background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
   white-space: nowrap;
 }
 
@@ -427,16 +427,25 @@ white-space: nowrap; */
   border-radius: 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
 }
+.sub-box:hover img {
+  height: 100%;
+  box-shadow: none;
+}
+.sub-box:hover span {
+  display: none;
+}
 
- .blackbgcwhitetext:hover {
-  background-color: #000!important;
-  color: #fff;
-  font-weight: bold;
- }
-
-.weixinlg:hover, .logioptionsplus:hover, .firefoxlg:hover, .yuquelg:hover {
-  color: white;
-  font-weight: bold;
+.applemusiclg:hover {
+  background-color: #fa2a42;
+}
+.githublg:hover {
+  background-color: #060606;
+}
+.qqmaillg:hover {
+  background-color: #ffdd0f;
+}
+.taobaolg:hover {
+  background-color: #ff5000;
 }
 .weixinlg:hover {
   background-color: #04d166;
@@ -449,6 +458,12 @@ white-space: nowrap; */
 }
 .yuquelg:hover {
   background-color: #2bc25b;
+}
+.xhslg:hover {
+  background-color: #ff2442;
+}
+.fliqlolg:hover {
+  background-color: #292929;
 }
 
 .sub-box-title {

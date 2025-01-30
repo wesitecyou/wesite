@@ -7,14 +7,12 @@
 大屏幕 (lg)	                992px 到 1200px	                    小型笔记本
 超大屏幕 (xl)	            1200px 及以上	                    桌面显示器 */
 @media (min-width: 1200px) {
-    body {
-        width: 75%;
-    }
+
     .search-form {
         width: 40%;
     }
 
-    .sidebar-toc a {
+    .toc-links a {
         padding: 0 50px;
     }
 
@@ -24,14 +22,12 @@
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-    body {
-        width: 100%;
-    }
+
     .search-form {
         width: 50%;
     }
 
-    .sidebar-toc a {
+    .toc-links a {
         padding: 0 50px;
     }
 
@@ -41,14 +37,12 @@
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-    body {
-        width: 100%;
-    }
+
     .search-form {
         width: 75%;
     }
 
-    .sidebar-toc a {
+    .toc-links a {
         padding: 0 50px;
     }
 
@@ -90,15 +84,12 @@
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-    body {
-        width: 100%;
-    }
 
     .search-form {
         width: 80%;
     }
 
-    .sidebar-toc a {
+    .toc-links a {
         padding: 0 30px;
     }
 
@@ -143,15 +134,12 @@
 
 /* ==============================================================================================================576px======== */
 @media (max-width: 576px) {
-    body {
-        width: 100%;
-    }
-
+    
     .search-form {
         width: 90%;
     }
 
-    .sidebar-toc a {
+    .toc-links a {
         padding: 0 20px;
     }
 

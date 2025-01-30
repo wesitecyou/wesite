@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="styles/banner.css">
     <link rel="stylesheet" href="styles/media.css">
     <title>小圆同学</title>
 </head>
@@ -17,46 +15,12 @@
 <body>
 
     <div class="two-rows">
-        <div class="header">
-            <div id="app">
 
-            </div>
-
-            <div id="selectBox"></div>
-
-            <div class="left-top"><a href="/"><div class="left-top-logo">小圆同学</div></a></div>
-
-            <div class="category-container" id="categoryContainer">
-                <!-- 分类按钮将动态生成 -->
-            </div>
-
-            <form id="searchForm" method="GET" class="search-form">
-                <input type="text" id="search" placeholder="请输入搜索内容" required>
-                <button type="submit">搜索</button>
-            </form>
-
-            <div class="searchEngineButtonContainer" id="searchEngineContainer">
-                <!-- 搜索引擎按钮将动态生成 -->
-            </div>
-
-            <!-- <div class="clock-container">
-                
-                <div class="time" id="time"></div>
-                <div class="date-container">
-                    <a href="/" class="left-top-logo">find-x.org</a>
-                    <div class="date-display" id="currentDate"></div>
-                </div>
-                <div class="time-round-dot">:</div>
-            </div> -->
-            
-            
-
-        </div>
         <div class="second-line">
             <div class="two-columns">
                 <div class="sidebar-toc">
+                    <a href="/" class="left-top-logo">小圆同学</a>
                     <div class="toc-links">
-                        <!-- <a href="/" class="toggle-color">首页</a> -->
                         <a href="#我的收藏" class="toggle-color">我的收藏</a>
                         <a href="#常用软件" class="toggle-color">常用软件</a>
                         <a href="#在线工具" class="toggle-color">在线工具</a>
@@ -75,9 +39,31 @@
                     </div>
                 </div>
                 <div class="content">
-
+                    <div id="backToTop"></div>
                     <!-- Content will be loaded here -->
-
+                    <div class="header">
+                        <div id="app">
+            
+                        </div>
+            
+                        <div id="selectBox"></div>
+            
+                        
+            
+                        <div class="category-container" id="categoryContainer">
+                            <!-- 分类按钮将动态生成 -->
+                        </div>
+            
+                        <form id="searchForm" method="GET" class="search-form">
+                            <input type="text" id="search" placeholder="请输入搜索内容" required>
+                            <button type="submit">搜索</button>
+                        </form>
+            
+                        <div class="searchEngineButtonContainer" id="searchEngineContainer">
+                            <!-- 搜索引擎按钮将动态生成 -->
+                        </div>
+            
+                    </div>
 
 
                     <div class="main-content">
@@ -299,7 +285,7 @@
             </div>
             <div class="ctrlButton">
                 <button class="toggle-toc">←</button>
-                <button class="backToTop" onclick="window.location.href='#我的收藏'">↑</button>
+                <button class="backToTop" onclick="window.location.href='#backToTop'">↑</button>
                 
             </div>
         </div>

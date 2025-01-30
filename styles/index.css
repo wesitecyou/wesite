@@ -2,33 +2,31 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* 隐藏默认的滚动条样式 */
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE and Edge */
 }
-
-*::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, and Opera */
-}
-
 html {
+  scroll-behavior: smooth;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  line-height: 1.15;
+  overflow: hidden;
   background-color: #f7f7f7;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+img {
+  border: none;
+}
 body {
-  width: 75%;
+  width: 100%;
   height: 100%;
-  overflow-x: hidden;
+
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  margin: auto;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+  align-items: center;
 }
 
 .two-rows {
@@ -44,26 +42,7 @@ body {
   overflow: hidden;
 }
 
-.left-top {
-  /* width: 25%; */
-  height: 155px;
-  position: absolute;
-  left: 0;
-  padding: 0 50px;
-  display: flex;
-  align-items: center;
-}
 
-.left-top-logo {
-  padding: 5px 10px;
-  border-radius: 6px;
-  background-color: #2c2e2f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-}
 
 .two-columns {
   flex: 1;
@@ -72,7 +51,7 @@ body {
   /* padding: 3dvh 0; */
   transition: padding 1s ease, width 1s;
   /* 合并过渡效果 */
-  height: calc(100dvh - 155px);
+  height: 100%;
   overflow: hidden;
   float: left;
   display: flex;
@@ -83,11 +62,11 @@ body {
   position: relative;
   z-index: 999;
 }
-
+/***************************************************************************************************** 边栏 */
 .sidebar-toc {
   /* width: 10%; */
   height: 100%;
-  /* padding: 0 30px; */
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +77,7 @@ body {
   white-space: nowrap;
   opacity: 1;
   position: relative;
-
+  z-index: 1003;
 }
 
 .sidebar-toc.hidden {
@@ -108,103 +87,105 @@ body {
   opacity: 0;
 }
 
+.left-top-logo {
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background-color: #2c2e2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  min-height: 135px;
+  width: 100%;
+}
+.left-top-logo:hover {
+  color: #fff;
+  font-weight: bold;
+  background-color: black;
+}
+
 .toc-links {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   height: 100%;
-  padding: 5% 0;
+  padding-top: 10px;
 }
 
-.sidebar-toc a {
+.toc-links a {
   color: #b2b8be;
   letter-spacing: 1.5px;
   font-size: 16px;
   white-space: nowrap;
   text-decoration: none;
   padding: 0 50px;
-  height: 6%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  margin: 0 10px;
 }
 
-.sidebar-toc a:hover {
+.toc-links a:hover {
   color: #fff;
   font-weight: bold;
-  /* animation: leftRight 0.5s ease-in-out forwards; */
   background-color: black;
-
 }
 
-.sidebar-toc a.active {
+.toc-links a.active {
   color: #ff4500;
   font-weight: bold;
 }
-
-button.toggle-toc {
-  padding: 6px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-button.toggle-toc:hover {
-  background-color: #0056b3;
-}
-
-button.backToTop {
-  padding: 6px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
 .ctrlButton {
   position: fixed;
   bottom: 0;
   right: 0;
   gap: 7px;
-  max-width: 10%;
+  max-width: 60px;
   display: flex;
   flex-direction: column;
   padding: 10px;
+  margin-right: 17px;
   z-index: 1001;
 }
+button.toggle-toc, button.backToTop {
+  padding: 6px;
+  background-color: #fff;
+  color: #18191C;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .08);
+  transition: all .2s;
+}
+button.toggle-toc:hover, button.backToTop:hover {
+  background-color: #E3E5E7;
+}
 
+
+/* *************************************************************************************************************** */
 .content {
   flex: 1;
-  padding: 0 30px;
+  /* padding: 0 60px; */
   /* border: none; */
   border: 0.5px solid rgba(0, 0, 0, 0.2);
   background-color: #f7f7f7;
   height: 100%;
   /* width: 88%; */
-  float: left;
+  /* float: left; */
   /* transition: width 1s; */
   overflow-x: hidden;
   overflow-y: auto;
   transition: margin-left 0.3s ease;
-  /* 隐藏默认的滚动条样式 */
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE and Edge */
+  scroll-behavior: smooth;
 }
-
-.content::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, and Opera */
+#backToTop {
+  width: 100%;
+  height: 0;
 }
-
 .fillBlock {
   width: 100%;
   height: 15px;
@@ -231,10 +212,54 @@ button.backToTop {
   height: 155px;
   background-color: #2c2e2f;
 }
+/* ****************************************************************************************************** banner */
+#app {
+  position: absolute;
+  top: 0;
+  /* right: 0; */
+  overflow: hidden;
+  /* margin: 0 auto; */
+  /* min-width: 1000px; */
+  /* min-height: 155px; */
+  /* height: 10vw; */
+  width: 100%;
+  height: 155px;
+  /* max-height: 240px; */
+  /* z-index: 1; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.layer img {
+  width: 100%;
+}
+img {
+  user-select: none;
+  pointer-events: none;
+}
+
+#selectBox > button {
+  margin-right: 1em;
+}
+/* ****************************************************************************************************** banner */
 
 .main-content {
   width: 100%;
   height: auto;
+  padding: 0 60px;
 }
 
 footer {
@@ -513,175 +538,3 @@ white-space: nowrap; */
     transform: translateX(10px);
   }
 }
-
-
-
-/* ---------------------------------------------------------------- */
-/* <style>Time */
-:root {
-  --font-size: 55px;
-  /* 时钟字体大小 */
-  --center-border: 2px solid #000;
-  /* 翻页中间的边框色 */
-  --col-width: 45px;
-  /* 6个时间块的宽度 */
-  --col-height: 60px;
-  /* 时钟高度 */
-  --col-color: #ddd;
-  /* 时钟字体颜色 */
-  --col-bg: #1a1a1a;
-  /* 时钟背景色 */
-}
-
-body {
-  background-color: var(--body-bg);
-}
-
-/* 容器样式 */
-.clock-container {
-  /* width: 100%; */
-  height: 155px;
-  padding-left: 30px;
-  max-width: 25vw;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-}
-
-/* <style>Date */
-.date-container {
-  /* width: 100%; */
-  height: 155px;
-  padding-top: 10px;
-  padding-bottom: 15px;
-  max-width: 25vw;
-  /* margin: 0 auto; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-  position: absolute;
-  /* right: 0; */
-}
-
-.date-display {
-  font-size: 16px;
-  color: white;
-  font-weight: bold;
-}
-
-/* </style> */
-
-.time {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  font-weight: 700;
-  overflow: hidden;
-  height: 100%;
-}
-
-.time-round-dot {
-  color: white;
-  font-size: 55px;
-  position: absolute;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 12px;
-}
-
-.col {
-  width: var(--col-width);
-  height: var(--col-height);
-  perspective: var(--col-height);
-}
-
-.col:nth-child(3),
-.col:nth-child(5) {
-  margin-left: 10px;
-}
-
-.curr,
-.next {
-  position: relative;
-  width: var(--col-width);
-  height: calc(var(--col-height) / 2);
-  font-size: var(--font-size);
-  background: var(--col-bg);
-  border-radius: 5px;
-  color: var(--col-color);
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.flip .curr::before,
-.flip .next::before,
-.col>.curr::before,
-.col>.next::before {
-  position: absolute;
-  content: attr(data-t);
-  line-height: var(--col-height);
-  text-align: center;
-  height: var(--col-height);
-  left: 0;
-  right: 0;
-}
-
-.flip .curr::before,
-.col>.next::before {
-  top: 0;
-}
-
-.flip .next::before,
-.col>.curr::before {
-  bottom: 0;
-}
-
-.flip .curr,
-.col>.next {
-  border-bottom: var(--center-border);
-}
-
-.flip .next,
-.col>.curr {
-  border-top: var(--center-border);
-}
-
-.flip .next {
-  transform: rotateX(-180deg);
-  backface-visibility: hidden;
-}
-
-.flip .curr {
-  position: absolute;
-  top: 0;
-  backface-visibility: hidden;
-}
-
-.flip {
-  position: absolute;
-  width: var(--col-width);
-  height: var(--col-height);
-  z-index: 1;
-  transform-style: preserve-3d;
-  transition: transform 0s;
-  transform: rotateX(0);
-}
-
-.flip.active {
-  transition: all 0.5s ease-in-out;
-  transform: rotateX(-180deg);
-}
-
-/* </style> */
-

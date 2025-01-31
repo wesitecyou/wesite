@@ -180,6 +180,15 @@
     button.backToTop {
         padding: 5px;
     }
+    .mobi-top-logo {
+        display: block;
+    }
+    button.toggle-toc {
+        display: none;
+    }
+    button.mobi-toggle-toc {
+        display: block;
+      }
 }
 
 @media (orientation: portrait) {

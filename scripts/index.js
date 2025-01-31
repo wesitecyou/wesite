@@ -40,22 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
     const sidebarTocMobi = document.querySelector(".sidebar-toc");
+    const mobiTopLogo = document.querySelector(".mobi-top-logo");
 
-    let isHiddenMobi = true;
+    let isHiddenMobi = false;
 
     toggleButtonMobi.addEventListener("click", () => {
         if (isHiddenMobi) {
-                        // 显示目录
+                        mobiTopLogo.style.display = 'flex';
                         sidebarTocMobi.style.display = 'none';
-                        sidebarTocMobi.classList.add("hidden");
+                        // sidebarTocMobi.classList.add("hidden");
                         toggleButtonMobi.textContent = "→";
                         
 
             
         } else {
-                        // 隐藏目录
-                        sidebarTocMobi.style.display = 'block';
-                        sidebarTocMobi.classList.remove("hidden");
+            mobiTopLogo.style.display = 'none';
+                        sidebarTocMobi.style.display = 'flex';
+                        // sidebarTocMobi.classList.remove("hidden");
                         toggleButtonMobi.textContent = "←";
         }
         isHiddenMobi = !isHiddenMobi;

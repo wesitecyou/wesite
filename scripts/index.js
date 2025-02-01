@@ -41,23 +41,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
     const sidebarTocMobi = document.querySelector(".sidebar-toc");
     const mobiTopLogo = document.querySelector(".mobi-top-logo");
+    const subBoxTitle = document.querySelectorAll(".section h3");
+
 
     let isHiddenMobi = false;
 
     toggleButtonMobi.addEventListener("click", () => {
         if (isHiddenMobi) {
-                        mobiTopLogo.style.display = 'flex';
+                        mobiTopLogo.style.height = '45px';
+                        mobiTopLogo.style.opacity = '1';
                         sidebarTocMobi.style.display = 'none';
                         // sidebarTocMobi.classList.add("hidden");
                         toggleButtonMobi.textContent = "→";
-                        
-
+                        subBoxTitle.forEach((h3) => {
+                            h3.style.textAlign = 'left';
+                        });
             
         } else {
-            mobiTopLogo.style.display = 'none';
+            mobiTopLogo.style.height = '0px';
+            
                         sidebarTocMobi.style.display = 'flex';
                         // sidebarTocMobi.classList.remove("hidden");
                         toggleButtonMobi.textContent = "←";
+                        subBoxTitle.forEach((h3) => {
+                            h3.style.textAlign = 'right';
+                        });
         }
         isHiddenMobi = !isHiddenMobi;
     });

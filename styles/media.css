@@ -169,6 +169,7 @@
     .content {
         padding: 0;
         border: none;
+        background-color: #2c2e2f;
     }
 
     .clock-container {
@@ -177,7 +178,6 @@
 
     .sidebar-toc a:hover {
         font-weight: bold;
-        background-color: unset;
     }
 
     .ctrlButton {
@@ -193,6 +193,8 @@
     }
     .mobi-top-logo {
         display: flex;
+        height: 45px;
+        opacity: 1;
     }
     button.toggle-toc {
         display: none;

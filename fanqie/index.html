@@ -142,10 +142,22 @@
     </div>
 
     <script>
-        // 使用国内可访问的音频资源
-        const clickSound = new Audio('https://cdn.jsdelivr.net/gh/StaticJS/static-sounds@1.0.3/click.mp3');
-        const resetSound = new Audio('https://cdn.jsdelivr.net/gh/StaticJS/static-sounds@1.0.3/tap.mp3');
-        const alarmSound = new Audio('https://cdn.jsdelivr.net/gh/StaticJS/static-sounds@1.0.3/beep.mp3');
+        // 音频生成函数
+        function createBeep(frequency = 440, duration = 0.3) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.type = 'sine';
+            oscillator.frequency.value = frequency;
+            gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + duration);
+        }
 
         let timer;
         let isRunning = false;
@@ -154,6 +166,13 @@
         let pomodoroCount = 0;
 
         const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const counter = document.getElementById('counter');
+        const workTimeInput = document.getElementById('workTime');
+        const breakTimeInput = document.getElementById('breakTime');
+        const soundEnabled = document.getElementById('soundEnabled');
         const settingsToggle = document.getElementById('settingsToggle');
         const settingsPanel = document.getElementById('settingsPanel');
 
@@ -164,17 +183,114 @@
                 '▲ 收起设置' : '▼ 设置';
         });
 
-        // 其他功能保持原有逻辑，仅修改音频引用部分
-        function playSound(sound) {
-            if (document.getElementById('soundEnabled').checked) {
-                sound.currentTime = 0;
-                sound.play().catch(() => {});
+        // 声音控制
+        function playSound(type) {
+            if (!soundEnabled.checked) return;
+            
+            switch(type) {
+                case 'click':
+                    createBeep(523.25, 0.1); // C5
+                    break;
+                case 'reset':
+                    createBeep(261.63, 0.2); // C4
+                    break;
+                case 'alarm':
+                    createBeep(880, 0.5); // A5
+                    break;
             }
         }
 
-        // 剩余代码与之前版本相同，只需替换音频对象引用...
-        // 此处省略重复的JavaScript代码，保持原有计时器逻辑
-        // 完整代码请参考前文实现，替换音频引用即可
+        function updateDisplay() {
+            const minutes = Math.floor(remainingTime / 60).toString().padStart(2, '0');
+            const seconds = (remainingTime % 60).toString().padStart(2, '0');
+            timerDisplay.textContent = `${minutes}:${seconds}`;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(() => {
+                    remainingTime--;
+                    updateDisplay();
+                    
+                    if (remainingTime <= 0) {
+                        clearInterval(timer);
+                        isRunning = false;
+                        playSound('alarm');
+                        
+                        if (isWorkTime) {
+                            pomodoroCount++;
+                            counter.textContent = `已完成番茄钟：${pomodoroCount}`;
+                            remainingTime = (pomodoroCount % 4 === 0 ? 15 : breakTimeInput.value) * 60;
+                        } else {
+                            remainingTime = workTimeInput.value * 60;
+                        }
+                        
+                        isWorkTime = !isWorkTime;
+                        startTimer();
+                    }
+                }, 1000);
+            }
+            
+            startBtn.disabled = true;
+            pauseBtn.disabled = false;
+        }
+
+        function pauseTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            startBtn.disabled = false;
+            pauseBtn.disabled = true;
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            isWorkTime = true;
+            remainingTime = workTimeInput.value * 60;
+            pomodoroCount = 0;
+            counter.textContent = '已完成番茄钟：0';
+            updateDisplay();
+            startBtn.disabled = false;
+            pauseBtn.disabled = true;
+        }
+
+        // 事件监听
+        startBtn.addEventListener('click', () => {
+            playSound('click');
+            startTimer();
+        });
+        pauseBtn.addEventListener('click', () => {
+            playSound('click');
+            pauseTimer();
+        });
+        resetBtn.addEventListener('click', () => {
+            playSound('reset');
+            resetTimer();
+        });
+
+        // 输入验证
+        function validateInput(input) {
+            let value = parseInt(input.value);
+            if (isNaN(value) || value < 1) input.value = 1;
+            if (value > 600) input.value = 600;
+        }
+
+        workTimeInput.addEventListener('change', () => {
+            validateInput(workTimeInput);
+            if (!isRunning && isWorkTime) {
+                remainingTime = workTimeInput.value * 60;
+                updateDisplay();
+            }
+        });
+
+        breakTimeInput.addEventListener('change', () => {
+            validateInput(breakTimeInput);
+            if (!isRunning && !isWorkTime) {
+                remainingTime = breakTimeInput.value * 60;
+                updateDisplay();
+            }
+        });
     </script>
 </body>
 </html>

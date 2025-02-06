@@ -108,10 +108,9 @@ body {
 .toc-links {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
-  padding-top: 10px;
 }
 
 .toc-links a {
@@ -121,7 +120,7 @@ body {
   white-space: nowrap;
   text-decoration: none;
   padding: 0 50px;
-  /* height: 100%; */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -459,14 +458,6 @@ form button:hover {
 }
 .sub-box:hover span {
   display: none;
-}
-.sub-links {
-  display: none; /* 默认隐藏子链接 */
-  padding-left: 20px; /* 缩进子链接 */
-}
-
-.sub-links.show {
-  display: block; /* 显示子链接 */
 }
 
 .applemusiclg:hover {

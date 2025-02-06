@@ -70,12 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
         isHiddenMobi = !isHiddenMobi;
     });
 });
-// ----------------------------------
-document.getElementById('toggle-catalog').addEventListener('click', function(event) {
-    event.preventDefault(); // 阻止默认的链接跳转行为
-    var subLinks = document.getElementById('sub-links');
-    subLinks.classList.toggle('show'); // 切换显示/隐藏子链接
-});
 
 // search
 // 定义分类和对应的搜索引擎

@@ -191,11 +191,7 @@
     button.backToTop {
         padding: 5px;
     }
-    .mobi-top-logo {
-        display: flex;
-        height: 45px;
-        opacity: 1;
-    }
+
     button.toggle-toc {
         display: none;
     }

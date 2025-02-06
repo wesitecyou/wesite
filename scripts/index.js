@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleButton.addEventListener("click", () => {
         if (isHidden) {
-            // 显示目录
             sidebarToc.style.position = 'relative';
             sidebarToc.classList.remove("hidden");
             toggleButton.textContent = "←";
+            toggleButton.title = "收起目录";
         } else {
-            // 隐藏目录
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "→";
+            toggleButton.title = "展开目录";
         }
         isHidden = !isHidden;
     });
@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
     const sidebarTocMobi = document.querySelector(".sidebar-toc");
-    const mobiTopLogo = document.querySelector(".mobi-top-logo");
     const subBoxTitle = document.querySelectorAll(".section h3");
 
 
@@ -48,21 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleButtonMobi.addEventListener("click", () => {
         if (isHiddenMobi) {
-                        mobiTopLogo.style.height = '45px';
-                        mobiTopLogo.style.opacity = '1';
                         sidebarTocMobi.style.display = 'none';
-                        // sidebarTocMobi.classList.add("hidden");
                         toggleButtonMobi.textContent = "→";
+                        toggleButtonMobi.title = "展开目录";
                         subBoxTitle.forEach((h3) => {
                             h3.style.textAlign = 'left';
                         });
             
         } else {
-            mobiTopLogo.style.height = '0px';
-            
                         sidebarTocMobi.style.display = 'flex';
-                        // sidebarTocMobi.classList.remove("hidden");
                         toggleButtonMobi.textContent = "←";
+                        toggleButtonMobi.title = "收起目录";
                         subBoxTitle.forEach((h3) => {
                             h3.style.textAlign = 'right';
                         });

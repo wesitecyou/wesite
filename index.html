@@ -15,12 +15,13 @@
 <body>
 
     <div class="two-rows">
-
+        <div class="nav-column"><span>小圆同学</span><span>关于</span></div>
         <div class="second-line">
             <div class="two-columns">
                 <div class="sidebar-toc">
                     <a href="/" class="left-top-logo">小圆同学</a>
                     <div class="toc-links">
+                        <a href="#搜索" class="toggle-color">搜索</a>
                         <a href="#我的收藏" class="toggle-color">我的收藏</a>
                         <a href="#常用软件" class="toggle-color">常用软件</a>
                         <a href="#在线工具" class="toggle-color">在线工具</a>
@@ -39,10 +40,10 @@
                     </div>
                 </div>
                 <div class="content">
-                    <div id="backToTop"></div>
-                    <a href="/">
-                        <div class="mobi-top-logo">小圆同学</div>
-                    </a>
+                    <div id="top" class="anchor-point"></div>
+                    
+                        
+                        <div id="搜索" class="anchor-point"></div>
                     <div class="header">
                         <div id="app">
 
@@ -627,9 +628,9 @@
                 </div>
             </div>
             <div class="ctrlButton">
-                <button class="toggle-toc">←</button>
-                <button class="mobi-toggle-toc">→</button>
-                <button class="backToTop" onclick="window.location.href='#backToTop'">↑</button>
+                <button title="收起目录" class="toggle-toc">←</button>
+                <button title="展开目录" class="mobi-toggle-toc">→</button>
+                <button title="回到顶部" class="back-to-top" onclick="window.location.href='#top'">↑</button>
 
             </div>
         </div>

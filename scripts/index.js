@@ -18,6 +18,7 @@ toggleColorLinks.forEach(link => {
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.querySelector(".toggle-toc");
     const sidebarToc = document.querySelector(".sidebar-toc");
+    const navColumn = document.querySelector(".nav-column");
 
     let isHidden = false;
 
@@ -27,11 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
             sidebarToc.classList.remove("hidden");
             toggleButton.textContent = "←";
             toggleButton.title = "收起目录";
+            navColumn.style.width = "calc(100vw - 200px)";
         } else {
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "→";
             toggleButton.title = "展开目录";
+            navColumn.style.width = "100%";
         }
         isHidden = !isHidden;
     });

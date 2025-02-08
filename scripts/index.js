@@ -28,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
             sidebarToc.classList.remove("hidden");
             toggleButton.textContent = "←";
             toggleButton.title = "收起目录";
-            navColumn.style.width = "calc(100vw - 200px)";
+            // navColumn.style.width = "calc(100vw - 200px)";
         } else {
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "→";
             toggleButton.title = "展开目录";
-            navColumn.style.width = "100%";
+            // navColumn.style.width = "100%";
         }
         isHidden = !isHidden;
     });

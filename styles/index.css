@@ -113,14 +113,14 @@ body {
   align-items: center;
   color: white;
   font-weight: bold;
-  width: 180px;
-  min-height: 101.25px;
+  width: 190px;
+  min-height: 109.112903225806451612903225806452px;
   padding: 10px;
 }
 
 .sidebar-top-logo img {
   height: auto;
-  width: 160px;
+  width: 170px;
   border-radius: 10px;
 }
 
@@ -129,7 +129,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 180px;
+  width: 190px;
   height: 100%;
   padding: 10px;
   /* border: 1px solid gray; */
@@ -143,8 +143,8 @@ body {
   font-size: 16px;
   white-space: nowrap;
   text-decoration: none;
-  padding: 0 50px;
-  width: 160px;
+  /* padding: 0 50px; */
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -165,11 +165,9 @@ body {
 .ctrlButton {
   position: fixed;
   gap: 7px;
-  /* max-width: 60px; */
   display: flex;
   flex-direction: column;
   padding: 10px;
-  /* margin-right: 27px; */
   right: 27px;
   bottom: 20px;
   z-index: 1001;
@@ -177,10 +175,9 @@ body {
 button.mobi-toggle-toc {
   display: none;
 }
-button.toggle-toc, button.mobi-toggle-toc, button.back-to-top {
+button.toggle-toc, button.mobi-toggle-toc, button.back-to-the-top, button.go-to-the-bottom {
   width: 40px;
   height: 40px;
-  /* padding: 10px; */
   background-color: #fff;
   color: #18191C;
   border: none;
@@ -190,7 +187,7 @@ button.toggle-toc, button.mobi-toggle-toc, button.back-to-top {
   box-shadow: 0 0 10px rgba(0, 0, 0, .08);
   transition: all .2s;
 }
-button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-top:hover {
+button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:hover, button.go-to-the-bottom:hover {
   background-color: #E3E5E7;
 }
 
@@ -224,32 +221,24 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-top:hover 
   min-height: 50px;
   width: 100%;
   padding: 0 20px;
-  /* border-bottom: 0.5px solid gray; */
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
   opacity: 1;
   transition: height 0.5s ease, opacity 0.5s ease;
-  gap: 10px;
   font-weight: bold;
   background-color: #fff;
   color: #000;
   z-index: 1090;
 }
+
 .fillBlock {
   width: 100%;
-  height: 15px;
+  min-height: 10px;
+  max-height: 10px;
 }
 .fillBlock:target {
-  padding-top: 65px; /* 根据顶部元素高度调整 */
+  padding-top: 60px; /* 根据顶部元素高度调整 */
   margin-top: -50px; /* 抵消额外空间 */
-}
-.anchor-point:target {
-  padding-top: 50px; /* 根据顶部元素高度调整 */
-  margin-top: -50px; /* 抵消额外空间 */
-}
-
-.section h3 {
-  margin: 0 0 15px 0;
-  text-align: left;
 }
 
 .three-rows {
@@ -263,72 +252,36 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-top:hover 
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 170px;
+  /* min-height: 170px; */
   background-color: #fff;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   border-radius: 10px;
+  padding: 10px;
 }
-/* ****************************************************************************************************** banner */
-#app {
-  position: absolute;
-  top: 0;
-  /* right: 0; */
-  overflow: hidden;
-  /* margin: 0 auto; */
-  /* min-width: 1000px; */
-  /* min-height: 155px; */
-  /* height: 10vw; */
-  width: 100%;
-  height: 155px;
-  /* max-height: 240px; */
-  /* z-index: 1; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.layer {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.layer img {
-  width: 100%;
-}
-img {
-  user-select: none;
-  pointer-events: none;
-}
-
-#selectBox > button {
-  margin-right: 1em;
-}
-/* ****************************************************************************************************** banner */
 
 .main-content {
   width: 100%;
   height: auto;
-  padding: 15px 60px;
-  background-color: #fff;
+  background-color: #eee;
   border-radius: 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 60px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-footer {
+.footer {
   width: 100%;
   /* min-height: 150px; */
   padding: 10px;
-  margin-top: 10px;
   background-color: #fff;
   border-radius: 10px 10px 0 0;
 }
@@ -474,7 +427,7 @@ form button:hover {
 
 .sub-item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   /* 默认每行显示4个方块 */
   gap: 30px;
 }

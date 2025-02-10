@@ -15,14 +15,18 @@
 <body>
 
     <div class="two-rows">
-        
+
         <div class="second-line">
             <div class="two-columns">
                 <div class="sidebar-toc">
-                    
-                    <a title="点击返回首页并复制链接到剪贴板" href="/" class="sidebar-top-logo" onclick="navigator.clipboard.writeText(this.textContent)"><div class="sidebar-site-title"><span>小</span><span>圆</span><span>同</span><span>学</span></div><img src="https://s2.loli.net/2025/02/08/GBCyYL2KX3HjrU5.gif"></a>
+
+                    <a title="点击返回首页并复制链接到剪贴板" href="/" class="sidebar-top-logo"
+                        onclick="navigator.clipboard.writeText(this.textContent)">
+                        <!-- <div class="sidebar-site-title"><span>小</span><span>圆</span><span>同</span><span>学</span></div> -->
+                        <img src="https://s2.loli.net/2025/02/08/GBCyYL2KX3HjrU5.gif">
+                    </a>
                     <div class="toc-links">
-                        <a href="#搜索" class="toggle-color">搜索</a>
+                        <a href="#top" class="toggle-color">搜索</a>
                         <a href="#我的收藏" class="toggle-color">我的收藏</a>
                         <a href="#常用软件" class="toggle-color">常用软件</a>
                         <a href="#在线工具" class="toggle-color">在线工具</a>
@@ -39,22 +43,31 @@
                         <a href="#编程开发" class="toggle-color">编程开发</a>
                         <a href="#申请收录" class="toggle-color">申请收录</a>
                     </div>
-                    
-                    
+
+
                 </div>
-                
+
                 <div class="content">
-                    
+
                     <div id="top" class="fillBlock"></div>
-                    <div class="nav-column">
-                        
-                        <span>小圆同学</span><span>关于</span>
-                        
+                    <div class="nav-column" onclick="window.location.href='#top'">
+
+                        <span>
+                            <span>小圆同学</span>
+                            <span>首页</span>
+                            <span>搜索</span>
+                            <span>热搜</span>
+                        </span>
+                        <span>
+                            <span>博客</span>
+                            <span>关于</span>
+                        </span>
+
                     </div>
-                    
-                    <div id="搜索" class="fillBlock"></div>
+
+                    <div class="fillBlock"></div>
                     <div class="header">
-                        
+                        <img src="https://s2.loli.net/2025/02/10/fTeHMEWrsS1O9RI.jpg" style="position: absolute; border-radius: 10px; width: 100%; height: 100%; object-fit: cover;">
                         <div class="category-container" id="categoryContainer">
                             <!-- 分类按钮将动态生成 -->
                         </div>
@@ -67,12 +80,46 @@
                         <div class="searchEngineButtonContainer" id="searchEngineContainer">
                             <!-- 搜索引擎按钮将动态生成 -->
                         </div>
-                        
-                        
+                        <div class="section">
+                            
+                            <div class="sub-item">
+                                <a title="哔哩哔哩" href="https://www.bilibili.com" target="_blank"
+                                    class="sub-box bilibililg"><img
+                                        src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/63/05/1f/63051fb5-9ef9-9f4b-5d00-c88fe0d01105/AppIcon-inter-0-0-1x_U007ephone-0-0-0-85-220.png/350x350.png?"><span>哔哩哔哩</span></a>
+
+                                <a title="小红书 - 你的生活指南" target="_blank" class="sub-box xhslg"><img
+                                        src="https://s2.loli.net/2025/01/27/a3hwfCrTEybUvQ5.webp"><span>小红书</span></a>
+
+                                <a title="深度求索 (DeepSeek) 助力编程代码开发、创意写作、文件处理等任务, 支持文件上传及长文本对话, 随时为您提供高效的AI支持。"
+                                    target="_blank" class="sub-box deepseeklg"><img
+                                        src="https://s2.loli.net/2025/01/29/kqTWmL8wt4gyXzj.webp"><span>DeepSeek</span></a>
+
+                                <a title="Apple Music" href="https://music.apple.com/cn/new" target="_blank"
+                                    class="sub-box applemusiclg"><img
+                                        src="https://s2.loli.net/2025/01/27/1DzeiBmCAH8Ugfv.webp"><span>Apple
+                                        Music</span></a>
+
+                                <a title="Google" target="_blank" class="sub-box"><img
+                                        src="https://s2.loli.net/2025/01/29/DeuCYmSvWazL6iP.webp"><span>Google</span></a>
+
+                                <a title="GitHub是一个在线软件源代码托管服务平台, 用于公开程序或软件的代码。" target="_blank"
+                                    class="sub-box githublg"><img
+                                        src="https://s2.loli.net/2025/01/29/M4Vp2ey5XIhxr86.webp"><span>GitHub</span></a>
+
+                                <a title="QQ邮箱, 常联系!" href="https://wx.mail.qq.com/" target="_blank"
+                                    class="sub-box qqmaillg"><img
+                                        src="https://s2.loli.net/2025/01/27/HeBASnrGIWakTMF.webp"><span>QQ邮箱</span></a>
+
+                                <a title="万能的淘宝" href="https://www.taobao.com/" target="_blank"
+                                    class="sub-box taobaolg"><img
+                                        src="https://s2.loli.net/2025/01/27/El8XSGkKp3ZU7ar.webp"><span>淘宝</span></a>
+                            </div>
+                        </div>
+
                     </div>
                     <div id="我的收藏" class="fillBlock"></div>
                     <div class="main-content">
-                        
+
                         <div class="section">
                             <h3>我的收藏</h3>
                             <div class="sub-item">
@@ -618,14 +665,14 @@
                                         src="https://s2.loli.net/2025/01/27/El8XSGkKp3ZU7ar.webp"><span>淘宝</span></a>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div id="bottom" class="fillBlock"></div>
                     <div class="footer">
                         <p>&copy; 2024 保护鸟类. 版权所有.</p>
 
                     </div>
-                   
+
                 </div>
             </div>
             <div class="ctrlButton">

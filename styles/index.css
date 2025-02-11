@@ -120,7 +120,7 @@ body {
 
 .sidebar-top-logo img {
   height: auto;
-  width: 170px;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -213,7 +213,7 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
 }
 .nav-column {
   position: sticky;
-  top: -2px;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -221,20 +221,30 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   min-height: 50px;
   width: 100%;
   padding: 0 20px;
+  margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
   opacity: 1;
   transition: height 0.5s ease, opacity 0.5s ease;
   font-weight: bold;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   z-index: 1090;
 }
+
 .nav-column span {
   display: flex;
   gap: 20px;
 }
-
+.top-black-line {
+  width: 100%;
+  min-height: 1px;
+  max-height: 1px;
+  background-color: #eee;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
 .fillBlock {
   width: 100%;
   min-height: 10px;
@@ -259,12 +269,12 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - 82px);
+  min-height: calc(100vh - 80px);
   /* min-height: 170px; */
   background-color: #2c2e2f;
-  /* margin-top: 10px; */
   border-radius: 10px;
   padding: 10px;
+  margin-top: 10px;
 }
 
 .main-content {
@@ -368,7 +378,7 @@ form button:hover {
 .category-container .category-button {
   border: none;
   padding: 0 5px;
-  color: #b2b8be;
+  color: #fff;
   /* text-shadow: 0 0 10px rgba(0, 0, 0, 1); */
   background-color: rgba(255, 255, 255, 0);
   display: inline-block;
@@ -408,7 +418,7 @@ form button:hover {
   border-radius: 10px;
   padding: 0 10px;
   white-space: nowrap;
-  color: #b2b8be;
+  color: #fff;
   /* text-shadow: 0 0 10px rgba(0, 0, 0, 1); */
   background-color: rgba(255, 255, 255, 0);
   transition: transform 0.5s ease-in-out;

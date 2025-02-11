@@ -18,7 +18,7 @@ toggleColorLinks.forEach(link => {
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.querySelector(".toggle-toc");
     const sidebarToc = document.querySelector(".sidebar-toc");
-    const navColumn = document.querySelector(".nav-column");
+    
 
     let isHidden = false;
 
@@ -28,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
             sidebarToc.classList.remove("hidden");
             toggleButton.textContent = "←";
             toggleButton.title = "收起目录";
-            // navColumn.style.width = "calc(100vw - 200px)";
+            
         } else {
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "→";
             toggleButton.title = "展开目录";
-            // navColumn.style.width = "100%";
+            
         }
         isHidden = !isHidden;
     });
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
     const sidebarTocMobi = document.querySelector(".sidebar-toc");
-    const subBoxTitle = document.querySelectorAll(".section h3");
+    const contentMobi = document.querySelector(".content");
 
 
     let isHiddenMobi = false;
@@ -53,17 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         sidebarTocMobi.style.display = 'none';
                         toggleButtonMobi.textContent = "→";
                         toggleButtonMobi.title = "展开目录";
-                        subBoxTitle.forEach((h3) => {
-                            h3.style.textAlign = 'left';
-                        });
+                        contentMobi.style.minWidth = "100%";
             
         } else {
                         sidebarTocMobi.style.display = 'flex';
                         toggleButtonMobi.textContent = "←";
                         toggleButtonMobi.title = "收起目录";
-                        subBoxTitle.forEach((h3) => {
-                            h3.style.textAlign = 'right';
-                        });
+                        contentMobi.style.minWidth = "calc(100% - 100px)";
+                        
         }
         isHiddenMobi = !isHiddenMobi;
     });

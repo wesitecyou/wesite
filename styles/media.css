@@ -1,19 +1,4 @@
-@media (min-width: 1200px) {
-
-    .search-form {
-        width: 40%;
-    }
-
-    .toc-links a {
-        padding: 0 50px;
-    }
-
-    .sub-item {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 992px) {
 
     .search-form {
         width: 50%;
@@ -24,58 +9,11 @@
     }
 
     .sub-item {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(8, 1fr);
     }
 }
 
-@media (min-width: 768px) and (max-width: 992px) {
-
-    .search-form {
-        width: 75%;
-    }
-
-    .toc-links a {
-        padding: 0 50px;
-    }
-
-    .sub-item {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    #app {
-        display: none !important;
-    }
-
-    #selectBox {
-        display: none;
-    }
-
-    .sidebar-toc {
-        background-color: #fff;
-    }
-
-    .clock-container {
-        display: none;
-    }
-
-    .sidebar-toc a:hover {
-        font-weight: bold;
-        background-color: unset;
-    }
-
-    .ctrlButton {
-        padding: 10px 2px;
-    }
-
-    button.toggle-toc {
-        padding: 5px;
-    }
-
-    button.backToTop {
-        padding: 5px;
-    }
-}
-
-@media (min-width: 576px) and (max-width: 768px) {
+@media (min-width: 576px) and (max-width: 992px) {
 
     .search-form {
         width: 80%;
@@ -86,7 +24,7 @@
     }
 
     .sub-item {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         /* 屏幕宽度小于768px时，每行显示2个方块 */
     }
 
@@ -145,20 +83,20 @@
         padding: 0 10px;
     }
 
-    #app {
-        display: none !important;
-    }
-
-    #selectBox {
-        display: none;
-    }
-
     .sidebar-toc {
-        background-color: #fff;
+        width: 100px;
         display: none;
-        position: absolute;
+        overflow: hidden;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+    .sidebar-top-logo {
+        width: 90px;
+    }
+    .toc-links {
+        width: 90px;
     }
     .content {
+        min-width: 100%;
         padding: 0;
         border: none;
         background-color: #2c2e2f;
@@ -190,14 +128,6 @@
     button.mobi-toggle-toc {
         display: block;
       }
-}
-
-@media (orientation: portrait) {
-    /* 竖屏样式 */
-}
-
-@media (orientation: landscape) {
-    /* 横屏样式 */
 }
 
 /* ------------------------------------------------------------------------ */

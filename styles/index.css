@@ -65,13 +65,14 @@ body {
 }
 /***************************************************************************************************** 边栏 */
 .sidebar-site-title {
-  width: 180px;
-  min-height: 45px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  min-height: 25%;
+  max-height: 25%;
   padding: 0 10px;
-  /* border-bottom: 1px solid gray; */
   color: #fff;
   font-weight: 600;
-  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -106,6 +107,7 @@ body {
 }
 
 .sidebar-top-logo {
+  position: relative;
   border-radius: 10px;
   background-color: #fff;
   display: flex;
@@ -187,6 +189,11 @@ button.toggle-toc, button.mobi-toggle-toc, button.back-to-the-top, button.go-to-
   box-shadow: 0 0 10px rgba(0, 0, 0, .08);
   transition: all .2s;
 }
+.back-to-the-top {
+  position: fixed;
+  bottom: 15px;
+  right: 32px;
+}
 button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:hover, button.go-to-the-bottom:hover {
   background-color: #E3E5E7;
 }
@@ -215,35 +222,52 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   position: sticky;
   top: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 50px;
+  max-height: 50px;
   width: 100%;
   padding: 0 20px;
   margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
   opacity: 1;
-  transition: height 0.5s ease, opacity 0.5s ease;
-  font-weight: bold;
+  transition: height 0.5s ease, opacity 0.5s ease, border-radius 0s ease;
   background-color: #fff;
-  color: #000;
   z-index: 1090;
 }
 
-.nav-column span {
-  display: flex;
-  gap: 20px;
-}
+
 .top-black-line {
+  display: none;
+  position: absolute;
+  top: -2px;
   width: 100%;
-  min-height: 1px;
-  max-height: 1px;
-  background-color: #eee;
-  position: fixed;
-  top: 0;
+  min-height: 3px;
+  max-height: 3px;
+  background-color: #fff;
   z-index: 9999;
+}
+.nav-column-links {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-column-links span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+  color: #000;
+}
+.content-top-title {
+  display: none;
 }
 .fillBlock {
   width: 100%;
@@ -266,7 +290,7 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 80px);
@@ -282,9 +306,10 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   height: auto;
   background-color: #fff;
   border-radius: 10px;
+  padding: 0 30px;
   /* margin-top: 10px; */
 }
-.section {
+.section, .section-header {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -294,13 +319,22 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   border-radius: 10px;
   background-color: transparent;
 }
-
+/* .section-header {
+  margin-top: 100px;
+} */
 .footer {
+  position: relative;
   width: 100%;
-  /* min-height: 150px; */
-  padding: 10px;
+  min-height: 50px;
+  max-height: 50px;
+  padding: 0 20px;
+  margin-bottom: 10px;
   background-color: #fff;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search-form {
@@ -449,9 +483,8 @@ form button:hover {
   gap: 20px;
 }
 
-.sub-box {
+.sub-box, .sub-box-header {
   background-color: #fff;
-  height: 90px;
   border: 0.5px solid #dad4cb;
   border-radius: 10px;
   background-size: contain;
@@ -464,16 +497,22 @@ form button:hover {
   cursor: pointer;
   color: #000;
 }
-.sub-box img {
+.sub-box {
+  height: 80px;
+}
+.sub-box-header {
+  height: 90px;
+}
+.sub-box img, .sub-box-header img {
   height: 50%;
   border-radius: 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
 }
-.sub-box:hover img {
+.sub-box:hover img, .sub-box-header:hover img {
   height: 100%;
   box-shadow: none;
 }
-.sub-box:hover span {
+.sub-box:hover span, .sub-box-header:hover span {
   display: none;
 }
 

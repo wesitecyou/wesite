@@ -1,24 +1,8 @@
-// toggle-color
-// 获取所有链接元素，类名为 toggle-color
-const toggleColorLinks = document.querySelectorAll('.toggle-color');
-
-// 为每个链接添加点击事件
-toggleColorLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        // 先移除所有链接的高亮样式
-        toggleColorLinks.forEach(l => l.classList.remove('active'));
-
-        // 给当前点击的链接添加高亮样式
-        this.classList.add('active');
-    });
-});
-
-
-// sidebar
 document.addEventListener("DOMContentLoaded", () => {
+    // sidebar
     const toggleButton = document.querySelector(".toggle-toc");
     const sidebarToc = document.querySelector(".sidebar-toc");
-    
+    const contentTopTitle = document.querySelector(".content-top-title");
 
     let isHidden = false;
 
@@ -28,19 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
             sidebarToc.classList.remove("hidden");
             toggleButton.textContent = "←";
             toggleButton.title = "收起目录";
+            contentTopTitle.style.display = 'none';
             
         } else {
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "→";
             toggleButton.title = "展开目录";
-            
+            contentTopTitle.style.display = 'flex';
         }
         isHidden = !isHidden;
     });
-});
+
 // mobi-sidebar
-document.addEventListener("DOMContentLoaded", () => {
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
     const sidebarTocMobi = document.querySelector(".sidebar-toc");
     const contentMobi = document.querySelector(".content");
@@ -64,7 +48,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         isHiddenMobi = !isHiddenMobi;
     });
+
+    // 元素在滑动到顶部时改变 border-radius，并在脱离顶部时恢复原状
+    const scrollContainer = document.querySelector('.content');
+    const navColumn = document.querySelector('.nav-column');
+    const topBlackLine = document.querySelector('.top-black-line');
+    
+    scrollContainer.addEventListener('scroll', () => {
+      const rect = navColumn.getBoundingClientRect();
+    
+      if (rect.top <= 0) {
+        navColumn.style.borderRadius = '0 0 10px 10px';
+        topBlackLine.style.display = 'block';
+      } else {
+        navColumn.style.borderRadius = '10px';
+        topBlackLine.style.display = 'none';
+      }
+    });
+
+    // toggle-color
+// 获取所有链接元素，类名为 toggle-color
+const toggleColorLinks = document.querySelectorAll('.toggle-color');
+
+// 为每个链接添加点击事件
+toggleColorLinks.forEach(link => {
+    link.addEventListener('click', function () {
+        // 先移除所有链接的高亮样式
+        toggleColorLinks.forEach(l => l.classList.remove('active'));
+
+        // 给当前点击的链接添加高亮样式
+        this.classList.add('active');
+    });
 });
+
+});
+
+
 
 // search
 // 定义分类和对应的搜索引擎

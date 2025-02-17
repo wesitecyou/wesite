@@ -1,9 +1,5 @@
 @media (min-width: 992px) {
 
-    .search-form {
-        width: 50%;
-    }
-
     .toc-links a {
         padding: 0 50px;
     }

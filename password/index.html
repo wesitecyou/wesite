@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机密码生成器</title>
+    <link rel="stylesheet" type="" text/css" href="../styles/normalize.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .toolconcentcontainer {
+            width: 50%;
+            background-color: white;
+            margin-top: 100px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            border-radius: 5px;
+        }
+
+        .password {
+            font-size: 1.2em;
+            margin: 1%;
+            word-break: break-all;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .password > span {
+            display: flex;
+            gap: 2px;
+        }
+        .tooltip {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .tooltip.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .uppercase {
+            font-weight: bold;
+            color: black;
+        }
+
+        .lowercase {
+            color: black;
+        }
+
+        .number {
+            color: red;
+        }
+
+        .symbol {
+            color: blue;
+        }
+
+        .passwdlength,
+        .textoptions,
+        .passwdactionbutton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1%;
+        }
+
+        .passwdactionbutton button {
+            cursor: pointer;
+            background-color: #07c160;
+            font-size: 15px;
+            border-radius: 6px;
+            padding: 8px 12px;
+            border: none;
+        }
+
+        .generatebutton {
+            background-color: #07c160;
+            color: white;
+        }
+
+        .generatebutton:hover {
+            background-color: #06ad56;
+        }
+
+        .copybutton {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+            color: black !important;
+            margin-left: 10px;
+        }
+
+        .copybutton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .deletebutton {
+            border-radius: 5px;
+            padding: 5px 10px;
+            background-color: #fa5151 !important;
+            color: white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="toolconcentcontainer">
+        <h1>随机密码生成器</h1>
+        <h2 style="margin-bottom: 1%;">字符选项</h2>
+        <div class="passwdlength">
+            <label for="length">密码长度:&nbsp;&nbsp;</label>
+            <input type="number" id="length" name="length" min="6" max="32" value="10" oninput="checkLength()">
+        </div>
+
+        <div class="textoptions">
+            字符选项:&nbsp;&nbsp;
+            <label><input type="checkbox" id="uppercase" checked> 大写字母</label>
+            <label><input type="checkbox" id="lowercase" checked> 小写字母</label>
+            <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
+            <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
+        </div>
+
+        <div class="password" id="password"></div>
+        <div class="passwdactionbutton">
+            <button class="generatebutton" onclick="generatePassword()">生成密码</button>
+            <button class="copybutton" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
+        </div>
+        <div class="tooltip" id="copyTooltip"></div>
+    </div>
+
+    <script defer>
+        // 定义安全字符集（排除易混淆字符）
+        const SAFE_CHARS = {
+            uppercase: 'ABCDEFGHJKLMNOPQRSTUVWXYZ',  // 排除 I
+            lowercase: 'abcdefghijkmnopqrstuvwxyz',  // 排除 l
+            numbers: '234567890',                    // 排除 1
+            symbols: '!@#$%^&*()_+-=[]{}<>/?~\\'     // 保留低混淆符号
+        };
+    
+        function checkLength() {
+            const lengthInput = document.getElementById('length');
+            if (lengthInput.value > 32) {
+                lengthInput.value = 32;
+            } else if (lengthInput.value < 8) {
+                lengthInput.value = 8;
+            }
+        }
+    
+        function generatePassword() {
+            const length = document.getElementById('length').value;
+            let charset = "";
+            const requiredChars = []; // 强制包含每个选中类型的字符
+    
+            // 构建字符集
+            if (document.getElementById('uppercase').checked) {
+                charset += SAFE_CHARS.uppercase;
+                requiredChars.push(SAFE_CHARS.uppercase);
+            }
+            if (document.getElementById('lowercase').checked) {
+                charset += SAFE_CHARS.lowercase;
+                requiredChars.push(SAFE_CHARS.lowercase);
+            }
+            if (document.getElementById('numbers').checked) {
+                charset += SAFE_CHARS.numbers;
+                requiredChars.push(SAFE_CHARS.numbers);
+            }
+            if (document.getElementById('symbols').checked) {
+                charset += SAFE_CHARS.symbols;
+                requiredChars.push(SAFE_CHARS.symbols);
+            }
+    
+            if (charset === "") {
+                showTooltip('请至少选择一种字符类型');
+                return;
+            }
+    
+            // 生成密码（强制包含每个选中类型）
+            let password = "";
+            requiredChars.forEach(charSet => {
+                password += charSet.charAt(Math.floor(Math.random() * charSet.length));
+            });
+    
+            // 补充剩余长度
+            for (let i = password.length; i < length; i++) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+    
+            // 打乱字符顺序
+            password = password.split('').sort(() => 0.5 - Math.random()).join('');
+    
+            // 格式化显示（按字符类型着色）
+            let formattedPassword = '<span>';
+            for (const char of password) {
+                if (SAFE_CHARS.uppercase.includes(char)) {
+                    formattedPassword += `<span class="uppercase">${char}</span>`;
+                } else if (SAFE_CHARS.lowercase.includes(char)) {
+                    formattedPassword += `<span class="lowercase">${char}</span>`;
+                } else if (SAFE_CHARS.numbers.includes(char)) {
+                    formattedPassword += `<span class="number">${char}</span>`;
+                } else {
+                    formattedPassword += `<span class="symbol">${char}</span>`;
+                }
+            }
+            formattedPassword += '</span>';
+    
+            document.getElementById('password').innerHTML = formattedPassword;
+            document.getElementById('copyButton').disabled = false;
+        }
+    
+        function copyPassword() {
+            const passwordElement = document.getElementById('password');
+            const password = passwordElement.innerText.replace(/\n/g, '');
+            navigator.clipboard.writeText(password).then(() => {
+                showTooltip('已复制密码到剪贴板');
+            }).catch(err => {
+                showTooltip('复制失败: ' + err);
+            });
+        }
+    
+        function showTooltip(message) {
+            const tooltip = document.getElementById('copyTooltip');
+            tooltip.innerText = message;
+            tooltip.classList.add('show');
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

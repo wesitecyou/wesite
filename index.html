@@ -8,7 +8,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="styles/media.css">
+    <!-- <link rel="stylesheet" href="styles/media.css"> -->
     <title>小圆同学</title>
 </head>
 
@@ -18,19 +18,12 @@
 
         <div class="second-line">
             <div class="two-columns">
-                <div class="sidebar-toc">
-                    
-                    <a title="点击返回首页并复制链接到剪贴板" href="/" class="sidebar-top-logo"
+                 
+                    <div class="sidebar-toc">
+                        <a title="点击返回首页并复制链接到剪贴板" href="/" class="sidebar-site-title"
                         onclick="navigator.clipboard.writeText(this.textContent)">
-                        <div class="sidebar-site-title"><span>小</span><span>圆</span><span>同</span><span>学</span></div>
-                        <img src="https://s2.loli.net/2025/02/08/GBCyYL2KX3HjrU5.gif">
+                        小圆同学
                     </a>
-                    <!-- <a title="点击返回首页并复制链接到剪贴板" href="/" class="sidebar-site-title"
-                        onclick="navigator.clipboard.writeText(this.textContent)">
-                        <span>小</span><span>圆</span><span>同</span><span>学</span>
-                    </a> -->
-                    <div class="toc-links">
-                        
                         <a href="#top" class="toggle-color">搜索·收藏</a>
                         <a href="#第一" class="toggle-color">第一</a>
                         <a href="#常用软件" class="toggle-color">常用软件</a>
@@ -46,19 +39,20 @@
                         <a href="#电子电路" class="toggle-color">电子电路</a>
                         <a href="#统计分析" class="toggle-color">统计分析</a>
                         <a href="#编程开发" class="toggle-color">编程开发</a>
-                        <a href="#申请收录" class="toggle-color">申请收录</a>
+                        <a href="#top" class="sidebar-back-to-the-top">回到顶部</a>
                     </div>
 
 
-                </div>
+                
 
                 <div class="content">
 
                     <div id="top" class="anchor-point"></div>
                     
-                    <div class="nav-column" onclick="window.location.href='#top'">
-                        <div class="top-black-line"></div>
+                    <div class="nav-column">
+                        <!-- <div class="top-black-line"></div> -->
                         <div class="nav-column-links">
+                            <div class="blank-link" onclick="window.location.href='#top'"></div>
                         <span>
                             <button title="收起目录" class="toggle-toc">←</button>
                             <button title="展开目录" class="mobi-toggle-toc">→</button>

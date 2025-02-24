@@ -1,6 +1,6 @@
 @media (min-width: 992px) {
 
-    .toc-links a {
+    .sidebar-toc a {
         padding: 0 50px;
     }
 
@@ -15,7 +15,7 @@
         width: 80%;
     }
 
-    .toc-links a {
+    .sidebar-toc a {
         padding: 0 30px;
     }
 
@@ -30,10 +30,6 @@
 
     #selectBox {
         display: none;
-    }
-
-    .sidebar-toc {
-        background-color: #fff;
     }
 
     .clock-container {
@@ -65,7 +61,7 @@
         width: 90%;
     }
 
-    .toc-links a {
+    .sidebar-toc a {
         padding: 0 20px;
     }
 
@@ -88,7 +84,7 @@
     .sidebar-top-logo {
         width: 90px;
     }
-    .toc-links {
+    .sidebar-toc {
         width: 90px;
     }
     .content {

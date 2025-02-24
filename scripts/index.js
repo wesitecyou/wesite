@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.querySelector(".toggle-toc");
     const sidebarToc = document.querySelector(".sidebar-toc");
     const contentTopTitle = document.querySelector(".content-top-title");
+    const backToTheTop = document.querySelector(".back-to-the-top");
 
     let isHidden = false;
 
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleButton.textContent = "←";
             toggleButton.title = "收起目录";
             contentTopTitle.style.display = 'none';
+            backToTheTop.style.display = 'none';
             
         } else {
             sidebarToc.style.position = 'absolute';
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleButton.textContent = "→";
             toggleButton.title = "展开目录";
             contentTopTitle.style.display = 'flex';
+            backToTheTop.style.display = 'block';
         }
         isHidden = !isHidden;
     });
@@ -53,16 +56,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.querySelector('.content');
     const navColumn = document.querySelector('.nav-column');
     const topBlackLine = document.querySelector('.top-black-line');
+    const sidebarBackTop = document.querySelector('.sidebar-toc > a:nth-last-child(1)');
     
     scrollContainer.addEventListener('scroll', () => {
       const rect = navColumn.getBoundingClientRect();
     
       if (rect.top <= 0) {
         navColumn.style.borderRadius = '0 0 10px 10px';
-        topBlackLine.style.display = 'block';
+        // topBlackLine.style.display = 'block';
+        sidebarToc.style.marginTop = '0';
+        sidebarToc.style.height = 'calc(100% - 10px)';
+        sidebarToc.style.borderRadius = '0 0 10px 10px';
+        sidebarBackTop.style.display = 'flex';
+
       } else {
         navColumn.style.borderRadius = '10px';
-        topBlackLine.style.display = 'none';
+        // topBlackLine.style.display = 'none';
+        sidebarToc.style.marginTop = '10px';
+        sidebarToc.style.height = 'calc(100% - 20px)';
+        sidebarToc.style.borderRadius = '10px';
+        sidebarBackTop.style.display = 'none';
       }
     });
 

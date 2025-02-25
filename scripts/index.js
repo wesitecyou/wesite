@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = navColumn.getBoundingClientRect();
     
       if (rect.top <= 0) {
-        navColumn.style.borderRadius = '0 0 10px 10px';
+        // navColumn.style.borderRadius = '0 0 10px 10px';
         // topBlackLine.style.display = 'block';
         sidebarToc.style.marginTop = '0';
         sidebarToc.style.height = 'calc(100% - 10px)';
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sidebarBackTop.style.display = 'flex';
 
       } else {
-        navColumn.style.borderRadius = '10px';
+        // navColumn.style.borderRadius = '10px';
         // topBlackLine.style.display = 'none';
         sidebarToc.style.marginTop = '10px';
         sidebarToc.style.height = 'calc(100% - 20px)';
@@ -79,7 +79,55 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // toggle-color
+// -------------------------------------------------------
+    const mainContent = document.querySelector('.main-content');
+    function getDynamicHeight() {
+        return window.innerHeight - 10; // 每次调用都会重新计算
+      }
+      function handleScroll() {
+        const rect = mainContent.getBoundingClientRect();
+        const triggerHeight = getDynamicHeight();
+      
+        if (rect.top <= 50) {
+          navColumn.style.borderRadius = '0';
+        } else if (rect.top < triggerHeight) {
+          navColumn.style.borderRadius = '0 0 10px 10px';
+        } else {
+          navColumn.style.borderRadius = '10px';
+        }
+      }
+    // 添加节流优化
+    function throttle(func, limit = 100) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+          const context = this;
+          const args = arguments;
+          if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+              if (Date.now() - lastRan >= limit) {
+                func.apply(context, args);
+                lastRan = Date.now();
+              }
+            }, limit - (Date.now() - lastRan));
+          }
+        };
+      }
+const throttledScroll = throttle(handleScroll, 100);
+scrollContainer.addEventListener('scroll', throttledScroll);
+
+window.addEventListener('resize', () => {
+    const newHeight = getDynamicHeight(); // 重新计算高度
+    scrollContainer.dispatchEvent(new Event('scroll')); // 触发滚动更新
+  });
+// 初始化检查
+handleScroll();
+
+// toggle-color
 // 获取所有链接元素，类名为 toggle-color
 const toggleColorLinks = document.querySelectorAll('.toggle-color');
 
@@ -96,6 +144,7 @@ toggleColorLinks.forEach(link => {
 
 });
 
+// ----------------------------------------
 
 
 // search

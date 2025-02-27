@@ -52,51 +52,55 @@ document.addEventListener("DOMContentLoaded", () => {
         isHiddenMobi = !isHiddenMobi;
     });
 
-    // 元素在滑动到顶部时改变 border-radius，并在脱离顶部时恢复原状
+    // main-content距离顶部距离变化而修改nav-column, sidebar-toc > a:nth-last-child(1)元素样式
     const scrollContainer = document.querySelector('.content');
     const navColumn = document.querySelector('.nav-column');
-    const topBlackLine = document.querySelector('.top-black-line');
     const sidebarBackTop = document.querySelector('.sidebar-toc > a:nth-last-child(1)');
-    
-    scrollContainer.addEventListener('scroll', () => {
-      const rect = navColumn.getBoundingClientRect();
-    
-      if (rect.top <= 0) {
-        // navColumn.style.borderRadius = '0 0 10px 10px';
-        // topBlackLine.style.display = 'block';
-        sidebarToc.style.marginTop = '0';
-        sidebarToc.style.height = 'calc(100% - 10px)';
-        sidebarToc.style.borderRadius = '0 0 10px 10px';
-        sidebarBackTop.style.display = 'flex';
-
-      } else {
-        // navColumn.style.borderRadius = '10px';
-        // topBlackLine.style.display = 'none';
-        sidebarToc.style.marginTop = '10px';
-        sidebarToc.style.height = 'calc(100% - 20px)';
-        sidebarToc.style.borderRadius = '10px';
-        sidebarBackTop.style.display = 'none';
-      }
-    });
-
-// -------------------------------------------------------
     const mainContent = document.querySelector('.main-content');
     function getDynamicHeight() {
-        return window.innerHeight - 10; // 每次调用都会重新计算
+        return window.innerHeight; // 每次调用都会重新计算
       }
       function handleScroll() {
         const rect = mainContent.getBoundingClientRect();
-        const triggerHeight = getDynamicHeight();
-      
-        if (rect.top <= 50) {
-          navColumn.style.borderRadius = '0';
-        } else if (rect.top < triggerHeight) {
-          navColumn.style.borderRadius = '0 0 10px 10px';
+      const triggerHeight = getDynamicHeight();
+        if (rect.top >= triggerHeight) {
+          // 100vh 及以上（元素在视口下方）
+          navColumn.style.borderRadius = "10px";
+          sidebarToc.style.marginTop = '10px';
+          sidebarToc.style.height = 'calc(100% - 20px)';
+          sidebarToc.style.borderRadius = '10px';
+          sidebarBackTop.style.display = 'none';
+        } else if (rect.top >= triggerHeight - 30) {
+          // [100vh-30, 100vh) 区间
+          navColumn.style.borderRadius = "0 0 10px 10px";
+          sidebarToc.style.marginTop = '0';
+          sidebarToc.style.height = 'calc(100% - 10px)';
+          sidebarToc.style.borderRadius = '0 0 10px 10px';
+          sidebarBackTop.style.display = 'flex';
+        } else if (rect.top > 70) {
+          // (70, 100vh-30) 区间
+          navColumn.style.borderRadius = "0";
+          sidebarToc.style.marginTop = '0';
+          sidebarToc.style.height = 'calc(100% - 10px)';
+          sidebarToc.style.borderRadius = '0 0 10px 10px';
+          sidebarBackTop.style.display = 'flex';
+        } else if (rect.top >= 40) {
+          // [40, 70] 区间
+          navColumn.style.borderRadius = "0 0 10px 10px";
+          sidebarToc.style.marginTop = '0';
+          sidebarToc.style.height = 'calc(100% - 10px)';
+          sidebarToc.style.borderRadius = '0 0 10px 10px';
+          sidebarBackTop.style.display = 'flex';
         } else {
-          navColumn.style.borderRadius = '10px';
+          // 40px 以下
+          navColumn.style.borderRadius = "0";
+          sidebarToc.style.marginTop = '0';
+          sidebarToc.style.height = 'calc(100% - 10px)';
+          sidebarToc.style.borderRadius = '0 0 10px 10px';
+          sidebarBackTop.style.display = 'flex';
         }
       }
-    // 添加节流优化
+    // 节流优化
     function throttle(func, limit = 100) {
         let lastFunc;
         let lastRan;
@@ -121,10 +125,9 @@ const throttledScroll = throttle(handleScroll, 100);
 scrollContainer.addEventListener('scroll', throttledScroll);
 
 window.addEventListener('resize', () => {
-    const newHeight = getDynamicHeight(); // 重新计算高度
-    scrollContainer.dispatchEvent(new Event('scroll')); // 触发滚动更新
+    handleScroll();
   });
-// 初始化检查
+
 handleScroll();
 
 // toggle-color

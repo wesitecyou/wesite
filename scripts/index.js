@@ -14,20 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleButton.textContent = "←";
             toggleButton.title = "收起目录";
             contentTopTitle.style.display = 'none';
-            backToTheTop.style.display = 'none';
-            
+
         } else {
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "→";
             toggleButton.title = "展开目录";
             contentTopTitle.style.display = 'flex';
-            backToTheTop.style.display = 'block';
         }
         isHidden = !isHidden;
+        handleScroll();
     });
 
-// mobi-sidebar
+    // mobi-sidebar
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
     const sidebarTocMobi = document.querySelector(".sidebar-toc");
     const contentMobi = document.querySelector(".content");
@@ -37,17 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleButtonMobi.addEventListener("click", () => {
         if (isHiddenMobi) {
-                        sidebarTocMobi.style.display = 'none';
-                        toggleButtonMobi.textContent = "→";
-                        toggleButtonMobi.title = "展开目录";
-                        contentMobi.style.minWidth = "100%";
-            
+            sidebarTocMobi.style.display = 'none';
+            toggleButtonMobi.textContent = "→";
+            toggleButtonMobi.title = "展开目录";
+            contentMobi.style.minWidth = "100%";
+
         } else {
-                        sidebarTocMobi.style.display = 'flex';
-                        toggleButtonMobi.textContent = "←";
-                        toggleButtonMobi.title = "收起目录";
-                        contentMobi.style.minWidth = "calc(100% - 100px)";
-                        
+            sidebarTocMobi.style.display = 'flex';
+            toggleButtonMobi.textContent = "←";
+            toggleButtonMobi.title = "收起目录";
+            contentMobi.style.minWidth = "calc(100% - 100px)";
+
         }
         isHiddenMobi = !isHiddenMobi;
     });
@@ -58,92 +57,96 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarBackTop = document.querySelector('.sidebar-toc > a:nth-last-child(1)');
     const mainContent = document.querySelector('.main-content');
     function getDynamicHeight() {
-        return window.innerHeight; // 每次调用都会重新计算
-      }
-      function handleScroll() {
+        return window.innerHeight;
+    }
+    function handleScroll() {
         const rect = mainContent.getBoundingClientRect();
-      const triggerHeight = getDynamicHeight();
+        const triggerHeight = getDynamicHeight();
         if (rect.top >= triggerHeight) {
-          // 100vh 及以上（元素在视口下方）
-          navColumn.style.borderRadius = "10px";
-          sidebarToc.style.marginTop = '10px';
-          sidebarToc.style.height = 'calc(100% - 20px)';
-          sidebarToc.style.borderRadius = '10px';
-          sidebarBackTop.style.display = 'none';
+            // 100vh 及以上（元素在视口下方）
+            navColumn.style.borderRadius = "10px";
+            sidebarToc.style.marginTop = '10px';
+            sidebarToc.style.height = 'calc(100% - 20px)';
+            sidebarToc.style.borderRadius = '10px';
+            sidebarBackTop.style.display = 'none';
         } else if (rect.top >= triggerHeight - 30) {
-          // [100vh-30, 100vh) 区间
-          navColumn.style.borderRadius = "0 0 10px 10px";
-          sidebarToc.style.marginTop = '0';
-          sidebarToc.style.height = 'calc(100% - 10px)';
-          sidebarToc.style.borderRadius = '0 0 10px 10px';
-          sidebarBackTop.style.display = 'flex';
+            // [100vh-30, 100vh) 区间
+            navColumn.style.borderRadius = "0 0 10px 10px";
+            sidebarToc.style.marginTop = '0';
+            sidebarToc.style.height = 'calc(100% - 10px)';
+            sidebarToc.style.borderRadius = '0 0 10px 10px';
+            sidebarBackTop.style.display = 'flex';
         } else if (rect.top > 70) {
-          // (70, 100vh-30) 区间
-          navColumn.style.borderRadius = "0";
-          sidebarToc.style.marginTop = '0';
-          sidebarToc.style.height = 'calc(100% - 10px)';
-          sidebarToc.style.borderRadius = '0 0 10px 10px';
-          sidebarBackTop.style.display = 'flex';
+            // (70, 100vh-30) 区间
+            navColumn.style.borderRadius = "0";
+            sidebarToc.style.marginTop = '0';
+            sidebarToc.style.height = 'calc(100% - 10px)';
+            sidebarToc.style.borderRadius = '0 0 10px 10px';
+            sidebarBackTop.style.display = 'flex';
         } else if (rect.top >= 40) {
-          // [40, 70] 区间
-          navColumn.style.borderRadius = "0 0 10px 10px";
-          sidebarToc.style.marginTop = '0';
-          sidebarToc.style.height = 'calc(100% - 10px)';
-          sidebarToc.style.borderRadius = '0 0 10px 10px';
-          sidebarBackTop.style.display = 'flex';
+            // [40, 70] 区间
+            navColumn.style.borderRadius = "0 0 10px 10px";
+            sidebarToc.style.marginTop = '0';
+            sidebarToc.style.height = 'calc(100% - 10px)';
+            sidebarToc.style.borderRadius = '0 0 10px 10px';
+            sidebarBackTop.style.display = 'flex';
         } else {
-          // 40px 以下
-          navColumn.style.borderRadius = "0";
-          sidebarToc.style.marginTop = '0';
-          sidebarToc.style.height = 'calc(100% - 10px)';
-          sidebarToc.style.borderRadius = '0 0 10px 10px';
-          sidebarBackTop.style.display = 'flex';
+            // 40px 以下
+            navColumn.style.borderRadius = "0";
+            sidebarToc.style.marginTop = '0';
+            sidebarToc.style.height = 'calc(100% - 10px)';
+            sidebarToc.style.borderRadius = '0 0 10px 10px';
+            sidebarBackTop.style.display = 'flex';
         }
-      }
+        backToTheTop.style.display =
+            rect.top < triggerHeight && isHidden
+                ? 'block'
+                : 'none';
+    }
     // 节流优化
     function throttle(func, limit = 100) {
         let lastFunc;
         let lastRan;
-        return function() {
-          const context = this;
-          const args = arguments;
-          if (!lastRan) {
-            func.apply(context, args);
-            lastRan = Date.now();
-          } else {
-            clearTimeout(lastFunc);
-            lastFunc = setTimeout(function() {
-              if (Date.now() - lastRan >= limit) {
+        return function () {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
                 func.apply(context, args);
                 lastRan = Date.now();
-              }
-            }, limit - (Date.now() - lastRan));
-          }
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function () {
+                    if (Date.now() - lastRan >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
         };
-      }
-const throttledScroll = throttle(handleScroll, 100);
-scrollContainer.addEventListener('scroll', throttledScroll);
+    }
+    const throttledScroll = throttle(handleScroll, 100);
+    scrollContainer.addEventListener('scroll', throttledScroll);
 
-window.addEventListener('resize', () => {
-    handleScroll();
-  });
-
-handleScroll();
-
-// toggle-color
-// 获取所有链接元素，类名为 toggle-color
-const toggleColorLinks = document.querySelectorAll('.toggle-color');
-
-// 为每个链接添加点击事件
-toggleColorLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        // 先移除所有链接的高亮样式
-        toggleColorLinks.forEach(l => l.classList.remove('active'));
-
-        // 给当前点击的链接添加高亮样式
-        this.classList.add('active');
+    window.addEventListener('resize', () => {
+        handleScroll();
     });
-});
+
+    handleScroll();
+
+    // toggle-color
+    // 获取所有链接元素，类名为 toggle-color
+    const toggleColorLinks = document.querySelectorAll('.toggle-color');
+
+    // 为每个链接添加点击事件
+    toggleColorLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            // 先移除所有链接的高亮样式
+            toggleColorLinks.forEach(l => l.classList.remove('active'));
+
+            // 给当前点击的链接添加高亮样式
+            this.classList.add('active');
+        });
+    });
 
 });
 

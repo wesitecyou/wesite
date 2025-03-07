@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
   width: 100%;
@@ -17,9 +18,11 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
 img {
   border: none;
 }
+
 body {
   width: 100%;
   height: 100%;
@@ -59,6 +62,7 @@ body {
   position: relative;
   z-index: 999;
 }
+
 /***************************************************************************************************** 边栏 */
 .sidebar-site-title {
   position: relative;
@@ -116,6 +120,7 @@ body {
   z-index: 1003;
   /* gap: 10px; */
 }
+
 .sidebar-toc.hidden {
   overflow: hidden;
   transform: translateX(-100%);
@@ -123,7 +128,7 @@ body {
   opacity: 0;
 }
 
-.sidebar-toc > a {
+.sidebar-toc>a {
   color: #b2b8be;
   letter-spacing: 1.5px;
   font-size: 16px;
@@ -137,15 +142,17 @@ body {
   align-items: center;
   border-radius: 10px;
 }
-.sidebar-toc > a:nth-child(1) {
+
+.sidebar-toc>a:nth-child(1) {
   color: #000;
   font-weight: bold;
 }
-.sidebar-toc > a:nth-last-child(1) {
+
+.sidebar-toc>a:nth-last-child(1) {
   display: none;
 }
 
-.sidebar-toc > a:nth-child(n+2):hover {
+.sidebar-toc>a:nth-child(n+2):hover {
   color: #fff;
   font-weight: bold;
   background-color: #07c160;
@@ -155,6 +162,7 @@ body {
   color: #ff4500;
   font-weight: bold;
 }
+
 .ctrlButton {
   position: fixed;
   gap: 7px;
@@ -165,10 +173,15 @@ body {
   bottom: 20px;
   z-index: 1001;
 }
+
 button.mobi-toggle-toc {
   display: none;
 }
-button.toggle-toc, button.mobi-toggle-toc, button.back-to-the-top, button.go-to-the-bottom {
+
+button.toggle-toc,
+button.mobi-toggle-toc,
+button.back-to-the-top,
+button.go-to-the-bottom {
   width: 40px;
   height: 40px;
   background-color: #fff;
@@ -180,15 +193,21 @@ button.toggle-toc, button.mobi-toggle-toc, button.back-to-the-top, button.go-to-
   box-shadow: 0 0 10px rgba(0, 0, 0, .08);
   transition: all .2s;
 }
+
 .back-to-the-top {
   position: fixed;
   bottom: 15px;
   right: 32px;
   display: none;
 }
-button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:hover, button.go-to-the-bottom:hover {
+
+button.toggle-toc:hover,
+button.mobi-toggle-toc:hover,
+button.back-to-the-top:hover,
+button.go-to-the-bottom:hover {
   background-color: #E3E5E7;
 }
+
 .sidebar-back-to-the-top {
   display: none;
 }
@@ -204,14 +223,15 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   overflow-y: auto;
   transition: margin-left 0.3s ease;
   scroll-behavior: smooth;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .anchor-point {
   width: 100%;
   height: 0;
 }
+
 .nav-column {
   position: sticky;
   top: 0;
@@ -243,6 +263,7 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   background-color: #fff;
   z-index: 9999;
 }
+
 .blank-link {
   position: absolute;
   top: 0;
@@ -250,8 +271,10 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   width: 100%;
   height: 100%;
   cursor: pointer;
-  z-index: 1092; /* 底层链接 */
+  z-index: 1092;
+  /* 底层链接 */
 }
+
 .nav-column-links {
   position: relative;
   width: 100%;
@@ -262,6 +285,7 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   align-items: center;
   z-index: 1091;
 }
+
 .nav-column-links span {
   position: relative;
   display: flex;
@@ -273,17 +297,22 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   color: #000;
   z-index: 1093;
 }
+
 .content-top-title {
   display: none;
 }
+
 .fillBlock {
   width: 100%;
   min-height: 10px;
   max-height: 10px;
 }
+
 .fillBlock:target {
-  padding-top: 60px; /* 根据顶部元素高度调整 */
-  margin-top: -50px; /* 抵消额外空间 */
+  padding-top: 60px;
+  /* 根据顶部元素高度调整 */
+  margin-top: -50px;
+  /* 抵消额外空间 */
 }
 
 .three-rows {
@@ -307,6 +336,7 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   padding: 10px;
   margin-top: 10px;
 }
+
 .search-container {
   width: 100%;
   display: flex;
@@ -314,6 +344,7 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   justify-content: center;
   align-items: center;
 }
+
 .main-content {
   width: 100%;
   height: auto;
@@ -322,7 +353,9 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   padding: 0 30px;
   /* margin-top: 10px; */
 }
-.section, .section-header {
+
+.section,
+.section-header {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -332,22 +365,22 @@ button.toggle-toc:hover, button.mobi-toggle-toc:hover, button.back-to-the-top:ho
   border-radius: 10px;
   background-color: transparent;
 }
+
 /* .section-header {
   margin-top: 100px;
 } */
 .footer {
   position: relative;
   width: 100%;
-  min-height: 50px;
-  max-height: 50px;
-  padding: 0 20px;
+  padding: 10px 20px;
   margin-bottom: 10px;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .search-form {
@@ -416,9 +449,12 @@ form button:hover {
   position: relative;
   z-index: 999;
   overflow: scroll;
-  -ms-overflow-style: none;  /* IE 和 Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 和 Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 .category-container::-webkit-scrollbar {
   display: none;
 }
@@ -454,9 +490,12 @@ form button:hover {
   position: relative;
   z-index: 999;
   overflow: scroll;
-  -ms-overflow-style: none;  /* IE 和 Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 和 Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 .searchEngineButtonContainer::-webkit-scrollbar {
   display: none;
 }
@@ -493,11 +532,13 @@ form button:hover {
 .sub-item {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  /* 默认每行显示4个方块 */
-  gap: 20px;
+  /* gap: 20px; */
+  row-gap: 40px;
+  column-gap: 20px;
 }
 
-.sub-box, .sub-box-header {
+.sub-box,
+.sub-box-header {
   background-color: #fff;
   border: 0.5px solid #dad4cb;
   border-radius: 10px;
@@ -511,54 +552,79 @@ form button:hover {
   cursor: pointer;
   color: #000;
 }
+
 .sub-box {
   height: 80px;
 }
+
 .sub-box-header {
   height: 90px;
 }
-.sub-box img, .sub-box-header img {
+
+.sub-box img,
+.sub-box-header img {
   height: 50%;
   border-radius: 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
 }
-.sub-box:hover img, .sub-box-header:hover img {
+
+.sub-box:hover img,
+.sub-box-header:hover img {
   height: 100%;
   box-shadow: none;
 }
-.sub-box:hover span, .sub-box-header:hover span {
+
+.sub-box:hover span,
+.sub-box-header:hover span {
   display: none;
 }
 
 .applemusiclg:hover {
   background-color: #fa2a42;
 }
+
 .githublg:hover {
   background-color: #060606;
 }
+
 .qqmaillg:hover {
   background-color: #ffdd0f;
 }
+
 .taobaolg:hover {
   background-color: #ff5000;
 }
+
 .weixinlg:hover {
   background-color: #04d166;
 }
+
 .logioptionsplus:hover {
   background-color: #ac3fef;
 }
+
 .firefoxlg:hover {
   background-color: #20123a;
 }
+
 .yuquelg:hover {
   background-color: #2bc25b;
 }
+
 .xhslg:hover {
   background-color: #ff2442;
 }
+
 .fliqlolg:hover {
   background-color: #292929;
+}
+
+.doubanlg:hover {
+  background-color: #06c212;
+}
+
+.zhihulg:hover {
+  background-color: #0066ff;
 }
 
 

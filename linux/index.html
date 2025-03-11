@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux应用商店</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjQgMTIuNDQ0Yy0uMDA1IDYuMTk1LTUgMTEuMjM0LTExLjE5IDExLjI0My02LjE5NC4wMDgtMTEuMjM0LTQuOTk1LTExLjI0My0xMS4xOS0uMDA5LTYuMTk1IDQuOTk1LTExLjIzNCAxMS4xOS0xMS4yNDNoLjA1M2M2LjE4IDAgMTEuMiA1LjAxIDExLjIgMTEuMTl6bS05LjU1My00LjEwMmwtMS4zMjYgMS4zMjcgMy452Ljk1bDIuMjEgMi4yMWgtMy40M3YxLjg0aDUuNnYtMS44NWwtMi4yMS0yLjIxIDIuMDctMi4wNyAxLjMyNiAxLjMyNyAyLjQ3LTIuNDctMy44NS0zLjg0em0tMy40MSAzLjQxbC0zLjg1IDMuODUgMy44NSAzLjg1di0yLjc3aDQuMDl2LTIuMTVoLTIuMTN2LTIuNzh6Ii8+PC9zdmc+" 
+                 class="tux-icon" 
+                 alt="Tux图标">
+            <h1>Linux应用商店</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="搜索应用...">
+            <svg class="search-icon" viewBox="0 0 24 24">
+                <path d="M10 2a8 8 0 0 1 6.32 12.906l5.387 5.387-1.414 1.414-5.387-5.387A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
+            </svg>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3 class="sidebar-title">🗂️ 应用分类</h3>
+            <ul class="category-list" id="categories">
+                <li class="category-item active" data-category="all">📦 全部应用</li>
+                <li class="category-item" data-category="development">💻 开发工具</li>
+                <li class="category-item" data-category="office">📄 办公效率</li>
+                <li class="category-item" data-category="game">🎮 游戏娱乐</li>
+                <li class="category-item" data-category="multimedia">🎨 创意媒体</li>
+            </ul>
+        </aside>
+
+        <main class="main-content" id="app-list">
+            <!-- 应用卡片动态生成 -->
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

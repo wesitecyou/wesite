@@ -181,15 +181,16 @@ body {
 
 /* 按钮组 */
 .button-group {
-    display: grid;
-    gap: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .action-btn {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 1.2rem;
+    gap: 10px;
+    padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 500;

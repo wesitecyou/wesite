@@ -6,18 +6,18 @@ const apps = [
         category: "development",
         description: "微软推出的现代化代码编辑器，支持多种编程语言",
         icon: "https://code.visualstudio.com/assets/favicon.ico",
-        official: "https://code.visualstudio.com",
-        deb: "https://packages.microsoft.com/repos/vscode/pool/main/c/code/code_1.89.1-1714709442_amd64.deb",
-        rpm: "https://packages.microsoft.com/yumrepos/vscode/code-1.89.1-1714709442.el7.x86_64.rpm"
+        official: "https://code.visualstudio.com/",
+        x86deb: "https://code.visualstudio.com/docs/?dv=linux64_deb",
+        download: "https://code.visualstudio.com/Download"
     },
     {
         name: "LibreOffice",
-        author: "Microsoft",
+        author: "The Document Foundation",
         category: "office",
         description: "功能强大的开源办公套件，完美兼容Microsoft Office格式",
         icon: "https://www.libreoffice.org/assets/Common/images/favicon.ico",
         official: "https://www.libreoffice.org",
-        deb: "https://download.documentfoundation.org/libreoffice/stable/latest/deb/x86_64/LibreOffice_24.2.5_Linux_x86-64_deb.tar.gz",
+        deb: "https://www.libreoffice.org/donate/dl/deb-x86_64/25.2.1/zh-CN/LibreOffice_25.2.1_Linux_x86-64_deb.tar.gz",
         rpm: "https://download.documentfoundation.org/libreoffice/stable/latest/rpm/x86_64/LibreOffice_24.2.5_Linux_x86-64_rpm.tar.gz"
     },
     {
@@ -67,23 +67,23 @@ function renderApps(filteredApps = apps) {
                     <svg viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.18 5 4.05 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                     </svg>
-                    官方网站
+                    官网
                 </a>
-                <a href="${app.deb}" 
+                <a href="${app.x86deb}" 
                    class="action-btn btn-deb"
                    download="package.deb">
                     <svg viewBox="0 0 24 24">
                         <path fill="currentColor" d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm8-6v-3h-2v3H8l4 4 4-4h-3z"/>
                     </svg>
-                    DEB 下载
+                    x86 .deb
                 </a>
-                <a href="${app.rpm}" 
+                <a href="${app.download}" 
                    class="action-btn btn-rpm"
                    download="package.rpm">
                     <svg viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13H8v2h3v3h2v-3h3V7h-6z"/>
                     </svg>
-                    RPM 下载
+                    下载
                 </a>
             </div>
         </article>

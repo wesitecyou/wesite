@@ -193,9 +193,9 @@ button.go-to-the-bottom {
 }
 
 .back-to-the-top {
-  position: fixed;
+  /* position: fixed;
   bottom: 15px;
-  right: 32px;
+  right: 32px; */
   display: none;
 }
 

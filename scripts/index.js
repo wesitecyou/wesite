@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isHidden) {
             sidebarToc.style.position = 'relative';
             sidebarToc.classList.remove("hidden");
-            toggleButton.textContent = "←";
+            toggleButton.textContent = "⇦";
             toggleButton.title = "收起目录";
             contentTopTitle.style.display = 'none';
 
         } else {
             sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
-            toggleButton.textContent = "→";
+            toggleButton.textContent = "⇨";
             toggleButton.title = "展开目录";
             contentTopTitle.style.display = 'flex';
         }
@@ -37,13 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButtonMobi.addEventListener("click", () => {
         if (isHiddenMobi) {
             sidebarTocMobi.style.display = 'none';
-            toggleButtonMobi.textContent = "→";
+            toggleButtonMobi.textContent = "⇨";
             toggleButtonMobi.title = "展开目录";
             contentMobi.style.minWidth = "100%";
 
         } else {
             sidebarTocMobi.style.display = 'flex';
-            toggleButtonMobi.textContent = "←";
+            toggleButtonMobi.textContent = "⇦";
             toggleButtonMobi.title = "收起目录";
             contentMobi.style.minWidth = "calc(100% - 100px)";
 
@@ -64,42 +64,43 @@ document.addEventListener("DOMContentLoaded", () => {
         const triggerHeight = getDynamicHeight();
         if (rect.top >= triggerHeight) {
             // 100vh 及以上（元素在视口下方）
-            navColumn.style.borderRadius = "10px";
-            sidebarToc.style.marginTop = '10px';
-            sidebarToc.style.height = 'calc(100% - 20px)';
-            sidebarToc.style.borderRadius = '10px';
-            sidebarBackTop.style.display = 'none';
+            // navColumn.style.borderRadius = "10px";
+            // sidebarToc.style.marginTop = '10px';
+            // sidebarToc.style.height = 'calc(100% - 20px)';
+            // sidebarToc.style.borderRadius = '10px';
+            // sidebarBackTop.style.display = 'none';
         } else if (rect.top >= triggerHeight - 30) {
             // [100vh-30, 100vh) 区间
-            navColumn.style.borderRadius = "0 0 10px 10px";
-            sidebarToc.style.marginTop = '0';
-            sidebarToc.style.height = 'calc(100% - 10px)';
-            sidebarToc.style.borderRadius = '0 0 10px 10px';
-            sidebarBackTop.style.display = 'flex';
+            // navColumn.style.borderRadius = "0 0 10px 10px";
+            // sidebarToc.style.marginTop = '0';
+            // sidebarToc.style.height = 'calc(100% - 10px)';
+            // sidebarToc.style.borderRadius = '0 0 10px 10px';
+            // sidebarBackTop.style.display = 'flex';
         } else if (rect.top > 70) {
             // (70, 100vh-30) 区间
-            navColumn.style.borderRadius = "0";
-            sidebarToc.style.marginTop = '0';
-            sidebarToc.style.height = 'calc(100% - 10px)';
-            sidebarToc.style.borderRadius = '0 0 10px 10px';
-            sidebarBackTop.style.display = 'flex';
+            // navColumn.style.borderRadius = "0";
+            // sidebarToc.style.marginTop = '0';
+            // sidebarToc.style.height = 'calc(100% - 10px)';
+            // sidebarToc.style.borderRadius = '0 0 10px 10px';
+            // sidebarBackTop.style.display = 'flex';
         } else if (rect.top >= 40) {
             // [40, 70] 区间
-            navColumn.style.borderRadius = "0 0 10px 10px";
-            sidebarToc.style.marginTop = '0';
-            sidebarToc.style.height = 'calc(100% - 10px)';
-            sidebarToc.style.borderRadius = '0 0 10px 10px';
-            sidebarBackTop.style.display = 'flex';
+            // navColumn.style.borderRadius = "0 0 10px 10px";
+            // sidebarToc.style.marginTop = '0';
+            // sidebarToc.style.height = 'calc(100% - 10px)';
+            // sidebarToc.style.borderRadius = '0 0 10px 10px';
+            // sidebarBackTop.style.display = 'flex';
         } else {
             // 40px 以下
-            navColumn.style.borderRadius = "0";
-            sidebarToc.style.marginTop = '0';
-            sidebarToc.style.height = 'calc(100% - 10px)';
-            sidebarToc.style.borderRadius = '0 0 10px 10px';
-            sidebarBackTop.style.display = 'flex';
+            // navColumn.style.borderRadius = "0";
+            // sidebarToc.style.marginTop = '0';
+            // sidebarToc.style.height = 'calc(100% - 10px)';
+            // sidebarToc.style.borderRadius = '0 0 10px 10px';
+            // sidebarBackTop.style.display = 'flex';
         }
         backToTheTop.style.display =
-            rect.top < triggerHeight && isHidden
+            // rect.top < triggerHeight && isHidden
+            rect.top < triggerHeight
                 ? 'block'
                 : 'none';
     }

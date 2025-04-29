@@ -196,6 +196,9 @@ button.go-to-the-bottom {
   /* position: fixed;
   bottom: 15px;
   right: 32px; */
+  position: absolute;
+  top: 0;
+  left: 0;
   display: none;
 }
 
@@ -290,6 +293,17 @@ button.go-to-the-bottom:hover {
   font-weight: 700;
   color: #000;
   z-index: 1093;
+}
+
+.nav-column-links > span > a,
+.nav-column-links > span > div {
+  font-weight: 700;
+}
+
+#copyTip {
+  display: none;
+  color: green;
+  margin-top: 10px;
 }
 
 .content-top-title {

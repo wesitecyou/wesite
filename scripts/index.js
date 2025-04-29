@@ -152,7 +152,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ----------------------------------------
+document.getElementById('copyTrigger').addEventListener('click', function () {
+    const textToCopy = document.getElementById('copyText').innerText;
 
+    // 使用 Clipboard API 复制文字
+    navigator.clipboard.writeText(textToCopy).then(function () {
+      // 显示提示
+      const tip = document.getElementById('copyTip');
+      tip.style.display = 'block';
+
+      // 2秒后隐藏提示
+      setTimeout(() => {
+        tip.style.display = 'none';
+      }, 2000);
+    }).catch(function (err) {
+      console.error('复制失败：', err);
+    });
+  });
+// -----------------------------------------
+
+// ---------------------------------------------------
 
 // search
 // 定义分类和对应的搜索引擎

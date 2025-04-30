@@ -52,23 +52,19 @@
                         <!-- <div class="top-black-line"></div> -->
                         <div class="nav-column-links">
                             <div class="blank-link" onclick="window.location.href='#top'"></div>
-                            <span>
+                            <span class="flex-center" style="width: 33.333333%; height: 40px; justify-content: flex-start;">
                                 <button title="收起目录" class="toggle-toc">⇦</button>
                                 <button title="展开目录" class="mobi-toggle-toc">⇨</button>
-                                <button title="回到顶部" class="back-to-the-top" onclick="window.location.href='#top'">⇧</button>
                                 <div class="content-top-title">微站</div>
                                 <a href="/" title="回到首页">首页</a>
                                 <a href="/#top" title="搜索">搜索</a>
                                 <span>博客</span>
                             </span>
-                            <span>
-                                <!-- 日期 时间 节假日 -->
+                            <span title="点我返回顶部" class="flex-center" style="width: 33.333333%; height: 40px; cursor: pointer;" onclick="window.location.href='#top'">
+                                <div id="timeBox"></div>
+                            </span>
+                            <span class="flex-center" style="width: 33.333333%; height:40px; justify-content: flex-end;">
                                 <span>设为主页</span>
-                                <!-- <div id="email">建议反馈</div> -->
-                                
-                                <!-- <p id="copyTrigger" style="cursor:pointer; color:blue; text-decoration:underline;">点击这里复制</p>
-                                <p id="copyText" style="display:none;">这是被复制的文字</p>
-                                <div id="copyTip">已复制！</div> -->
                                 <span>关于</span>
                                 
                             </span>
@@ -78,8 +74,9 @@
 
 
                     <div class="header">
-                        <img src="https://s2.loli.net/2025/03/22/CMQKy5JofOcDAZI.webp"
-                            style="position: absolute;  width: 100%; height: 100%; object-fit: cover;">
+                        <!-- https://s2.loli.net/2025/03/22/CMQKy5JofOcDAZI.webp -->
+                        <img src="https://picsum.photos/1920/1080"
+                            style="position: absolute; top: 0px; width: 100%; height: 100%; object-fit: cover;">
                         <div class="search-container">
                             <div class="category-container" id="categoryContainer">
                                 <!-- 分类按钮将动态生成 -->
@@ -96,50 +93,49 @@
                         </div>
                         <div class="section-header">
 
-                            <div class="sub-item">
+                            <div class="sub-item-header">
                                 <a title="哔哩哔哩" href="https://www.bilibili.com" target="_blank"
                                     class="sub-box-header bilibililg"><img
-                                        src="https://s2.loli.net/2025/02/15/q4k362QiAFdODZJ.webp"><span>哔哩哔哩</span></a>
+                                        src="https://s2.loli.net/2025/02/15/q4k362QiAFdODZJ.webp"></a>
 
-                                <a title="小红书 - 你的生活指南" target="_blank" class="sub-box-header xhslg"><img
-                                        src="https://s2.loli.net/2025/01/27/a3hwfCrTEybUvQ5.webp"><span>小红书</span></a>
+                                <a title="小红书 - 你的生活指南" target="_blank" class="sub-box-header" style="background-color: #ff2442;"><img
+                                        src="https://s2.loli.net/2025/01/27/a3hwfCrTEybUvQ5.webp"></a>
 
                                 <a title="深度求索 (DeepSeek) 助力编程代码开发、创意写作、文件处理等任务, 支持文件上传及长文本对话, 随时为您提供高效的AI支持。"
                                     target="_blank" class="sub-box-header deepseeklg"><img
-                                        src="https://s2.loli.net/2025/01/29/kqTWmL8wt4gyXzj.webp"><span>DeepSeek</span></a>
+                                        src="https://s2.loli.net/2025/01/29/kqTWmL8wt4gyXzj.webp"></a>
 
                                 <a title="Apple Music" href="https://music.apple.com/cn/new" target="_blank"
-                                    class="sub-box-header applemusiclg"><img
-                                        src="https://s2.loli.net/2025/01/27/1DzeiBmCAH8Ugfv.webp"><span>Apple
-                                        Music</span></a>
+                                    class="sub-box-header" style="background-color: #fa2a42;"><img
+                                        src="https://s2.loli.net/2025/01/27/1DzeiBmCAH8Ugfv.webp"></a>
 
                                 <a title="Google" target="_blank" class="sub-box-header"><img
-                                        src="https://s2.loli.net/2025/01/29/DeuCYmSvWazL6iP.webp"><span>Google</span></a>
+                                        src="https://s2.loli.net/2025/01/29/DeuCYmSvWazL6iP.webp"></a>
 
                                 <a title="GitHub是一个在线软件源代码托管服务平台, 用于公开程序或软件的代码。" target="_blank"
-                                    class="sub-box-header githublg"><img
-                                        src="https://s2.loli.net/2025/01/29/M4Vp2ey5XIhxr86.webp"><span>GitHub</span></a>
+                                    class="sub-box-header" style="background-color: #060606;"><img
+                                        src="https://s2.loli.net/2025/01/29/M4Vp2ey5XIhxr86.webp"></a>
 
                                 <a title="QQ邮箱, 常联系!" href="https://wx.mail.qq.com/" target="_blank"
-                                    class="sub-box-header qqmaillg"><img
-                                        src="https://s2.loli.net/2025/01/27/HeBASnrGIWakTMF.webp"><span>QQ邮箱</span></a>
+                                    class="sub-box-header" style="background-color: #ffdd0f;"><img
+                                        src="https://s2.loli.net/2025/01/27/HeBASnrGIWakTMF.webp"></a>
 
                                 <a title="万能的淘宝" href="https://www.taobao.com/" target="_blank"
-                                    class="sub-box-header taobaolg"><img
-                                        src="https://s2.loli.net/2025/01/27/El8XSGkKp3ZU7ar.webp"><span>淘宝</span></a>
+                                    class="sub-box-header" style="background-color: #ff5000;"><img
+                                        src="https://s2.loli.net/2025/01/27/El8XSGkKp3ZU7ar.webp"></a>
                                 <a title="优酷-这世界很酷！" href="https://www.bilibili.com" target="_blank"
                                     class="sub-box-header"><img
-                                        src="https://s2.loli.net/2025/03/07/MBdFHmhWgRtyw4L.webp"><span>优酷视频</span></a>
+                                        src="https://s2.loli.net/2025/03/07/MBdFHmhWgRtyw4L.webp"></a>
 
-                                <a title="语雀" target="_blank" class="sub-box-header yuquelg"><img
-                                        src="https://s2.loli.net/2025/01/29/UGHzmQAeClk3aWR.webp"><span>语雀</span></a>
+                                <a title="语雀" target="_blank" class="sub-box-header" style="background-color: #2bc25b;"><img
+                                        src="https://s2.loli.net/2025/01/29/UGHzmQAeClk3aWR.webp"></a>
 
-                                <a title="豆瓣" target="_blank" class="sub-box-header doubanlg"><img
-                                        src="https://s2.loli.net/2025/03/07/uIDNAmWR8lqoikS.webp"><span>豆瓣</span></a>
+                                <a title="豆瓣" target="_blank" class="sub-box-header" style="background-color: #06c212;"><img
+                                        src="https://s2.loli.net/2025/03/07/uIDNAmWR8lqoikS.webp"></a>
 
                                 <a title="知乎" href="https://music.apple.com/cn/new" target="_blank"
-                                    class="sub-box-header zhihulg"><img
-                                        src="https://s2.loli.net/2025/03/07/zAjx4EWcFSU5nTY.webp"><span>知乎</span></a>
+                                    class="sub-box-header" style="background-color: #0066ff;"><img
+                                        src="https://s2.loli.net/2025/03/07/zAjx4EWcFSU5nTY.webp"></a>
 
 
                             </div>

@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
             contentTopTitle.style.display = 'flex';
         }
         isHidden = !isHidden;
-        handleScroll();
     });
+    //--------------------------------------------
+    
+    // ----------------------------------------------
 
     // mobi-sidebar
     const toggleButtonMobi = document.querySelector(".mobi-toggle-toc");
@@ -51,88 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isHiddenMobi = !isHiddenMobi;
     });
 
-    // main-content距离顶部距离变化而修改nav-column, sidebar-toc > a:nth-last-child(1)元素样式
-    const scrollContainer = document.querySelector('.content');
-    const navColumn = document.querySelector('.nav-column');
-    const sidebarBackTop = document.querySelector('.sidebar-toc > a:nth-last-child(1)');
-    const mainContent = document.querySelector('.main-content');
-    function getDynamicHeight() {
-        return window.innerHeight;
-    }
-    function handleScroll() {
-        const rect = mainContent.getBoundingClientRect();
-        const triggerHeight = getDynamicHeight();
-        if (rect.top >= triggerHeight) {
-            // 100vh 及以上（元素在视口下方）
-            // navColumn.style.borderRadius = "10px";
-            // sidebarToc.style.marginTop = '10px';
-            // sidebarToc.style.height = 'calc(100% - 20px)';
-            // sidebarToc.style.borderRadius = '10px';
-            // sidebarBackTop.style.display = 'none';
-        } else if (rect.top >= triggerHeight - 30) {
-            // [100vh-30, 100vh) 区间
-            // navColumn.style.borderRadius = "0 0 10px 10px";
-            // sidebarToc.style.marginTop = '0';
-            // sidebarToc.style.height = 'calc(100% - 10px)';
-            // sidebarToc.style.borderRadius = '0 0 10px 10px';
-            // sidebarBackTop.style.display = 'flex';
-        } else if (rect.top > 70) {
-            // (70, 100vh-30) 区间
-            // navColumn.style.borderRadius = "0";
-            // sidebarToc.style.marginTop = '0';
-            // sidebarToc.style.height = 'calc(100% - 10px)';
-            // sidebarToc.style.borderRadius = '0 0 10px 10px';
-            // sidebarBackTop.style.display = 'flex';
-        } else if (rect.top >= 40) {
-            // [40, 70] 区间
-            // navColumn.style.borderRadius = "0 0 10px 10px";
-            // sidebarToc.style.marginTop = '0';
-            // sidebarToc.style.height = 'calc(100% - 10px)';
-            // sidebarToc.style.borderRadius = '0 0 10px 10px';
-            // sidebarBackTop.style.display = 'flex';
-        } else {
-            // 40px 以下
-            // navColumn.style.borderRadius = "0";
-            // sidebarToc.style.marginTop = '0';
-            // sidebarToc.style.height = 'calc(100% - 10px)';
-            // sidebarToc.style.borderRadius = '0 0 10px 10px';
-            // sidebarBackTop.style.display = 'flex';
-        }
-        backToTheTop.style.display =
-            // rect.top < triggerHeight && isHidden
-            rect.top < triggerHeight
-                ? 'block'
-                : 'none';
-    }
-    // 节流优化
-    function throttle(func, limit = 100) {
-        let lastFunc;
-        let lastRan;
-        return function () {
-            const context = this;
-            const args = arguments;
-            if (!lastRan) {
-                func.apply(context, args);
-                lastRan = Date.now();
-            } else {
-                clearTimeout(lastFunc);
-                lastFunc = setTimeout(function () {
-                    if (Date.now() - lastRan >= limit) {
-                        func.apply(context, args);
-                        lastRan = Date.now();
-                    }
-                }, limit - (Date.now() - lastRan));
-            }
-        };
-    }
-    const throttledScroll = throttle(handleScroll, 100);
-    scrollContainer.addEventListener('scroll', throttledScroll);
-
-    window.addEventListener('resize', () => {
-        handleScroll();
-    });
-
-    handleScroll();
+// ----------------------------------------   
 
     // toggle-color
     // 获取所有链接元素，类名为 toggle-color
@@ -152,23 +73,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ----------------------------------------
-document.getElementById('copyTrigger').addEventListener('click', function () {
-    const textToCopy = document.getElementById('copyText').innerText;
+function updateTime() {
+    const date = new Date();
+    
+    // 日期处理[1,4](@ref)
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    
+    // 时间处理（去除秒）[5,7](@ref)
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    
+    // 星期处理[1,4](@ref)
+    const weekDays = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    const week = weekDays[date.getDay()];
 
-    // 使用 Clipboard API 复制文字
-    navigator.clipboard.writeText(textToCopy).then(function () {
-      // 显示提示
-      const tip = document.getElementById('copyTip');
-      tip.style.display = 'block';
+    // 组合显示内容[5](@ref)
+    const timeString = `${year}-${month}-${day} ${week} ${hours}:${minutes}`;
+    document.getElementById('timeBox').textContent = timeString;
+}
 
-      // 2秒后隐藏提示
-      setTimeout(() => {
-        tip.style.display = 'none';
-      }, 2000);
-    }).catch(function (err) {
-      console.error('复制失败：', err);
-    });
-  });
+// 初始显示
+updateTime();
+// 每分钟更新（与秒无关）[5](@ref)
+setInterval(updateTime, 60000);
 // -----------------------------------------
 
 // ---------------------------------------------------

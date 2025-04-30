@@ -241,7 +241,7 @@ button.go-to-the-bottom:hover {
   min-height: 50px;
   max-height: 50px;
   width: 100%;
-  padding: 0 20px 0 10px;
+  padding: 0 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
   opacity: 1;
   transition: height 0.5s ease, opacity 0.5s ease, border-radius 0s ease;
@@ -285,10 +285,10 @@ button.go-to-the-bottom:hover {
 
 .nav-column-links span {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   gap: 20px;
   font-weight: 700;
   color: #000;
@@ -333,8 +333,9 @@ button.go-to-the-bottom:hover {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
+  gap: 50px;
   width: 100%;
   min-height: calc(100vh - 50px);
   background-color: #fff;
@@ -364,13 +365,15 @@ button.go-to-the-bottom:hover {
   width: 100%;
   gap: 20px;
   padding: 20px;
+  
   border-radius: 10px;
   background-color: transparent;
 }
 
-/* .section-header {
-  margin-top: 100px;
-} */
+.section-header {
+  margin-bottom: 50px;
+  width: 80%;
+}
 .footer {
   position: relative;
   width: 100%;
@@ -422,6 +425,8 @@ input[type="text"]:focus {
 }
 
 form button {
+  font-size: 20px;
+  font-weight: 700;
   /* width: 15%; */
   height: 100%;
   padding: 0 5%;
@@ -460,6 +465,7 @@ form button:hover {
 }
 
 .category-container .category-button {
+  font-size: 20px;
   font-weight: 700;
   border: none;
   padding: 0 10px;
@@ -502,6 +508,7 @@ form button:hover {
 }
 
 .searchEngineButtonContainer button {
+  font-size: 20px;
   font-weight: 700;
   border: none;
   border-radius: 10px;
@@ -531,12 +538,19 @@ form button:hover {
   text-shadow: none;
 }
 
-.sub-item {
+.sub-item-header {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   /* gap: 20px; */
-  row-gap: 40px;
-  column-gap: 20px;
+  row-gap: 30px;
+  column-gap: 30px;
+}
+.sub-item {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  /* gap: 20px; */
+  row-gap: 30px;
+  column-gap: 30px;
 }
 
 .sub-box,
@@ -563,15 +577,14 @@ form button:hover {
   height: 90px;
 }
 
-.sub-box img,
-.sub-box-header img {
+.sub-box img {
   height: 50%;
   border-radius: 10px;
   box-shadow: 0 1px 10px 0 rgb(53 58 62 / 9%), 0 2px 4px 0 rgb(53 58 62 / 12%);
 }
 
 .sub-box:hover img,
-.sub-box-header:hover img {
+.sub-box-header img {
   height: 100%;
   box-shadow: none;
 }

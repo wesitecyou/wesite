@@ -5,18 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentTopTitle = document.querySelector(".content-top-title");
     const backToTheTop = document.querySelector(".back-to-the-top");
 
-    let isHidden = false;
+    let isHidden = true;
 
     toggleButton.addEventListener("click", () => {
         if (isHidden) {
-            sidebarToc.style.position = 'relative';
+            // sidebarToc.style.position = 'relative';
             sidebarToc.classList.remove("hidden");
             toggleButton.textContent = "⇦";
             toggleButton.title = "收起目录";
             contentTopTitle.style.display = 'none';
-
+            
         } else {
-            sidebarToc.style.position = 'absolute';
+            // sidebarToc.style.position = 'absolute';
             sidebarToc.classList.add("hidden");
             toggleButton.textContent = "⇨";
             toggleButton.title = "展开目录";
@@ -110,7 +110,7 @@ const categories = {
         { name: '谷歌', engine: 'google' },
         { name: '搜狗', engine: 'sogou' },
         { name: '必应', engine: 'bing' },
-        { name: '站内', engine: 'insite' }
+        { name: '秘塔', engine: 'metaso' }
     ],
     '社区': [
         { name: '知乎', engine: 'zhihu' },
@@ -256,8 +256,8 @@ function changeSearchEngine(engine) {
         case 'bing':
             baseUrl = 'https://www.bing.com/search?q=';
             break;
-        case 'duckduckgo':
-            baseUrl = 'https://duckduckgo.com/?q=';
+        case 'metaso':
+            baseUrl = 'https://metaso.cn/?q=';
             break;
         case 'startpage':
             baseUrl = 'https://www.startpage.com/do/search?query=';

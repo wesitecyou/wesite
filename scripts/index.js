@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentTopTitle = document.querySelector(".content-top-title");
     const backToTheTop = document.querySelector(".back-to-the-top");
 
-    let isHidden = true;
+    let isHidden = false;
 
     toggleButton.addEventListener("click", () => {
         if (isHidden) {

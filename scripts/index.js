@@ -110,7 +110,7 @@ const categories = {
         { name: '谷歌', engine: 'google' },
         { name: '搜狗', engine: 'sogou' },
         { name: '必应', engine: 'bing' },
-        { name: '秘塔', engine: 'metaso' }
+        { name: 'AI搜索', engine: 'metaso' }
     ],
     '社区': [
         { name: '知乎', engine: 'zhihu' },

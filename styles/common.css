@@ -62,7 +62,15 @@ p {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
-  }
+}
+
+.bold {
+    font-weight: 700;
+}
+
+li {
+    margin: 10px 0px;
+}
 
 a {
     color: #000;

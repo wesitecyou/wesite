@@ -580,6 +580,7 @@ form button:hover {
 
 .sub-box-header {
   height: 90px;
+  border: 0.5px solid transparent;
 }
 .sub-box-header:hover {
   animation: quickBounce10 0.5s ease-in-out forwards;

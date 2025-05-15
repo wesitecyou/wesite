@@ -8,21 +8,39 @@
 
 
 <url>
-  <loc>https://xiaoyuantongxue.com/</loc>
-  <lastmod>2025-03-07T07:19:53+00:00</lastmod>
-  <changefreq>daily</changefreq>
+  <loc>https://wesite.cyou/</loc>
+  <lastmod>2025-05-15T03:48:21+00:00</lastmod>
+  <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://xiaoyuantongxue.com/fliqlo</loc>
-  <lastmod>2025-03-07T07:19:54+00:00</lastmod>
-  <changefreq>daily</changefreq>
+  <loc>https://wesite.cyou/about.html</loc>
+  <lastmod>2025-05-15T03:48:21+00:00</lastmod>
+  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://xiaoyuantongxue.com/qwerty</loc>
-  <lastmod>2025-03-07T07:19:54+00:00</lastmod>
-  <changefreq>daily</changefreq>
+  <loc>https://wesite.cyou/password</loc>
+  <lastmod>2025-05-15T03:48:21+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wesite.cyou/fliqlo</loc>
+  <lastmod>2025-05-15T03:48:22+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wesite.cyou/qwerty</loc>
+  <lastmod>2025-05-15T03:48:22+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wesite.cyou/sitemap.html</loc>
+  <lastmod>2025-05-15T03:48:22+00:00</lastmod>
+  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 
